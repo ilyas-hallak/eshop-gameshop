@@ -20,11 +20,16 @@ public class EShopV {
 		return this.service.getAllArtikel();
 	}
 
-	public boolean insertArtikel(int nr, String title) {
-		return this.service.insertArtikel(nr, title);
+	public boolean insertArtikel(int nr, String title, int bestand) {
+		return this.service.insertArtikel(nr, title, bestand);
+	}
+	
+	public boolean raiseStock(int nr, int stock) {
+		return this.service.raiseStock(nr, stock);
 	}
 	
 	public List<Artikel> findArtikelByString(String s) {
 		return this.service.findArtikelByString(s);
 	}
+	
 }
