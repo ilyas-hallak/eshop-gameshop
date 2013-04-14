@@ -88,6 +88,7 @@ public class EShopClientCUI {
 			System.out.print("Artikeltitel oder Nummer  > ");
 			String input  = readInput();
 			List<Artikel> list = shop.findArtikelByString(input);
+			
 			giveOutArtikellist(list);
 		}
 		// Ein neuer Artikel wird dem Shop hinzugefuegt

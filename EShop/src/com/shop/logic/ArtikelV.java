@@ -55,7 +55,13 @@ public class ArtikelV {
 		Iterator<Artikel> i = artikelStock.iterator();
 		while(i.hasNext()) {
 			Artikel a = i.next();
-			if(a.getTitle().equals(s) || Integer.parseInt(s) == a.getNr()) {
+			int nr;
+			try {
+				nr = Integer.parseInt(s);
+			} catch(NumberFormatException e) {
+				nr = -1;
+			}
+			if(a.getTitle().equals(s) || nr == a.getNr()) {
 				artikel.add(a);
 			}
 		}

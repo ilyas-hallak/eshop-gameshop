@@ -52,8 +52,7 @@ public class ServiceV {
 	}
 
 	public List<Artikel> findArtikelByString(String s) {
-		artikelV.findArtikelByString(s);
-		return null;
+		return artikelV.findArtikelByString(s);
 	}
 
 }
