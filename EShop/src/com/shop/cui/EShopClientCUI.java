@@ -2,9 +2,8 @@ package com.shop.cui;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Vector;
 
-import logic.EShopV;
+import com.shop.logic.EShopV;
 
 public class EShopClientCUI {
 	
