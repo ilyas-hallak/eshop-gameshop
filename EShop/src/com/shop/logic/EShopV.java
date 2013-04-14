@@ -5,6 +5,9 @@ import java.util.List;
 
 import com.shop.valueobjects.Artikel;
 
+/**
+ * 
+ */
 public class EShopV {
 	
 	private ServiceV service;
