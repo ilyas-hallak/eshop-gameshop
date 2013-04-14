@@ -110,7 +110,7 @@ public class EShopClientCUI {
 		}
 		// Ein neuer Artikel wird dem Shop hinzugefuegt
 		else if (line.equals("s")) {
-	//		shop.writeArtikel();
+			shop.saveArtikel();
 		}
 	}
 	

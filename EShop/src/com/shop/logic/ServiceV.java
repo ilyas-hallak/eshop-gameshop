@@ -21,11 +21,12 @@ public class ServiceV {
 	public ServiceV(String file) throws IOException {
 		this.file = file;
 		this.artikelV = new ArtikelV();
+		this.artikelV.readArtikel(file+"_B.txt");
 	}
 	
-	public boolean insertArtikel(int nr, String title) {
+	public boolean insertArtikel(int nr, String title, int bestand) {
 		try {
-			Artikel a = new Artikel(nr, title);
+			Artikel a = new Artikel(nr, title, bestand);
 			artikelV.insertArtikel(a);
 		} catch (ArtikelexistsException e) {
 			return false;
@@ -48,11 +49,15 @@ public class ServiceV {
 	}
 	
 	public void saveArtikel() throws IOException {
-		artikelV.saveData(file+"_B.txt");
+		artikelV.saveArtikel(file+"_B.txt");
 	}
 
 	public List<Artikel> findArtikelByString(String s) {
 		return artikelV.findArtikelByString(s);
+	}
+
+	public boolean raiseStock(int nr, int stock) {
+		return artikelV.raiseStock(nr, stock);
 	}
 
 }
