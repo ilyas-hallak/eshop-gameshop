@@ -24,6 +24,8 @@ public class EShopClientCUI {
 		in = new BufferedReader(new InputStreamReader(System.in));
 	}
 	
+	private void anmelden() {
+	}
 	
 	/* (non-Javadoc)
 	 * 
@@ -31,9 +33,10 @@ public class EShopClientCUI {
 	 */
 	private void outputMenu() {
 		System.out.print("Befehle: \n  Artikel einfuegen: 'e'");
-		System.out.print("         \n  Artikel ausgeben:  'a'");
+		System.out.print("         \n  Artikel ausgeben:  'a' nach Titel oder 'aa' nach Nummer");
 		System.out.print("         \n  Artikel suchen:    'f'");
 		System.out.print("         \n  Daten sichern:     's'");
+		System.out.print("         \n  Bestand erhöhen:   'b'");
 		System.out.println("       \n  Beenden:           'q'");
 		System.out.print("> "); // Prompt
 		System.out.flush(); // ohne NL ausgeben
@@ -69,18 +72,28 @@ public class EShopClientCUI {
 			
 			System.out.print("Artikeltitel  > ");
 			String title = readInput();
-			boolean isok = shop.insertArtikel(aNr, title);
-
+			
+			System.out.println("Bestand  > ");
+			String bestand = readInput();
+			int stock = Integer.parseInt(bestand);
+			// 
+			boolean isok = shop.insertArtikel(aNr, title, stock);
+			
 			if (isok)
-				System.out.println("Einfügen ok");
-			else
-				System.out.println("Fehler beim Einfügen");
+				System.out.println("Der Artikel wurde hinzugefügt");
+			else 
+				System.out.println("Die Eingabe ist fehlgeschlagen, bitte überprüfen sie Ihre Eingabe");
 		}
-		// Die Artikel Liste wird ueber die EShopV ausgegeben
+		// Die Artikel Liste wird ueber die EShopV, nach Titel sortiert, ausgegeben
 		else if (line.equals("a")) {
 			List<Artikel> list = shop.getAllArtikel();
 			giveOutArtikellist(list);
 		}
+		// Artikel sortiert nach Nummer ausgeben
+//		else if (line.equals("aa")) {
+//			List<Artikel> list = shop.getAllArtikel("nr");
+//			giveOutArtikellist(list);
+//		}
 		/* Es wird ueber eine Eingabe nach einem Titel oder Nummer
 		 * in der Artikel Liste gesucht 
 		*/
@@ -88,8 +101,12 @@ public class EShopClientCUI {
 			System.out.print("Artikeltitel oder Nummer  > ");
 			String input  = readInput();
 			List<Artikel> list = shop.findArtikelByString(input);
-			
-			giveOutArtikellist(list);
+			if (list == null){
+				System.out.print("Es wurde kein passender Artikel gefunden");
+			} 	else {
+				System.out.print("Es wurden folgende Artikel gefunden");	
+				giveOutArtikellist(list);
+			}
 		}
 		// Ein neuer Artikel wird dem Shop hinzugefuegt
 		else if (line.equals("s")) {
