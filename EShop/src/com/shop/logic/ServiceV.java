@@ -51,4 +51,9 @@ public class ServiceV {
 		artikelV.saveData(file+"_B.txt");
 	}
 
+	public List<Artikel> findArtikelByString(String s) {
+		artikelV.findArtikelByString(s);
+		return null;
+	}
+
 }

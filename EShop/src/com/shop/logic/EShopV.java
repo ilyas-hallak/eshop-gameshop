@@ -23,5 +23,8 @@ public class EShopV {
 	public boolean insertArtikel(int nr, String title) {
 		return this.service.insertArtikel(nr, title);
 	}
-
+	
+	public List<Artikel> findArtikelByString(String s) {
+		return this.service.findArtikelByString(s);
+	}
 }

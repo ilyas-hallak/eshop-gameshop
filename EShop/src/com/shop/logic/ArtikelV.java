@@ -1,5 +1,6 @@
 package com.shop.logic;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
@@ -47,6 +48,18 @@ public class ArtikelV {
 		pm.close(); 
 		 */
 		
+	}
+
+	public List<Artikel> findArtikelByString(String s) {
+		List<Artikel> artikel = new Vector<Artikel>();
+		Iterator<Artikel> i = artikelStock.iterator();
+		while(i.hasNext()) {
+			Artikel a = i.next();
+			if(a.getTitle().equals(s) || Integer.parseInt(s) == a.getNr()) {
+				artikel.add(a);
+			}
+		}
+		return artikel;
 	}
 
 
