@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Vector;
 
 import com.shop.logic.EShopV;
 import com.shop.valueobjects.Artikel;
@@ -82,12 +81,14 @@ public class EShopClientCUI {
 			List<Artikel> list = shop.getAllArtikel();
 			giveOutArtikellist(list);
 		}
-		// Es wird ueber eine Eingabe nach einem Titel in der Artikel Liste gesucht 
+		/* Es wird ueber eine Eingabe nach einem Titel oder Nummer
+		 * in der Artikel Liste gesucht 
+		*/
 		else if (line.equals("f")) {
-			System.out.print("Artikeltitel  > ");
-			String title = readInput();
-	//		List<Artikel> list = shop.searchForTitle(title);
-	//		giveOutArtikellist(list);
+			System.out.print("Artikeltitel oder Nummer  > ");
+			String input  = readInput();
+			List<Artikel> list = shop.findArtikelByString(input);
+			giveOutArtikellist(list);
 		}
 		// Ein neuer Artikel wird dem Shop hinzugefuegt
 		else if (line.equals("s")) {
