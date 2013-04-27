@@ -15,27 +15,12 @@ import com.shop.valueobjects.Artikel;
 
 
 public class FilePersistenceManager {
-	private BufferedReader reader = null;
-	private PrintWriter writer = null;
 	private XMLEncoder in = null;
 	private XMLDecoder out = null;
 
 	private String file;
-
 	
 	public boolean close() {
-//		if (writer != null)
-//			writer.close();
-//		
-//		if (reader != null) {
-//			try {
-//				reader.close();
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//				
-//				return false;
-//			}
-//		}
 		if(in != null) {
 			this.in.flush();
 			this.in.close();

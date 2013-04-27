@@ -18,11 +18,14 @@ public class ArtikelV implements Serializable {
 	 */
 	private static final long serialVersionUID = 304961499015349662L;
 
+	// Persistenz-Schnittstelle, die für die Details des Dateizugriffs verantwortlich ist
+	private FilePersistenceManager pm;
+	
 	// Verwaltung des Artikelbestands in einem Vector
 	private ArrayList<Artikel> artikelStock;
 
 	/**
-	 * @return the artikelStock
+	 * @return the artikel stock
 	 */
 	public ArrayList<Artikel> getArtikelStock() {
 		return artikelStock;
@@ -35,9 +38,6 @@ public class ArtikelV implements Serializable {
 		this.artikelStock = artikelStock;
 	}
 
-	// Persistenz-Schnittstelle, die für die Details des Dateizugriffs verantwortlich ist
-	private FilePersistenceManager pm;
-	
 	/**
 	 * @return the pm
 	 */
