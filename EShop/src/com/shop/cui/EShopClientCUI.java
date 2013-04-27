@@ -6,19 +6,19 @@ import java.io.InputStreamReader;
 import java.util.Iterator;
 import java.util.List;
 
-import com.shop.logic.EShopV;
+import com.shop.logic.ServiceV;
 import com.shop.valueobjects.Artikel;
 
 public class EShopClientCUI {
 	
-	private EShopV shop;
+	private ServiceV shop;
 	private BufferedReader in;
 	
 	
 	public EShopClientCUI(String file) throws IOException {
 		// die EShop-Verwaltung nimmt die ersten Aufgaben entgegen 
 		// und leitet diese weiter an den Service
-		shop = new EShopV(file);
+		shop = new ServiceV(file);
 
 		// Stream-Objekt fuer Texteingabe ueber Konsolenfenster erzeugen
 		in = new BufferedReader(new InputStreamReader(System.in));

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.7.0_09" class="java.beans.XMLDecoder">
+ <object class="com.shop.logic.ArtikelV">
+  <void property="artikelStock">
+   <object class="java.util.ArrayList">
+    <void method="add">
+     <object class="com.shop.valueobjects.Artikel">
+      <void property="nr">
+       <int>1</int>
+      </void>
+      <void property="stock">
+       <int>5</int>
+      </void>
+      <void property="title">
+       <string>test</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.shop.valueobjects.Artikel">
+      <void property="nr">
+       <int>2</int>
+      </void>
+      <void property="stock">
+       <int>5</int>
+      </void>
+      <void property="title">
+       <string>test2</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

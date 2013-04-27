@@ -1,25 +1,64 @@
 package com.shop.logic;
 
 import java.io.IOException;
-import java.util.Collections;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
 import com.shop.exceptions.ArtikelexistsException;
-import com.shop.persistence.*;
+import com.shop.persistence.FilePersistenceManager;
 import com.shop.valueobjects.Artikel;
 
-public class ArtikelV {
+public class ArtikelV implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 304961499015349662L;
 
 	// Verwaltung des Artikelbestands in einem Vector
-	private List<Artikel> artikelStock;
+	private ArrayList<Artikel> artikelStock;
+
+	/**
+	 * @return the artikelStock
+	 */
+	public ArrayList<Artikel> getArtikelStock() {
+		return artikelStock;
+	}
+
+	/**
+	 * @param artikelStock the artikelStock to set
+	 */
+	public void setArtikelStock(ArrayList<Artikel> artikelStock) {
+		this.artikelStock = artikelStock;
+	}
 
 	// Persistenz-Schnittstelle, die für die Details des Dateizugriffs verantwortlich ist
-	private PersistenceManager pm = new FilePersistenceManager();
+	private FilePersistenceManager pm;
 	
+	/**
+	 * @return the pm
+	 */
+	public FilePersistenceManager getPm() {
+		return pm;
+	}
+
+	/**
+	 * @param pm the pm to set
+	 */
+	public void setPm(FilePersistenceManager pm) {
+		this.pm = pm;
+	}
+
 	public ArtikelV() {
-		this.artikelStock = new Vector<Artikel>();
+		
+	}
+	
+	public ArtikelV(String file) {
+		this.artikelStock = new ArrayList<Artikel>();
+		pm = new FilePersistenceManager(file);
 	}
 	
 	public void insertArtikel(Artikel a) throws ArtikelexistsException {
@@ -68,18 +107,21 @@ public class ArtikelV {
 		}
 	}
 
-	public void saveArtikel(String file) {
+	public void saveArtikel() {
 		try {
-			pm.openForWriting(file);
+			
+			pm.openForWriting();
 			if(!artikelStock.isEmpty()) {
-				Iterator<Artikel> i = artikelStock.iterator();
+				pm.saveArtikel(this);
+				/*Iterator<Artikel> i = artikelStock.iterator();
 				while(i.hasNext()) {
 					Artikel a = i.next();
-					pm.saveArtikel(a);
-				}
+					
+				}*/
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
+			System.out.println("hallo");
 		} finally {
 			pm.close();
 		}
@@ -87,17 +129,12 @@ public class ArtikelV {
 	
 	public void readArtikel(String file) {
 		try {
-			pm.openForReading(file);
-			Artikel a;
-			do {
-				a = pm.loadArtikel();
-				if(a != null) {
-					try {
-						this.insertArtikel(a);
-					} catch(Exception e) {// wird niemals auftreten da vorher schon abegfangen}
-					}
-				}
-			} while(a != null);
+			pm.openForReading();
+			ArtikelV a = pm.loadArtikel();;
+			if(a != null)
+				this.artikelStock = a.artikelStock;
+
+				
 		} catch (IOException e1) {
 			System.out.println(e1.getMessage());
 		} finally {

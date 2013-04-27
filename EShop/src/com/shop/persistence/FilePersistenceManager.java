@@ -1,76 +1,84 @@
 package com.shop.persistence;
 
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
+import com.shop.logic.ArtikelV;
 import com.shop.valueobjects.Artikel;
 
 
-public class FilePersistenceManager implements PersistenceManager {
+public class FilePersistenceManager {
 	private BufferedReader reader = null;
 	private PrintWriter writer = null;
+	private XMLEncoder in = null;
+	private XMLDecoder out = null;
+
+	private String file;
+
 	
-	@Override
 	public boolean close() {
-		if (writer != null)
-			writer.close();
-		
-		if (reader != null) {
-			try {
-				reader.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-				
-				return false;
-			}
-		}
-		return true;
-	}
-	@Override
-	public Artikel loadArtikel() throws IOException {
-		int nr = -1;
-		try {
-			nr = Integer.parseInt(this.readLine());
+//		if (writer != null)
+//			writer.close();
+//		
+//		if (reader != null) {
+//			try {
+//				reader.close();
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//				
+//				return false;
+//			}
+//		}
+		if(in != null) {
+			this.in.flush();
+			this.in.close();
 			
-			String title = this.readLine();
-			if(title == null) {
-				return null;
-			}
-			int stock = Integer.parseInt(this.readLine());
-			return new Artikel(nr, title, stock);
+			return true;
+		} else if(out != null) {
+			return true;
+		}
+		return false;
+	}
+	
+	public FilePersistenceManager(String file) {
+		this.file = file;
+	}
+	
+	public ArtikelV loadArtikel() {
+		try {
+			
+			ArtikelV Av = (ArtikelV)this.out.readObject();
+			return Av;
 		} catch(Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	} 
-	@Override
-	public void openForReading(String file) throws IOException {
-		reader = new BufferedReader(new FileReader(file));
-	}
-	@Override
-	public void openForWriting(String file) throws IOException {
-		writer = new PrintWriter(new BufferedWriter(new FileWriter(file)));
-	}
-	@Override
-	public boolean saveArtikel(Artikel b) throws IOException {
-		this.writeLine(Integer.valueOf(b.getNr()).toString());
-		this.writeLine(b.getTitle());
-		this.writeLine(Integer.valueOf(b.getStock()).toString());
-		return true;
+	public void openForReading() throws IOException {
+		this.out = new XMLDecoder(new FileInputStream(this.file));
 	}
 	
-	private String readLine() throws IOException {
-		if (reader != null)
-			return reader.readLine();
-		else
-			return "";
-	}
+	public void openForWriting() throws IOException {
+		// writer = new PrintWriter(new BufferedWriter(new FileWriter(file)));
+		this.in = new XMLEncoder(new FileOutputStream(this.file));
 
-	private void writeLine(String data) {
-		if (writer != null)
-			writer.println(data);
+	}
+	
+	public boolean saveArtikel(ArtikelV b) throws IOException {
+		try {
+			in.writeObject(b);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return true;
 	}
 }

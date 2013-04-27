@@ -20,8 +20,8 @@ public class ServiceV {
 
 	public ServiceV(String file) throws IOException {
 		this.file = file;
-		this.artikelV = new ArtikelV();
-		this.artikelV.readArtikel(file+"_B.txt");
+		this.artikelV = new ArtikelV(file);
+		this.artikelV.readArtikel(file);
 	}
 	
 	public boolean insertArtikel(int nr, String title, int bestand) {
@@ -48,8 +48,8 @@ public class ServiceV {
 		
 	}
 	
-	public void saveArtikel() throws IOException {
-		artikelV.saveArtikel(file+"_B.txt");
+	public void saveArtikel() {
+		artikelV.saveArtikel();
 	}
 
 	public List<Artikel> findArtikelByString(String s) {
