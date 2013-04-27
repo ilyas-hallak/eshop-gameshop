@@ -6,8 +6,11 @@ import java.io.InputStreamReader;
 import java.util.Iterator;
 import java.util.List;
 
+import com.shop.exceptions.CustomerExistsExeption;
 import com.shop.logic.ServiceV;
 import com.shop.valueobjects.Artikel;
+import com.shop.valueobjects.Kunde;
+import com.shop.valueobjects.Person;
 
 public class EShopClientCUI {
 	
@@ -24,7 +27,38 @@ public class EShopClientCUI {
 		in = new BufferedReader(new InputStreamReader(System.in));
 	}
 	
-	private void anmelden() {
+	// Der Benutzer kann wählen ob er Kunde oder Mitarbeiter ist
+	private void selection() {
+		System.out.print(" Einloggen > 'l'");
+		System.out.print(" \n registrieren > 'r'");
+	} 
+	
+	// Der Kunde oder Mitarbeiter kann sich einloggen
+	private void login(String enter) throws IOException {
+		System.out.print(" \n Bitte geben Sie Ihre E-Mail ein:");
+		String eMail = readInput();
+		System.out.print(" \n Bitte geben Sie Ihr Passwort ein:");
+		String pw = readInput();
+		Person p = new Person(eMail, pw);
+	}
+	
+	// Hier kann der Kunde sich im E-Shop registrieren
+	private void registerCustomer(String enter) throws IOException {
+		System.out.print(" \n Bitte geben Sie Ihren Namen ein:");
+		String name = readInput();
+		System.out.print(" \n Bitte geben Sie Ihre E-Mail Adresse ein:");
+		String eMail = readInput();
+		System.out.print(" \n Bitte geben Sie Ihre komplette Adresse ein(Straße,Hausnr.,Stadt):");
+		String address = readInput();
+		System.out.print(" \n Bitte geben Sie Ihr persönliches Passwort ein:");
+		String pw = readInput();
+		Kunde k = new Kunde(name, eMail, address, pw);
+		try {
+			shop.insertCustomer(k);
+		} catch(CustomerExistsExeption e) {
+			System.out.println("Die n sie Ihre Eingabe");
+		}
+		
 	}
 	
 	/* (non-Javadoc)
@@ -84,6 +118,19 @@ public class EShopClientCUI {
 			else 
 				System.out.println("Die Eingabe ist fehlgeschlagen, bitte überprüfen sie Ihre Eingabe");
 		}
+		// Der Bestand kann erhöht oder veringert werden
+		else if (line.equals("b")) {
+			System.out.print("Bei welchem Artikel möchten Sie den Bestand erhöhen?");
+			List<Artikel> list = shop.getAllArtikel();
+			giveOutArtikellist(list);
+			System.out.print("Geben Sie die gewünschte Artikelnummmer an > ");
+			String number = readInput();
+			int aNr = Integer.parseInt(number);
+			System.out.println("Um wie viel möchten Sie den Bestand erhöhen?  > ");
+			String bestand = readInput();
+			int stock = Integer.parseInt(bestand);
+			shop.raiseStock(aNr, stock);
+		}
 		// Die Artikel Liste wird ueber die EShopV, nach Titel sortiert, ausgegeben
 		else if (line.equals("a")) {
 			List<Artikel> list = shop.getAllArtikel();
@@ -142,16 +189,26 @@ public class EShopClientCUI {
 	public void run() {
 		// Variable für Eingaben von der Konsole
 		String input = ""; 
+		String enter = "";
 	
-		// Hauptschleife der Benutzungsschnittstelle
+		// Hauptschleife der Benutzungsschnittstelle für den Mitabreiter
 		do {
-			outputMenu();
 			try {
+			selection();
+			enter = in.readLine();
+				
+			if (enter.equals("l")) {
+				login(enter);
+				// Kunden oder Mitarbeiter Menü
+				outputMenu();
 				input = in.readLine();
 				processInput(input);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			} 	else { 
+					registerCustomer(enter);
+				}
+			} 	catch (IOException e) {
+					e.printStackTrace();
+				}
 		} while (!input.equals("q"));
 	}
 	
@@ -163,7 +220,7 @@ public class EShopClientCUI {
 		
 		EShopClientCUI cui;
 		try {
-			cui = new EShopClientCUI("SHOP");
+			cui = new EShopClientCUI("SHOP.xml");
 			cui.run();
 		} catch (IOException e) {
 			e.printStackTrace();
