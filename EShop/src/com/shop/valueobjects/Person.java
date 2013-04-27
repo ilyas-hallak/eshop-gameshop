@@ -4,10 +4,10 @@ public class Person {
 
 	protected int nr;
 	protected String name;
-	protected int password;
-	protected int eMail;
+	protected String password;
+	protected String eMail;
 	
-	public Person (int eMail, int password) {
+	public Person(String eMail, String password) {
 		this.eMail = eMail;
 		this.password = password;
 	}
@@ -43,28 +43,28 @@ public class Person {
 	/**
 	 * @return the password
 	 */
-	public int getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
 	/**
 	 * @param password the password to set
 	 */
-	public void setPassword(int password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
 	/**
 	 * @return the eMail
 	 */
-	public int geteMail() {
+	public String geteMail() {
 		return eMail;
 	}
 
 	/**
 	 * @param eMail the eMail to set
 	 */
-	public void seteMail(int eMail) {
+	public void seteMail(String eMail) {
 		this.eMail = eMail;
 	}
 }
