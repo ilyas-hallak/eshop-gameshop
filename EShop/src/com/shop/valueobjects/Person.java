@@ -1,11 +1,22 @@
 package com.shop.valueobjects;
 
-public class Person {
+import java.io.Serializable;
 
+public class Person implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 936335457255744308L;
 	protected int nr;
 	protected String name;
 	protected String password;
 	protected String eMail;
+	
+	// serialize default constructor
+	public Person() {
+		
+	}
 	
 	public Person(String eMail, String password) {
 		this.eMail = eMail;

@@ -26,8 +26,9 @@ public class ServiceV {
 	public ServiceV(String file) throws IOException {
 		this.file = file;
 		this.artikelV = new ArtikelV(file);
-		this.artikelV.readArtikel(file);
-		this.personV = new PersonV();
+		this.artikelV.readArtikel(file );
+		this.personV = new PersonV(file + ".xml_Person");
+		this.personV.loadPersonen(file + ".xml_Person");
 	}
 	
 	// Mitarbeiter
@@ -70,7 +71,7 @@ public class ServiceV {
 		this.personV.insertCustomer(k);
 	}
 	
-	public boolean login(Person p) throws PersonNotFoundException {
+	public Person login(Person p) throws PersonNotFoundException {
 		return this.personV.login(p);
 	}
 }

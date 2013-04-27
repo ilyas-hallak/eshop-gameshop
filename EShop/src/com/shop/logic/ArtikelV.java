@@ -52,6 +52,7 @@ public class ArtikelV implements Serializable {
 		this.pm = pm;
 	}
 
+	// empty constructor for Serializable
 	public ArtikelV() {
 		
 	}
@@ -69,7 +70,6 @@ public class ArtikelV implements Serializable {
 	}
 
 	public List<Artikel> getAllArtikel() {
-		// TODO Auto-generated method stub
 		return this.artikelStock;
 	}
 
@@ -113,11 +113,6 @@ public class ArtikelV implements Serializable {
 			pm.openForWriting();
 			if(!artikelStock.isEmpty()) {
 				pm.saveArtikel(this);
-				/*Iterator<Artikel> i = artikelStock.iterator();
-				while(i.hasNext()) {
-					Artikel a = i.next();
-					
-				}*/
 			}
 		} catch (IOException e) {
 			// e.printStackTrace();

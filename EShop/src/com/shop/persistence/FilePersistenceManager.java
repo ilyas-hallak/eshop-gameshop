@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import com.shop.logic.ArtikelV;
+import com.shop.logic.PersonV;
 import com.shop.valueobjects.Artikel;
 
 
@@ -38,7 +39,6 @@ public class FilePersistenceManager {
 	
 	public ArtikelV loadArtikel() {
 		try {
-			
 			ArtikelV Av = (ArtikelV)this.out.readObject();
 			return Av;
 		} catch(Exception e) {
@@ -63,7 +63,19 @@ public class FilePersistenceManager {
 			e.printStackTrace();
 		}
 		
-		
 		return true;
 	}
+
+	public void save(Object o) {
+		try {
+			in.writeObject(o);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public Object read() {
+		return this.out.readObject();
+	}
+	
 }
