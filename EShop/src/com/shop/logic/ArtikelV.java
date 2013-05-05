@@ -18,10 +18,14 @@ public class ArtikelV implements Serializable {
 	 */
 	private static final long serialVersionUID = 304961499015349662L;
 
-	// Persistenz-Schnittstelle, die für die Details des Dateizugriffs verantwortlich ist
+	/**
+	 *  Persistenz-Schnittstelle, die für die Details des Dateizugriffs verantwortlich ist
+	 */
 	private FilePersistenceManager pm;
 	
-	// Verwaltung des Artikelbestands in einem Vector
+	/**
+	 * Verwaltung des Artikelbestands
+	 */
 	private ArrayList<Artikel> artikelStock;
 
 	/**
@@ -52,16 +56,28 @@ public class ArtikelV implements Serializable {
 		this.pm = pm;
 	}
 
-	// empty constructor for Serializable
+	/**
+	 * empty constructor for Serializable Interface
+	 */
 	public ArtikelV() {
-		
 	}
 	
+	/**
+	 * init the file manager and the article stock
+	 * @param file filename for the file manager
+	 */
 	public ArtikelV(String file) {
 		this.artikelStock = new ArrayList<Artikel>();
 		pm = new FilePersistenceManager(file);
 	}
 	
+	/**
+	 * Adds an article to the article stock
+	 * @param nr article nr
+	 * @param title article title
+	 * @param bestand article stock
+	 * @throws ArtikelexistsException 
+	 */
 	public void insertArtikel(Artikel a) throws ArtikelexistsException {
 		if (!artikelStock.contains(a))
 			this.artikelStock.add(a);
@@ -69,10 +85,18 @@ public class ArtikelV implements Serializable {
 			throw new ArtikelexistsException(a.getTitle() + " - in 'einfuegen()'");
 	}
 
+	/**
+	 * 
+	 * @return return all article in a list
+	 */
 	public List<Artikel> getAllArtikel() {
 		return this.artikelStock;
 	}
 
+	/**
+	 * @param s search string can be a title or a number
+	 * @return list with matched articles
+	 */
 	public List<Artikel> findArtikelByString(String s) {
 		List<Artikel> artikel = new Vector<Artikel>();
 		Iterator<Artikel> i = artikelStock.iterator();
@@ -91,10 +115,21 @@ public class ArtikelV implements Serializable {
 		return artikel;
 	}
 
+	/**
+	 * find a article by int
+	 * @param s
+	 * @return
+	 */
 	public List<Artikel> findArtikelByString(int s) {
 		return this.findArtikelByString(new Integer(s).toString());
 	}
 	
+	/**
+	 * 
+	 * @param nr article number
+	 * @param stock article stock count
+	 * @return
+	 */
 	public boolean raiseStock(int nr, int stock) {
 		List<Artikel> a = this.findArtikelByString(nr);
 		if(a != null) {
@@ -106,10 +141,12 @@ public class ArtikelV implements Serializable {
 			// throw new ArtikelNotFoundException();
 		}
 	}
-
+	
+	/**
+	 * save all articles in a xml file with the file manager
+	 */
 	public void saveArtikel() {
 		try {
-			
 			pm.openForWriting();
 			if(!artikelStock.isEmpty()) {
 				pm.saveArtikel(this);
@@ -122,14 +159,16 @@ public class ArtikelV implements Serializable {
 		}
 	}
 	
+	/**
+	 * reads all articles from an xml file with the file manager
+	 * @param file
+	 */
 	public void readArtikel(String file) {
 		try {
 			pm.openForReading();
 			ArtikelV a = pm.loadArtikel();;
 			if(a != null)
 				this.artikelStock = a.artikelStock;
-
-				
 		} catch (IOException e1) {
 			System.out.println(e1.getMessage());
 		} finally {

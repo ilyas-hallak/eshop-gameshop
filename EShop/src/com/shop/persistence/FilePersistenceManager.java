@@ -46,23 +46,21 @@ public class FilePersistenceManager {
 			return null;
 		}
 	} 
-	public void openForReading() throws IOException {
+	public void openForReading() throws FileNotFoundException {
 		this.out = new XMLDecoder(new FileInputStream(this.file));
 	}
 	
 	public void openForWriting() throws IOException {
 		// writer = new PrintWriter(new BufferedWriter(new FileWriter(file)));
 		this.in = new XMLEncoder(new FileOutputStream(this.file));
-
 	}
 	
-	public boolean saveArtikel(ArtikelV b) throws IOException {
+	public boolean saveArtikel(ArtikelV b) {
 		try {
 			in.writeObject(b);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 		return true;
 	}
 

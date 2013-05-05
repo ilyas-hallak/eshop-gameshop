@@ -22,25 +22,20 @@ public class ServiceV {
 	private String file = "";
 	private ArtikelV artikelV;
 	private PersonV personV;
-
+	private WarenkorbV cart;
+	
 	public ServiceV(String file) throws IOException {
 		this.file = file;
 		this.artikelV = new ArtikelV(file);
 		this.artikelV.readArtikel(file );
 		this.personV = new PersonV(file + ".xml_Person");
 		this.personV.loadPersonen(file + ".xml_Person");
+		this.cart = new WarenkorbV(); 
 	}
 	
-	// Mitarbeiter
-	
-	public boolean insertArtikel(int nr, String title, int bestand) {
-		try {
-			Artikel a = new Artikel(nr, title, bestand);
-			this.artikelV.insertArtikel(a);
-		} catch (ArtikelexistsException e) {
-			return false;
-		}
-		return true;
+	public void insertArtikel(int nr, String title, int bestand) throws ArtikelexistsException {
+		Artikel a = new Artikel(nr, title, bestand);
+		this.artikelV.insertArtikel(a);
 	}
 	
 	public List<Artikel> getAllArtikel() {
@@ -74,4 +69,13 @@ public class ServiceV {
 	public Person login(Person p) throws PersonNotFoundException {
 		return this.personV.login(p);
 	}
+	
+	public void addArtikel(Artikel a, int count) {
+		this.cart.addArtikel(a, count);
+	}
+	
+	public void removeArtikel(Artikel a) {
+		this.cart.removeArtikel(a);
+	}
+
 }

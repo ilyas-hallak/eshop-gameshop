@@ -27,7 +27,6 @@ public class Artikel implements Serializable {
 	private int stock;
 
 	public Artikel() {
-		
 	}
 	
 	public Artikel(int nr, String title,int stock ) {

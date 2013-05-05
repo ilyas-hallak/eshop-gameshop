@@ -23,10 +23,12 @@ public class PersonV implements Serializable {
 	private ArrayList<Person> personStock;
 	private FilePersistenceManager pm;
 	private String file;
+	
 	// empty constructor for Serializable
 	public PersonV() {
 		
 	}
+	
 	
 	public PersonV(String file) {
 		this.personStock = new ArrayList<Person>();
@@ -67,7 +69,8 @@ public class PersonV implements Serializable {
 				pm.save(this);
 			}
 		} catch(IOException e) {
-			e.printStackTrace();
+			// TODO fix error messages
+			//e.printStackTrace();
 		} finally {
 			pm.close();
 		}
@@ -81,8 +84,9 @@ public class PersonV implements Serializable {
 				this.personStock = p.personStock;
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			e.printStackTrace();
+			// TODO fix error messages
+			// System.out.println(e.getMessage());
+			// e.printStackTrace();
 		} finally {
 			pm.close();
 		}
