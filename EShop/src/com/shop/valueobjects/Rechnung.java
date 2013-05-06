@@ -1,25 +1,13 @@
 package com.shop.valueobjects;
 
 import java.util.Date;
-import java.util.List;
+import java.util.Map;
 
 public class Rechnung {
-	private List<Artikel> articleList;
+	private Map<Artikel, Number> articleList;
 	private Date date;
 	private Kunde kunde;
 	
-	/**
-	 * @return the articleList
-	 */
-	public List<Artikel> getArticleList() {
-		return articleList;
-	}
-	/**
-	 * @param articleList the articleList to set
-	 */
-	public void setArticleList(List<Artikel> articleList) {
-		this.articleList = articleList;
-	}
 	/**
 	 * @return the date
 	 */
@@ -43,5 +31,11 @@ public class Rechnung {
 	 */
 	public void setKunde(Kunde kunde) {
 		this.kunde = kunde;
+	}
+	public Map<Artikel, Number> getArticleList() {
+		return articleList;
+	}
+	public void setArticleList(Map<Artikel, Number> articleList) {
+		this.articleList = articleList;
 	}
 }

@@ -1,10 +1,12 @@
 package com.shop.logic;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.shop.valueobjects.Artikel;
 import com.shop.valueobjects.Kunde;
+import com.shop.valueobjects.Rechnung;
 
 public class WarenkorbV {
 	
@@ -48,7 +50,11 @@ public class WarenkorbV {
 		return this.warenkorb;
 	}
 	
-	public void buy(Kunde k) {
-		
+	public Rechnung buy(Kunde k) {
+		Rechnung r = new Rechnung();
+		r.setDate(new Date());
+		r.setArticleList(this.warenkorb);
+		r.setKunde(k);
+		return r;
 	}
 }

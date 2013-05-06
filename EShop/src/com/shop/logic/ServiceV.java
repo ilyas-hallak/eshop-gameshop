@@ -11,6 +11,7 @@ import com.shop.exceptions.PersonNotFoundException;
 import com.shop.valueobjects.Artikel;
 import com.shop.valueobjects.Kunde;
 import com.shop.valueobjects.Person;
+import com.shop.valueobjects.Rechnung;
 
 /**
  * Klasse zur Verwaltung eines (sehr einfachen) Shop.
@@ -75,11 +76,15 @@ public class ServiceV {
 		this.cart.addArtikel(a, count);
 	}
 	
-	public void removeArtikel(Artikel a) {
+	public void removeArtikelFromCart(Artikel a) {
 		this.cart.removeArtikel(a);
 	}
 
 	public Map<Artikel, Number> getAllArtikelFromCart() {
 		return this.cart.getAllArtikel();
+	}
+	
+	public Rechnung buy(Kunde k) {
+		return this.cart.buy(k);
 	}
 }
