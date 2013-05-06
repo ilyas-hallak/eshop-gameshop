@@ -2,6 +2,7 @@ package com.shop.logic;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import com.shop.exceptions.ArtikelexistsException;
 import com.shop.exceptions.CustomerExistsExeption;
@@ -33,8 +34,8 @@ public class ServiceV {
 		this.cart = new WarenkorbV(); 
 	}
 	
-	public void insertArtikel(int nr, String title, int bestand) throws ArtikelexistsException {
-		Artikel a = new Artikel(nr, title, bestand);
+	public void insertArtikel(int nr, String title, int bestand, double price) throws ArtikelexistsException {
+		Artikel a = new Artikel(nr, title, bestand, price);
 		this.artikelV.insertArtikel(a);
 	}
 	
@@ -78,4 +79,7 @@ public class ServiceV {
 		this.cart.removeArtikel(a);
 	}
 
+	public Map<Artikel, Number> getAllArtikelFromCart() {
+		return this.cart.getAllArtikel();
+	}
 }

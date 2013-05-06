@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.shop.valueobjects.Artikel;
+import com.shop.valueobjects.Kunde;
 
 public class WarenkorbV {
 	
@@ -30,7 +31,7 @@ public class WarenkorbV {
 	}
 	
 	/**
-	 * removes an article from cart, if these exists
+	 * removes an article from cart if these exists
 	 * @param a article object
 	 */
 	public void removeArtikel(Artikel a) {
@@ -46,5 +47,8 @@ public class WarenkorbV {
 	public Map<Artikel, Number> getAllArtikel() {
 		return this.warenkorb;
 	}
-
+	
+	public void buy(Kunde k) {
+		
+	}
 }

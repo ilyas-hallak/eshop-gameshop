@@ -9,6 +9,7 @@ public class Artikel implements Serializable {
 	 */
 	private static final long serialVersionUID = -3756287705724091604L;
 	private String title;
+	private double price;
 	/**
 	 * @param title the title to set
 	 */
@@ -29,10 +30,11 @@ public class Artikel implements Serializable {
 	public Artikel() {
 	}
 	
-	public Artikel(int nr, String title,int stock ) {
+	public Artikel(int nr, String title,int stock, double price2) {
 		this.nr = nr;
 		this.title = title;
 		this.stock = stock;
+		this.price = price2;
 	}
 
 	public String getTitle() {
@@ -50,5 +52,13 @@ public class Artikel implements Serializable {
 	public int getStock() {
 		return this.stock;
 
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 }
