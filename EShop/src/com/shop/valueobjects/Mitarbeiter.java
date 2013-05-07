@@ -14,5 +14,13 @@ public class Mitarbeiter extends Person {
 	public Mitarbeiter(String eMail, String password) {
 		super(eMail, password);
 	}
+	
+	public String setEMail(String mail) {
+		return this.eMail = mail;
+	}
+	
+	public String getEMail() {
+		return this.eMail;
+	}
 
 }

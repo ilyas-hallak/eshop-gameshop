@@ -11,6 +11,7 @@ import com.shop.exceptions.CustomerExistsExeption;
 import com.shop.exceptions.PersonNotFoundException;
 import com.shop.persistence.FilePersistenceManager;
 import com.shop.valueobjects.Kunde;
+import com.shop.valueobjects.Mitarbeiter;
 import com.shop.valueobjects.Person;
 
 public class PersonV implements Serializable {
@@ -34,6 +35,22 @@ public class PersonV implements Serializable {
 		this.personStock = new ArrayList<Person>();
 		pm = new FilePersistenceManager(file);
 		this.file = file;
+		
+//		Mitarbeiter m = new Mitarbeiter();
+//		m.seteMail("m1");
+//		m.setName("m1");
+//		m.setNr(0);
+//		m.setPassword("m1");
+//		this.personStock.add(m);
+//		
+//		try {
+//			pm.openForWriting();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		pm.save(this);
+//		pm.close();
 	}
 	
 	/**
