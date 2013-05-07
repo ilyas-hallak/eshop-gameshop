@@ -57,6 +57,8 @@ public class ServiceV {
 	}
 
 	public boolean raiseStock(int nr, int stock) {
+		Artikel a = this.artikelV.findArtikelByString(nr).get(0);
+		this.ereignisV.create(stock, this.person, a, "Bestand erhöht");
 		return artikelV.raiseStock(nr, stock);
 	}
 	

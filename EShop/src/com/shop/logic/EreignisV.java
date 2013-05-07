@@ -51,7 +51,11 @@ public class EreignisV implements Serializable {
 	public void create(int count, Person p, Artikel a, String msg) {
 		try {
 			this.ereignis = new Ereignis(count, p, a, msg);
+			pm.openForWriting();
 			pm.save(this);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
 			pm.close();
 		}
