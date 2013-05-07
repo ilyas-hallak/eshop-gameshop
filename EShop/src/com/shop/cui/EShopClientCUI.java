@@ -100,7 +100,7 @@ public class EShopClientCUI {
 		}
 		else {
 			System.out.print("Befehle: \n  zum Warenkorb 'w'");
-			System.out.print("Befehle: \n  Artikel hinzufügen 'h'");
+			System.out.print("\n  Artikel hinzufügen 'h'");
 		}
 	}
 	
