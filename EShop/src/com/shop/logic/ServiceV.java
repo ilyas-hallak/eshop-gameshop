@@ -25,6 +25,8 @@ public class ServiceV {
 	private ArtikelV artikelV;
 	private PersonV personV;
 	private WarenkorbV cart;
+	private EreignisV ereignisV;
+	private Person person;
 	
 	public ServiceV(String file) throws IOException {
 		this.file = file;
@@ -33,6 +35,7 @@ public class ServiceV {
 		this.personV = new PersonV(file + ".xml_Person");
 		this.personV.loadPersonen(file + ".xml_Person");
 		this.cart = new WarenkorbV(); 
+		this.ereignisV = new EreignisV(file + "Ereignis.xml");
 	}
 	
 	public void insertArtikel(int nr, String title, int bestand, double price) throws ArtikelexistsException {
@@ -42,14 +45,6 @@ public class ServiceV {
 	
 	public List<Artikel> getAllArtikel() {
 		return artikelV.getAllArtikel(); //shop.getAllArtikel();
-	}
-	
-	public List<Artikel> sucheNachTitel(String titel) {
-		// einfach delegieren an meineBuecher
-		return null;//meineBuecher.sucheBuecher(titel); 
-	}
-
-	public void loadData() {
 	}
 	
 	public void saveArtikel() {
@@ -86,5 +81,13 @@ public class ServiceV {
 	
 	public Rechnung buy(Kunde k) {
 		return this.cart.buy(k);
+	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 }
