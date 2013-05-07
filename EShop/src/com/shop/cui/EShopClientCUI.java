@@ -20,7 +20,7 @@ public class EShopClientCUI {
 	
 	private ServiceV shop;
 	private BufferedReader in;
-	private boolean mitarbeiter;
+	private int mitarbeiter;
 	private Person person;
 	
 	
@@ -28,7 +28,7 @@ public class EShopClientCUI {
 		// die EShop-Verwaltung nimmt die ersten Aufgaben entgegen 
 		// und leitet diese weiter an den Service
 		shop = new ServiceV(file);
-		this.mitarbeiter = true;
+		this.mitarbeiter = 0;
 
 		// Stream-Objekt fuer Texteingabe ueber Konsolenfenster erzeugen
 		in = new BufferedReader(new InputStreamReader(System.in));
@@ -49,12 +49,14 @@ public class EShopClientCUI {
 		this.person = new Person(eMail, pw);
 		try {
 			this.person = shop.login(this.person);
-			shop.setPerson(this.person);
+		//	shop.setPerson(this.person);
 			if (this.person instanceof Kunde) {
 				System.out.println("KUNDENMENÜ");
+				return true;
 				} else {
 				System.out.println("MITARBEITERMENÜ");
-				this.mitarbeiter = true;
+				this.mitarbeiter = 1;
+				return true;
 				}
 		} catch(PersonNotFoundException e) {
 			System.out.println("Die Eingabe ist fehlgeschlagen, wiederholen Sie den Vorgang.");
@@ -86,7 +88,7 @@ public class EShopClientCUI {
 	 * Interne (private) Methode zur Ausgabe des Menüs.
 	 */
 	private void outputMenu() {
-		if(mitarbeiter){
+		if(mitarbeiter==1){
 		System.out.print("Befehle: \n  Artikel einfuegen: 'e'");
 		System.out.print("         \n  Artikel ausgeben:  'a' nach Titel oder 'aa' nach Nummer");
 		System.out.print("         \n  Artikel suchen:    'f'");
@@ -119,7 +121,7 @@ public class EShopClientCUI {
 	 * und Ausgabe von Ergebnissen.
 	 */
 	private void processInput(String line) throws IOException {
-		if(mitarbeiter){
+		if(mitarbeiter==1){
 		
 		// Eingabe bearbeiten:
 			if (line.equals("e")) { 
@@ -322,7 +324,6 @@ public class EShopClientCUI {
 					input = in.readLine();
 					processInput(input);
 				} else {
-					System.out.println("Der Login ist fehlgeschlagen!");
 				}
 			}
 			else { 
