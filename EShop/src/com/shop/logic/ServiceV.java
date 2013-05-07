@@ -41,6 +41,7 @@ public class ServiceV {
 	public void insertArtikel(int nr, String title, int bestand, double price) throws ArtikelexistsException {
 		Artikel a = new Artikel(nr, title, bestand, price);
 		this.artikelV.insertArtikel(a);
+		this.ereignisV.create(bestand, this.person, a, "Neuer Artikel");
 	}
 	
 	public List<Artikel> getAllArtikel() {
