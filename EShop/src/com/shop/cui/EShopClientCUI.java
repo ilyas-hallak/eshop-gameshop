@@ -192,77 +192,90 @@ public class EShopClientCUI {
 				// Ein neuer Artikel wird dem Shop hinzugefuegt
 				else if (line.equals("s")) {
 					shop.saveArtikel();
-				}
+				} 
 		} else {
-			do  {
-				List<Artikel> list = shop.getAllArtikel();
-				giveOutArtikellist(list);
-					if (line.equals("h")) {
-						//suchen nach Artikelnummer
+			String map2 = "";
+			do { 
+				
+				
+				do  {
+					List<Artikel> list = shop.getAllArtikel();
+					giveOutArtikellist(list);
+						if (line.equals("h")) {
+							//suchen nach Artikelnummer
+							System.out.print(" \n Geben Sie den Artieklnummer an:");
+							String anr = readInput();
+							List<Artikel> aList = shop.findArtikelByString(anr);
+							//Artikel mit der gesuchten Artikelnummer ausgeben und Artikel-Objekt erzeugen
+							Artikel artikel = aList.get(0);
+							// Die Anzahl des gewünschten Artikel angeben
+							System.out.print(" \n Bitte geben Sie die Anzahl ein:");
+							String anzahl = readInput();
+							int anz = Integer.parseInt(anzahl);
+							// Wenn ein Artikel mit der Anzahl 0 eingefügt wird, wird er direkt wieder heraus genommen
+							if(anz==0){
+								shop.removeArtikelFromCart(artikel);
+							} else { 
+								//try {
+								// Den Artikel in den Warenkorb übergeben
+									shop.addArtikel(artikel, anz);
+							//	} catch (ArtikelexistsException e) {
+							//		e.printStackTrace();
+									
+							//	}
+							}
+						}
+					} while (!line.equals("w"));
+					//zum Warenkorb
+					Map<Artikel, Number> warenkorb = shop.getAllArtikelFromCart();
+					this.giveOutArtikelMap(warenkorb);
+					System.out.print(" \n Artikel löschen 'l' >");
+					System.out.print(" \n Artikel Anzahl erhöhen 'h' >");
+					System.out.print(" \n Artikel aus Warenkorb kaufen 'b' >");
+					System.out.print(" \n Zurück zur Artikelansicht 'z' >");
+
+					String map = in.readLine();
+						if (map.equals("l")) {
 						System.out.print(" \n Geben Sie den Artieklnummer an:");
 						String anr = readInput();
 						List<Artikel> aList = shop.findArtikelByString(anr);
 						//Artikel mit der gesuchten Artikelnummer ausgeben und Artikel-Objekt erzeugen
 						Artikel artikel = aList.get(0);
-						// Die Anzahl des gewünschten Artikel angeben
-						System.out.print(" \n Bitte geben Sie die Anzahl ein:");
-						String anzahl = readInput();
-						int anz = Integer.parseInt(anzahl);
-						// Wenn ein Artikel mit der Anzahl 0 eingefügt wird, wird er direkt wieder heraus genommen
-						if(anz==0){
-							shop.removeArtikelFromCart(artikel);
-						} else { 
-							//try {
-							// Den Artikel in den Warenkorb übergeben
-								shop.addArtikel(artikel, anz);
-						//	} catch (ArtikelexistsException e) {
-						//		e.printStackTrace();
-								
-						//	}
-						}
-					}
-				} while (!line.equals("w"));
-				//zum Warenkorb
-				Map<Artikel, Number> warenkorb = shop.getAllArtikelFromCart();
-				this.giveOutArtikelMap(warenkorb);
-				System.out.print(" \n Artikel löschen 'l' >");
-				System.out.print(" \n Artikel Anzahl erhöhen 'h' >");
-				System.out.print(" \n Artikel aus Warenkorb kaufen 'b' >");
-					if (line.equals("l")) {
-					System.out.print(" \n Geben Sie den Artieklnummer an:");
-					String anr = readInput();
-					List<Artikel> aList = shop.findArtikelByString(anr);
-					//Artikel mit der gesuchten Artikelnummer ausgeben und Artikel-Objekt erzeugen
-					Artikel artikel = aList.get(0);
-					
-					shop.removeArtikelFromCart(artikel);
-					} 
-					//Der Warenkorb wird gekauft
-					else if (line.equals("b")) {
-						Kunde k = (Kunde)this.person;
-						Rechnung r = shop.buy(k);
-						Map<Artikel, Number> artikel = r.getArticleList();
-						if (artikel.isEmpty()) {
-							System.out.println("Es sind keine Artikel vorhanden, die Liste ist leer.");
-						} else {
-							Iterator it = artikel.entrySet().iterator();
-							while (it.hasNext()) {
-								//Artikel article = (Artikel) it.next();
-								Map.Entry<Artikel, Number> pair = (Map.Entry<Artikel, Number>) it.next();
-								double x = Double.parseDouble(pair.getValue().toString())*pair.getKey().getPrice();
-								System.out.println(pair.getKey().getNr() + "\t" + pair.getKey().getTitle() + "\t" + pair.getValue() + "\t" + x);
+						
+						shop.removeArtikelFromCart(artikel);
+						} 
+						
+						
+						//Der Warenkorb wird gekauft
+						else if (map.equals("b")) {
+							Kunde k = (Kunde)this.person;
+							Rechnung r = shop.buy(k);
+							Map<Artikel, Number> artikel = r.getArticleList();
+							if (artikel.isEmpty()) {
+								System.out.println("Es sind keine Artikel vorhanden, die Liste ist leer.");
 							}
-							System.out.println("_________________________________________________________________");
-							System.out.println("Gesamtpreisl");
-						}
+							else {
+								Iterator it = artikel.entrySet().iterator();
+								while (it.hasNext()) {
+									//Artikel article = (Artikel) it.next();
+									Map.Entry<Artikel, Number> pair = (Map.Entry<Artikel, Number>) it.next();
+									double x = Double.parseDouble(pair.getValue().toString())*pair.getKey().getPrice();
+									System.out.println(pair.getKey().getNr() + "\t" + pair.getKey().getTitle() + "\t" + pair.getValue() + "\t" + x);
+								}
+									System.out.println("_________________________________________________________________");
+									System.out.println("Gesamtpreisl");
+							}	
+							
+//							// Einem Artikel aus dem Warenkorb die Anzahl erhöhen
+//							else {
+//								
+//							}
 						
-					} 
-					// Einem Artikel aus dem Warenkorb die Anzahl erhöhen
-					else {
-						
-					}
-			}
+							
+						} map2 = in.readLine();
+				} while (map2.equals("z"));
 			
+		}
 		
 	}
 	
