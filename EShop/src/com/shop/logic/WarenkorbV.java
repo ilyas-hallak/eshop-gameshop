@@ -59,8 +59,13 @@ public class WarenkorbV {
 	public Rechnung buy(Kunde k) {
 		Rechnung r = new Rechnung();
 		r.setDate(new Date());
+		// copy erstellen um den warenkorb leeren zu können
 		r.setArticleList(this.warenkorb);
 		r.setKunde(k);
 		return r;
+	}
+	
+	public void complete() {
+		this.warenkorb.clear();
 	}
 }
