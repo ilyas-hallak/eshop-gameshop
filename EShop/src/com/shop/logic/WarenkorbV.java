@@ -23,13 +23,14 @@ public class WarenkorbV {
 	 * @param count of Articles
 	 */
 	public void addArtikel(Artikel a, int count) {
-		if(this.warenkorb.containsKey(a)) {
-			this.warenkorb.put(a, count);
-		} else {
-			int x = this.warenkorb.get(a).intValue() + 1;
-			this.removeArtikel(a);
-			this.warenkorb.put(a, x);
-		}
+		this.warenkorb.put(a, count);
+//		if(this.warenkorb.containsKey(a)) {
+//			this.warenkorb.put(a, count);
+//		} else {
+//			int x = this.warenkorb.get(a).intValue() + 1;
+//			this.removeArtikel(a);
+//			this.warenkorb.put(a, x);
+//		}
 	}
 	
 	/**
@@ -50,6 +51,11 @@ public class WarenkorbV {
 		return this.warenkorb;
 	}
 	
+	/**
+	 * creates an 'rechnungs' object
+	 * @param k Kunde
+	 * @return Rechung object
+	 */
 	public Rechnung buy(Kunde k) {
 		Rechnung r = new Rechnung();
 		r.setDate(new Date());
