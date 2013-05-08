@@ -85,6 +85,10 @@ public class ServiceV {
 	public Rechnung buy(Kunde k) {
 		return this.cart.buy(k);
 	}
+	
+	public void complete() {
+		this.cart.complete();
+	}
 
 	public Person getPerson() {
 		return person;
