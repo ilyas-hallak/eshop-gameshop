@@ -10,12 +10,13 @@ import com.shop.exceptions.PersonNotFoundException;
 
 import com.shop.valueobjects.Artikel;
 import com.shop.valueobjects.Kunde;
+import com.shop.valueobjects.Mitarbeiter;
 import com.shop.valueobjects.Person;
 import com.shop.valueobjects.Rechnung;
 
 /**
  * Klasse zur Verwaltung eines (sehr einfachen) Shop.
- * Bietet Methoden zum Zurückgeben/Suche/Einfügen/Speichern von Artikeln,
+ * Bietet Methoden zum Zurückgeben/Suche/Einfügen/Speichern von Artikeln
  * @author hallakoglu
  * @version 0
  */
@@ -30,12 +31,10 @@ public class ServiceV {
 	
 	public ServiceV(String file) throws IOException {
 		this.file = file;
-		this.artikelV = new ArtikelV(file);
-		this.artikelV.readArtikel(file );
-		this.personV = new PersonV(file + ".xml_Person");
-		this.personV.loadPersonen(file + ".xml_Person");
+		this.artikelV = new ArtikelV(file + "_Artikel.xml");
+		this.personV = new PersonV(file + "_Person.xml");
 		this.cart = new WarenkorbV(); 
-		this.ereignisV = new EreignisV(file + "Ereignis.xml");
+		this.ereignisV = new EreignisV(file + "_Ereignis.xml");
 	}
 	
 	public void insertArtikel(int nr, String title, int bestand, double price) throws ArtikelexistsException {

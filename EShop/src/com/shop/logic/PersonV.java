@@ -36,21 +36,7 @@ public class PersonV implements Serializable {
 		pm = new FilePersistenceManager(file);
 		this.file = file;
 		
-//		Mitarbeiter m = new Mitarbeiter();
-//		m.seteMail("m1");
-//		m.setName("m1");
-//		m.setNr(0);
-//		m.setPassword("m1");
-//		this.personStock.add(m);
-//		
-//		try {
-//			pm.openForWriting();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		pm.save(this);
-//		pm.close();
+		this.loadPersonen(file);
 	}
 	
 	/**
@@ -83,7 +69,7 @@ public class PersonV implements Serializable {
 		try {
 			pm.openForWriting();
 			if(!personStock.isEmpty()) {
-				pm.save(this);
+				pm.save(this.personStock);
 			}
 		} catch(IOException e) {
 			// TODO fix error messages
@@ -96,9 +82,9 @@ public class PersonV implements Serializable {
 	public void loadPersonen(String file) {
 		try {
 			pm.openForReading();
-			PersonV p = (PersonV)pm.read();
-			if(p != null) {
-				this.personStock = p.personStock;
+			ArrayList<Person> ps = (ArrayList<Person>) pm.read();
+			if(ps != null) {
+				this.personStock = ps;
 			}
 		} catch (Exception e) {
 			// TODO fix error messages

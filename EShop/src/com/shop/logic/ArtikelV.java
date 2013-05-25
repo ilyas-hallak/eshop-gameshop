@@ -11,12 +11,7 @@ import com.shop.exceptions.ArtikelexistsException;
 import com.shop.persistence.FilePersistenceManager;
 import com.shop.valueobjects.Artikel;
 
-public class ArtikelV implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 304961499015349662L;
+public class ArtikelV {
 
 	/**
 	 *  Persistenz-Schnittstelle, die für die Details des Dateizugriffs verantwortlich ist
@@ -29,46 +24,13 @@ public class ArtikelV implements Serializable {
 	private ArrayList<Artikel> artikelStock;
 
 	/**
-	 * @return the artikel stock
-	 */
-	public ArrayList<Artikel> getArtikelStock() {
-		return artikelStock;
-	}
-
-	/**
-	 * @param artikelStock the artikelStock to set
-	 */
-	public void setArtikelStock(ArrayList<Artikel> artikelStock) {
-		this.artikelStock = artikelStock;
-	}
-
-	/**
-	 * @return the pm
-	 */
-	public FilePersistenceManager getPm() {
-		return pm;
-	}
-
-	/**
-	 * @param pm the pm to set
-	 */
-	public void setPm(FilePersistenceManager pm) {
-		this.pm = pm;
-	}
-
-	/**
-	 * empty constructor for Serializable Interface
-	 */
-	public ArtikelV() {
-	}
-	
-	/**
 	 * init the file manager and the article stock
 	 * @param file filename for the file manager
 	 */
 	public ArtikelV(String file) {
 		this.artikelStock = new ArrayList<Artikel>();
 		pm = new FilePersistenceManager(file);
+		this.readArtikel();
 	}
 	
 	/**
@@ -79,10 +41,11 @@ public class ArtikelV implements Serializable {
 	 * @throws ArtikelexistsException 
 	 */
 	public void insertArtikel(Artikel a) throws ArtikelexistsException {
-		if (!artikelStock.contains(a))
+		if (!artikelStock.contains(a)) {
 			this.artikelStock.add(a);
-		else
+		} else {
 			throw new ArtikelexistsException(a.getTitle() + " - in 'einfuegen()'");
+		}
 	}
 
 	/**
@@ -149,7 +112,7 @@ public class ArtikelV implements Serializable {
 		try {
 			pm.openForWriting();
 			if(!artikelStock.isEmpty()) {
-				pm.saveArtikel(this);
+				pm.save(this.artikelStock);
 			}
 		} catch (IOException e) {
 			// e.printStackTrace();
@@ -163,12 +126,12 @@ public class ArtikelV implements Serializable {
 	 * reads all articles from an xml file with the file manager
 	 * @param file
 	 */
-	public void readArtikel(String file) {
+	public void readArtikel() {
 		try {
 			pm.openForReading();
-			ArtikelV a = pm.loadArtikel();;
+			ArrayList<Artikel> a = (ArrayList<Artikel>)pm.read();
 			if(a != null)
-				this.artikelStock = a.artikelStock;
+				this.artikelStock = a;
 		} catch (IOException e1) {
 			System.out.println(e1.getMessage());
 		} finally {

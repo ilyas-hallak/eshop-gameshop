@@ -2,6 +2,7 @@ package com.shop.logic;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import com.shop.persistence.FilePersistenceManager;
 import com.shop.valueobjects.Artikel;
@@ -12,52 +13,26 @@ public class EreignisV implements Serializable {
 
 	private static final long serialVersionUID = 6451799215728455338L;
 	private FilePersistenceManager pm;
-	private Ereignis ereignis; 
-	
-	/**
-	 * @return the pm
-	 */
-	public FilePersistenceManager getPm() {
-		return pm;
-	}
-
-	/**
-	 * @param pm the pm to set
-	 */
-	public void setPm(FilePersistenceManager pm) {
-		this.pm = pm;
-	}
-
-	/**
-	 * @return the ereignis
-	 */
-	public Ereignis getEreignis() {
-		return ereignis;
-	}
-
-	/**
-	 * @param ereignis the ereignis to set
-	 */
-	public void setEreignis(Ereignis ereignis) {
-		this.ereignis = ereignis;
-	}
-
-	public EreignisV(){}
+	private ArrayList<Ereignis> actionList;
 	
 	public EreignisV(String file) {
 		this.pm = new FilePersistenceManager(file);
+		this.actionList = new ArrayList<Ereignis>();
 	}
 	
 	public void create(int count, Person p, Artikel a, String msg) {
 		try {
-			this.ereignis = new Ereignis(count, p, a, msg);
+			Ereignis e = new Ereignis(count, p, a, msg);
+			this.actionList.add(e);
+			
 			pm.openForWriting();
-			pm.save(this);
+			pm.save(this.actionList);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			pm.close();
 		}
 	}
+	
+	
 }

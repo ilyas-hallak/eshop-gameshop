@@ -4,12 +4,17 @@ import java.io.Serializable;
 
 public class Artikel implements Serializable {
 
+	public static int maxNumber = 0;
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -3756287705724091604L;
 	private String title;
 	private double price;
+	private int nr;
+	private int stock;
+	
 	/**
 	 * @param title the title to set
 	 */
@@ -24,17 +29,20 @@ public class Artikel implements Serializable {
 		this.nr = nr;
 	}
 
-	private int nr;
-	private int stock;
-
 	public Artikel() {
 	}
 	
 	public Artikel(int nr, String title,int stock, double price2) {
 		this.nr = nr;
+		if (nr > maxNumber)
+			maxNumber = nr;
 		this.title = title;
 		this.stock = stock;
 		this.price = price2;
+	}
+
+	public Artikel(String title, int stock, double price) {
+		this(++maxNumber, title, stock, price);
 	}
 
 	public String getTitle() {
