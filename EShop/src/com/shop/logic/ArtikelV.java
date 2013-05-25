@@ -40,12 +40,23 @@ public class ArtikelV {
 	 * @param bestand article stock
 	 * @throws ArtikelexistsException 
 	 */
-	public void insertArtikel(Artikel a) throws ArtikelexistsException {
-		if (!artikelStock.contains(a)) {
-			this.artikelStock.add(a);
-		} else {
-			throw new ArtikelexistsException(a.getTitle() + " - in 'einfuegen()'");
-		}
+	public Artikel insertArtikel(String title, int bestand, double price) throws ArtikelexistsException {
+		// überprüfen ob der titel schon im Artikelbestand vorhanden ist
+		Iterator<Artikel> it = this.artikelStock.iterator();
+		while (it.hasNext()) {
+			Artikel article = (Artikel) it.next();
+			if(article.getTitle() == title) {
+				// wenn er bereits vorhanden ist die Exception schmeißen
+				throw new ArtikelexistsException(title + " - in 'einfuegen()'");
+			} 
+			// wenn er nicht vorhanden ist Artikel-Objekt erzeugen und hinzufügen
+			else {
+				Artikel a = new Artikel(this.artikelStock.size() + 1, title, bestand, price);
+				this.artikelStock.add(a);
+				return a;
+			}
+		} 
+		return null;
 	}
 
 	/**
