@@ -38,8 +38,7 @@ public class ServiceV {
 	}
 	
 	public void insertArtikel(int nr, String title, int bestand, double price) throws ArtikelexistsException {
-		Artikel a = new Artikel(nr, title, bestand, price);
-		this.artikelV.insertArtikel(a);
+		Artikel a = this.artikelV.insertArtikel(title, bestand, price);
 		this.ereignisV.create(bestand, this.person, a, "Neuer Artikel");
 	}
 	
