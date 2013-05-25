@@ -5,12 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import com.shop.exceptions.ArtikelexistsException;
+import com.shop.exceptions.BestandZuKleinException;
 import com.shop.exceptions.CustomerExistsExeption;
 import com.shop.exceptions.PersonNotFoundException;
-
 import com.shop.valueobjects.Artikel;
 import com.shop.valueobjects.Kunde;
-import com.shop.valueobjects.Mitarbeiter;
 import com.shop.valueobjects.Person;
 import com.shop.valueobjects.Rechnung;
 
@@ -37,13 +36,26 @@ public class ServiceV {
 		this.ereignisV = new EreignisV(file + "_Ereignis.xml");
 	}
 	
-	public void insertArtikel(int nr, String title, int bestand, double price) throws ArtikelexistsException {
+	public void insertArtikel(String title, int bestand, double price) throws ArtikelexistsException {
+		
 		Artikel a = this.artikelV.insertArtikel(title, bestand, price);
 		this.ereignisV.create(bestand, this.person, a, "Neuer Artikel");
 	}
 	
+	// Artikel mit festgelegter Stückzahl
+	public void insertArtikel(int nr, String title, int bestand, double price, int mengeneinheit) throws ArtikelexistsException {
+	}
+	
 	public List<Artikel> getAllArtikel() {
 		return artikelV.getAllArtikel(); //shop.getAllArtikel();
+	}
+	
+	public List<Artikel> sucheNachTitel(String titel) {
+		// einfach delegieren an meineBuecher
+		return null;//meineBuecher.sucheBuecher(titel); 
+	}
+
+	public void loadData() {
 	}
 	
 	public void saveArtikel() {
@@ -68,7 +80,7 @@ public class ServiceV {
 		return this.personV.login(p);
 	}
 	
-	public void addArtikel(Artikel a, int count) {
+	public void addArtikel(Artikel a, int count) throws BestandZuKleinException {
 		this.cart.addArtikel(a, count);
 	}
 	
@@ -88,11 +100,8 @@ public class ServiceV {
 		this.cart.complete();
 	}
 
-	public Person getPerson() {
-		return person;
-	}
-
 	public void setPerson(Person person) {
+		// TODO Auto-generated method stub
 		this.person = person;
 	}
 }
