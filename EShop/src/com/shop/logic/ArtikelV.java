@@ -11,7 +11,12 @@ import com.shop.exceptions.ArtikelexistsException;
 import com.shop.persistence.FilePersistenceManager;
 import com.shop.valueobjects.Artikel;
 
-public class ArtikelV {
+public class ArtikelV implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 304961499015349662L;
 
 	/**
 	 *  Persistenz-Schnittstelle, die für die Details des Dateizugriffs verantwortlich ist
@@ -24,29 +29,48 @@ public class ArtikelV {
 	private ArrayList<Artikel> artikelStock;
 
 	/**
+	 * @return the artikel stock
+	 */
+	public ArrayList<Artikel> getArtikelStock() {
+		return artikelStock;
+	}
+
+	/**
+	 * @param artikelStock the artikelStock to set
+	 */
+	public void setArtikelStock(ArrayList<Artikel> artikelStock) {
+		this.artikelStock = artikelStock;
+	}
+
+	/**
+	 * @return the pm
+	 */
+	public FilePersistenceManager getPm() {
+		return pm;
+	}
+
+	/**
+	 * @param pm the pm to set
+	 */
+	public void setPm(FilePersistenceManager pm) {
+		this.pm = pm;
+	}
+
+	/**
+	 * empty constructor for Serializable Interface
+	 */
+	public ArtikelV() {
+	}
+	
+	/**
 	 * init the file manager and the article stock
 	 * @param file filename for the file manager
 	 */
 	public ArtikelV(String file) {
 		this.artikelStock = new ArrayList<Artikel>();
 		pm = new FilePersistenceManager(file);
-		this.readArtikel();
 	}
 	
-	/**
-	 * Adds an article to the article stock
-	 * @param nr article nr
-	 * @param title article title
-	 * @param bestand article stock
-	 * @throws ArtikelexistsException 
-	 */
-	public void insertArtikel(Artikel a) throws ArtikelexistsException {
-		if (!artikelStock.contains(a)) {
-			this.artikelStock.add(a);
-		} else {
-			throw new ArtikelexistsException(a.getTitle() + " - in 'einfuegen()'");
-		}
-	}
 
 	/**
 	 * 
@@ -112,7 +136,7 @@ public class ArtikelV {
 		try {
 			pm.openForWriting();
 			if(!artikelStock.isEmpty()) {
-				pm.save(this.artikelStock);
+				pm.saveArtikel(this);
 			}
 		} catch (IOException e) {
 			// e.printStackTrace();
@@ -126,16 +150,42 @@ public class ArtikelV {
 	 * reads all articles from an xml file with the file manager
 	 * @param file
 	 */
-	public void readArtikel() {
+	public void readArtikel(String file) {
 		try {
 			pm.openForReading();
-			ArrayList<Artikel> a = (ArrayList<Artikel>)pm.read();
+			ArtikelV a = pm.loadArtikel();;
 			if(a != null)
-				this.artikelStock = a;
+				this.artikelStock = a.artikelStock;
 		} catch (IOException e1) {
 			System.out.println(e1.getMessage());
 		} finally {
 			pm.close();
 		}
+	}
+
+	/**
+	 * Adds an article to the article stock
+	 * @param nr article nr
+	 * @param title article title
+	 * @param bestand article stock
+	 * @throws ArtikelexistsException 
+	 */
+	public Artikel insertArtikel(String title, int bestand, double price) throws ArtikelexistsException {
+		// überprüfen ob der titel schon im Artikelbestand vorhanden ist
+		Iterator<Artikel> it = this.artikelStock.iterator();
+		while (it.hasNext()) {
+			Artikel article = (Artikel) it.next();
+			if(article.getTitle() == title) {
+				// wenn er bereits vorhanden ist die Exception schmeißen
+				throw new ArtikelexistsException(title + " - in 'einfuegen()'");
+			} 
+			// wenn er nicht vorhanden ist Artikel-Objekt erzeugen und hinzufügen
+			else {
+				Artikel a = new Artikel(this.artikelStock.size() + 1, title, bestand, price);
+				this.artikelStock.add(a);
+				return a;
+			}
+		} 
+		return null;
 	}
 }
