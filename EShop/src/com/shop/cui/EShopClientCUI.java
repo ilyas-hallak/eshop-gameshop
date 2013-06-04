@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.shop.exceptions.ArtikelexistsException;
+import com.shop.exceptions.BestandZuKleinException;
 import com.shop.exceptions.CustomerExistsExeption;
 import com.shop.exceptions.PersonNotFoundException;
 import com.shop.logic.ServiceV;
@@ -48,7 +49,7 @@ public class EShopClientCUI {
 		this.person = new Person(eMail, pw);
 		try {
 			this.person = shop.login(this.person);
-			// shop.setPerson(this.person);
+			shop.setPerson(this.person);
 			if (this.person instanceof Kunde) {
 				System.out.println("KUNDENMENÜ");
 				return true;
@@ -136,9 +137,13 @@ public class EShopClientCUI {
 					 * lese die notwendigen Parameter, einzeln pro Zeile, fuer
 					 * Artikelnummer und Artikeltitel
 					 */
+/*	
+ * Artikelnummern über den Mitarbeiter einpflegen
+ * 			
 					System.out.print("Artikelnummmer > ");
 					String number = readInput();
 					int aNr = Integer.parseInt(number);
+*/
 	
 					System.out.print("Artikeltitel  > ");
 					String title = readInput();
@@ -152,7 +157,7 @@ public class EShopClientCUI {
 					double price = Integer.parseInt(preis);
 	
 					try {
-						shop.insertArtikel(aNr, title, stock, price);
+						shop.insertArtikel(title, stock, price);
 					} catch (ArtikelexistsException e) {
 						e.printStackTrace();
 					}
@@ -160,16 +165,13 @@ public class EShopClientCUI {
 				}
 				// Der Bestand kann erhöht oder veringert werden
 				else if (line.equals("b")) {
-					System.out
-							.print("Bei welchem Artikel möchten Sie den Bestand erhöhen?");
+					System.out.print("Bei welchem Artikel möchten Sie den Bestand erhöhen?");
 					List<Artikel> list = shop.getAllArtikel();
 					giveOutArtikellist(list);
-					System.out
-							.print("Geben Sie die gewünschte Artikelnummmer an > ");
+					System.out.print("Geben Sie die gewünschte Artikelnummmer an > ");
 					String number = readInput();
 					int aNr = Integer.parseInt(number);
-					System.out
-							.println("Um wie viel möchten Sie den Bestand erhöhen?  > ");
+					System.out.println("Um wie viel möchten Sie den Bestand erhöhen?  > ");
 					String bestand = readInput();
 					int stock = Integer.parseInt(bestand);
 					shop.raiseStock(aNr, stock);
@@ -240,16 +242,16 @@ public class EShopClientCUI {
 						Rechnung r = shop.buy(k);
 						Map<Artikel, Number> artikel = r.getArticleList();
 						if (artikel.isEmpty()) {
-							System.out
-									.println("Es sind keine Artikel vorhanden, die Liste ist leer.");
+							System.out.println("Es sind keine Artikel vorhanden, die Liste ist leer.");
 						} else {
 							Iterator it = artikel.entrySet().iterator();
 							double sum = 0;
+							System.out.println("Rechnung für "+ r.getKunde().getName()+ " Datum: " + r.getDate().getTime() );
+							System.out.println("_________________________________________________________________");
 							while (it.hasNext()) {
 								// Artikel article = (Artikel) it.next();
 								Map.Entry<Artikel, Number> pair = (Map.Entry<Artikel, Number>) it.next();
-								double x = Double.parseDouble(pair.getValue()
-										.toString()) * pair.getKey().getPrice();
+								double x = Double.parseDouble(pair.getValue().toString()) * pair.getKey().getPrice();
 								sum += x;
 								System.out.println(pair.getKey().getNr() + "\t"
 										+ pair.getKey().getTitle() + "\t"
@@ -257,6 +259,7 @@ public class EShopClientCUI {
 							}
 							System.out.println("_________________________________________________________________");
 							System.out.println("\t\t\tGesamtpreis " + sum);
+							shop.complete();
 						}
 					} // else {}
 				} else if (line.equals("h")) {
@@ -279,9 +282,14 @@ public class EShopClientCUI {
 						// wird er direkt wieder heraus genommen
 						if (anz == 0) {
 							shop.removeArtikelFromCart(artikel);
+							// wenn die Anzahl kleiner oder gleich dem Bestand ist wird der Artikel in den Warenkorb übergeben
 						} else {
-							// Den Artikel in den Warenkorb übergeben
-							shop.addArtikel(artikel, anz);
+							try {
+								shop.addArtikel(artikel, anz);
+							} catch (BestandZuKleinException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 						}
 						System.out.println("Weiter? j angeben");
 					} while (readInput().equals("j"));
@@ -301,10 +309,10 @@ public class EShopClientCUI {
 			Iterator it = artikel.entrySet().iterator();
 			while (it.hasNext()) {
 				// Artikel article = (Artikel) it.next();
-				Map.Entry<Artikel, Number> pair = (Map.Entry<Artikel, Number>) it
-						.next();
+				Map.Entry<Artikel, Number> pair = (Map.Entry<Artikel, Number>) it.next();
 				System.out.println(pair.getKey().getNr() + "\t"
-						+ pair.getKey().getTitle());
+						+ pair.getKey().getTitle() + "\t" 
+						+ pair.getValue());
 			}
 		}
 	}
@@ -321,7 +329,7 @@ public class EShopClientCUI {
 			Iterator<Artikel> it = artikel.iterator();
 			while (it.hasNext()) {
 				Artikel article = (Artikel) it.next();
-				System.out.println(article.getTitle() + "\t" + article.getNr() + "\t" + article.getPrice());
+				System.out.println(article.getTitle() + "\t" + article.getNr() + "\t" + article.getStock() + "\t" + article.getPrice());
 			}
 		}
 	}
