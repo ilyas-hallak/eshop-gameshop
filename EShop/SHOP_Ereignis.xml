@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.7.0_09" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel">
+      <void property="nr">
+       <int>5</int>
+      </void>
+      <void property="price">
+       <double>2.0</double>
+      </void>
+      <void property="stock">
+       <int>5</int>
+      </void>
+      <void property="title">
+       <string>test</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>200</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1369496362959</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Bestand erhöht</string>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>
