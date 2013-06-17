@@ -25,6 +25,8 @@ public class PanelManager {
 		this.client.add(center, BorderLayout.CENTER);
 		this.client.add(east, BorderLayout.EAST);
 		
+		this.client.add(new MessagePanel(), BorderLayout.SOUTH);
+		
 		this.client.revalidate();  
 
 	}
