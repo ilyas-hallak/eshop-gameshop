@@ -3,6 +3,8 @@ package com.shop.logic;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
 import com.shop.persistence.FilePersistenceManager;
 import com.shop.valueobjects.Artikel;
@@ -34,5 +36,22 @@ public class EreignisV implements Serializable {
 		}
 	}
 	
+
+	public void create(Person p, Map<Artikel, Number> aMap, String msg) {
+		try {
+			Iterator iterator = aMap.entrySet().iterator();
+			while (iterator.hasNext()) {
+				Map.Entry<Artikel, Number> pair = (Map.Entry<Artikel, Number>) iterator.next();
+				Ereignis e = new Ereignis(pair.getValue().intValue(), p, pair.getKey(), msg);
+				this.actionList.add(e);
+			}
+			pm.openForWriting();
+			pm.save(this.actionList);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			pm.close();
+		}
+	}
 	
 }

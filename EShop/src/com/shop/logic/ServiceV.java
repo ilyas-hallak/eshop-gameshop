@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import com.shop.exceptions.ArtikelNotFoundException;
 import com.shop.exceptions.ArtikelexistsException;
 import com.shop.exceptions.BestandZuKleinException;
 import com.shop.exceptions.CustomerExistsExeption;
@@ -55,9 +56,6 @@ public class ServiceV {
 		return null;//meineBuecher.sucheBuecher(titel); 
 	}
 
-	public void loadData() {
-	}
-	
 	public void saveArtikel() {
 		this.artikelV.saveArtikel();
 	}
@@ -96,7 +94,9 @@ public class ServiceV {
 		return this.cart.buy(k);
 	}
 	
-	public void complete() {
+	public void complete() throws ArtikelNotFoundException {
+		this.artikelV.reduceStock(this.cart.getAllArtikel());
+		this.ereignisV.create(person, this.cart.getAllArtikel(), "Bestand reduziert");
 		this.cart.complete();
 	}
 

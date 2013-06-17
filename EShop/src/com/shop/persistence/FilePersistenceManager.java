@@ -37,18 +37,13 @@ public class FilePersistenceManager {
 		this.out = new XMLDecoder(new BufferedInputStream(new FileInputStream(this.file)));
 	}
 	
-	public void openForWriting() throws IOException {
+	public void openForWriting() throws FileNotFoundException   {
 		// writer = new PrintWriter(new BufferedWriter(new FileWriter(file)));
 		this.in = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(this.file)));
 	}
 	
 	public void save(Object o) {
-		try {
-			this.in.writeObject(o);
-			// this.in.flush();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		this.in.writeObject(o);
 	}
 	
 	public Object read() {

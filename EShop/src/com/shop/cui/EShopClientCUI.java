@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import com.shop.exceptions.ArtikelNotFoundException;
 import com.shop.exceptions.ArtikelexistsException;
 import com.shop.exceptions.BestandZuKleinException;
 import com.shop.exceptions.CustomerExistsExeption;
@@ -259,7 +260,12 @@ public class EShopClientCUI {
 							}
 							System.out.println("_________________________________________________________________");
 							System.out.println("\t\t\tGesamtpreis " + sum);
-							shop.complete();
+							try {
+								shop.complete();
+							} catch (ArtikelNotFoundException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 						}
 					} // else {}
 				} else if (line.equals("h")) {
