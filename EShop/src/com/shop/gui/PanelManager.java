@@ -2,7 +2,10 @@ package com.shop.gui;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import com.shop.gui.Mitarbeiter.MitarbeiterMenu;
 
 public class PanelManager {
 	
@@ -12,14 +15,18 @@ public class PanelManager {
 		this.client = eShopClientGui;
 	}
 	
-	public void changePanel(JPanel panel) {
-		// this.client.remove(this.client.getContentPane());
-		this.client.add(panel, BorderLayout.CENTER);
-//		this.client.revalidate();  
-//		this.client.repaint();
+
+	public void changePanel(JPanel west, JPanel center, JPanel east) {
+		this.client.getContentPane().removeAll();
+		
+		this.client.add(new LogoPanel(), BorderLayout.NORTH);
+
+		this.client.add(west, BorderLayout.WEST);
+		this.client.add(center, BorderLayout.CENTER);
+		this.client.add(east, BorderLayout.EAST);
+		
+		this.client.revalidate();  
+
 	}
 	
-	public void changePanel(JPanel panel, String postion) {
-		this.client.add(panel, postion);
-	}
 }

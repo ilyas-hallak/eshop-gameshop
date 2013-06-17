@@ -1,5 +1,7 @@
 package com.shop.gui;
 
+import java.awt.*;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.io.IOException;
@@ -38,22 +40,21 @@ public class EShopClientGui extends JFrame {
 	    setLocationRelativeTo(null);
 	    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    
-	    JPanel north = new JPanel();
-	    north.add(new JLabel("LOGO"));
+	    JPanel north = new JPanel(new CardLayout());
+	    north.add(new LogoPanel());
 	    
 	    JPanel south = new JPanel();
 	    south.add(new JLabel("TEXT"));
 
 	    
-	    JPanel east = new JPanel();
-	    JPanel west = new JPanel();
-	    JPanel center = new JPanel();
+	    JPanel east = new JPanel(new CardLayout());
+	    JPanel west = new JPanel(new CardLayout());
+	    JPanel center = new JPanel(new CardLayout());
 	    
 	    JPanel jP = new JPanel();
 	    jP.setLayout(new BoxLayout(jP, BoxLayout.PAGE_AXIS));
 
 
-	    north.setPreferredSize(new Dimension(30, 100)); //Angabe für Breite wird vom BorderLayout ignoriert
 	    add(north, BorderLayout.NORTH);
 	    
 	    south.setPreferredSize(new Dimension(30, 100)); //Angabe für Breite wird vom BorderLayout ignoriert
@@ -68,7 +69,6 @@ public class EShopClientGui extends JFrame {
 	    center.setPreferredSize(new Dimension(30, 30)); //Angaben für Breite und Höhe werden vom BorderLayout ignoriert
         
 	    JPanel panelCenter = new LoginPanel(this.shop, pManager);
-        
 	    
 	    center.add(panelCenter);
 	    

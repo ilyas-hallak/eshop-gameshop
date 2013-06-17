@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 import com.shop.exceptions.PersonNotFoundException;
+import com.shop.gui.Mitarbeiter.ArtikelPanel;
 import com.shop.gui.Mitarbeiter.MitarbeiterMenu;
 import com.shop.gui.Mitarbeiter.MitarbeiterPanel;
 import com.shop.logic.ServiceV;
@@ -87,9 +88,7 @@ public class LoginPanel extends JPanel {
 					if(loggedPerson instanceof Kunde) {
 						usernameLabel.setText("KUNDE!");
 					} else {
-						usernameLabel.setText("Mitarbeiter!");
-						pManager.changePanel(new MitarbeiterPanel());
-						pManager.changePanel(new MitarbeiterMenu(pManager), BorderLayout.WEST);
+		        		pManager.changePanel(new MitarbeiterMenu(pManager), new MitarbeiterPanel(), new JPanel());
 					}
 			}
         });

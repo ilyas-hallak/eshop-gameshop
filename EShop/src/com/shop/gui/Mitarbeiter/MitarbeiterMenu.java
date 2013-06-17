@@ -29,7 +29,7 @@ public class MitarbeiterMenu extends JPanel {
 		artikel.addActionListener(new ActionListener() {
         	@Override
 			public void actionPerformed(ActionEvent e) {
-        		pManager.changePanel(new ArtikelPanel());
+        		pManager.changePanel(new MitarbeiterMenu(pManager), new ArtikelPanel(), new JPanel());
         	}
 		});
 		
