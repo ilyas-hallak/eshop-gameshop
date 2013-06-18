@@ -56,6 +56,11 @@ public class ServiceV {
 		return null;//meineBuecher.sucheBuecher(titel); 
 	}
 
+	public void savedata() {
+		this.artikelV.saveArtikel();
+		this.personV.savePerson();
+	}
+	
 	public void saveArtikel() {
 		this.artikelV.saveArtikel();
 	}

@@ -1,16 +1,15 @@
 package com.shop.gui;
 
-import java.awt.*;
-
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+
 
 import com.shop.logic.ServiceV;
 
@@ -21,7 +20,6 @@ public class EShopClientGui extends JFrame {
 	
 	public EShopClientGui() {
 		super("Gameshop");
-		
 		pManager = new PanelManager(this);
 		
 		try {
@@ -30,8 +28,8 @@ public class EShopClientGui extends JFrame {
 			
 		}
 		
+		this.initMenu();
 		this.init();
-		
 	}
 	
 	
@@ -40,44 +38,47 @@ public class EShopClientGui extends JFrame {
 	    setLocationRelativeTo(null);
 	    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    
-	    JPanel north = new JPanel(new CardLayout());
-	    north.add(new LogoPanel());
-	    
-	    JPanel south = new JPanel();
-	    south.add(new JLabel("TEXT"));
-
-	    
-	    JPanel east = new JPanel(new CardLayout());
-	    JPanel west = new JPanel(new CardLayout());
-	    JPanel center = new JPanel(new CardLayout());
-	    
-	    JPanel jP = new JPanel();
-	    jP.setLayout(new BoxLayout(jP, BoxLayout.PAGE_AXIS));
-
-
-	    add(north, BorderLayout.NORTH);
-	    
-	    south.setPreferredSize(new Dimension(30, 100)); //Angabe für Breite wird vom BorderLayout ignoriert
-	    add(south, BorderLayout.SOUTH);
-	    
-	    east.setPreferredSize(new Dimension(200, 30)); //Angabe für Höhe wird vom BorderLayout ignoriert
-	    add(east, BorderLayout.EAST);
-	    
-	    west.setPreferredSize(new Dimension(200, 30)); //Angabe für Höhe wird vom BorderLayout ignoriert
-	    add(jP, BorderLayout.WEST);
-	    
-	    center.setPreferredSize(new Dimension(30, 30)); //Angaben für Breite und Höhe werden vom BorderLayout ignoriert
-        
-	    JPanel panelCenter = new LoginPanel(this.shop, pManager);
-	    
-	    center.add(panelCenter);
-	    
-	    add(center, BorderLayout.CENTER);
+	    pManager.changePanel(new JPanel(), new LoginPanel(shop, pManager), new JPanel());
 	    
 	    setVisible(true);
 	}
 
+	private void initMenu() {
+		JMenu fileMenu = new FileMenu();
+		
+		JMenuBar bar = new JMenuBar();
+		bar.add(fileMenu);
+		
+		setJMenuBar(bar);
+	}
+	
+	class FileMenu extends JMenu implements ActionListener {
+		public FileMenu() {
+			super("File");
+			
+			JMenuItem saveItem = new JMenuItem("Save");
+			add(saveItem);
+			saveItem.addActionListener(this);
+			addSeparator();
+			JMenuItem quitItem = new JMenuItem("Quit");
+			add(quitItem);
+			quitItem.addActionListener(this);
+			
+			this.setVisible(true);
+		}
 
+		@Override
+		public void actionPerformed(ActionEvent ae) {
+			if (ae.getActionCommand().equals("Save")) {
+				shop.savedata();
+			} else {
+				setVisible(false);
+				dispose();
+				System.exit(0);				
+			}
+		}
+	}
+	
 	/**
 	 * @param args
 	 */

@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import com.shop.gui.PanelManager;
+import com.shop.logic.ServiceV;
 
 public class MitarbeiterMenu extends JPanel {
 	
@@ -17,19 +18,19 @@ public class MitarbeiterMenu extends JPanel {
 	
 	private PanelManager pManager;
 	
-	public MitarbeiterMenu(PanelManager pm) {
+	public MitarbeiterMenu(PanelManager pm, final ServiceV shop) {
 		super();
 		
 		this.pManager = pm;
 		
 		JPanel boxPanel = new JPanel();
-		boxPanel.setLayout(new BoxLayout(boxPanel, BoxLayout.X_AXIS));
+		boxPanel.setLayout(new BoxLayout(boxPanel, BoxLayout.Y_AXIS));
 		
 		artikel = new JButton("Artikel");
 		artikel.addActionListener(new ActionListener() {
         	@Override
 			public void actionPerformed(ActionEvent e) {
-        		pManager.changePanel(new MitarbeiterMenu(pManager), new ArtikelPanel(), new JPanel());
+        		pManager.changePanel(new MitarbeiterMenu(pManager, shop), new ArtikelPanel(shop), new ArtikelAddPanel(shop, pManager));
         	}
 		});
 		

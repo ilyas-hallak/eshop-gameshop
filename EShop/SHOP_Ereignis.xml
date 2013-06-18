@@ -6,16 +6,16 @@
     <void property="article">
      <object class="com.shop.valueobjects.Artikel">
       <void property="nr">
-       <int>5</int>
+       <int>8</int>
       </void>
       <void property="price">
-       <double>2.0</double>
+       <double>45.0</double>
       </void>
       <void property="stock">
-       <int>5</int>
+       <int>200</int>
       </void>
       <void property="title">
-       <string>test</string>
+       <string>last of us</string>
       </void>
      </object>
     </void>
@@ -24,11 +24,11 @@
     </void>
     <void property="date">
      <object class="java.util.Date">
-      <long>1369496362959</long>
+      <long>1371565839109</long>
      </object>
     </void>
     <void property="message">
-     <string>Bestand erhöht</string>
+     <string>Neuer Artikel</string>
     </void>
    </object>
   </void>

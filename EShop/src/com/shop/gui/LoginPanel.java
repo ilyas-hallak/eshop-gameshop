@@ -88,7 +88,7 @@ public class LoginPanel extends JPanel {
 					if(loggedPerson instanceof Kunde) {
 						usernameLabel.setText("KUNDE!");
 					} else {
-		        		pManager.changePanel(new MitarbeiterMenu(pManager), new MitarbeiterPanel(), new JPanel());
+		        		pManager.changePanel(new MitarbeiterMenu(pManager, shop), new MitarbeiterPanel(), new JPanel());
 					}
 			}
         });

@@ -97,5 +97,37 @@
     </void>
    </object>
   </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Artikel">
+    <void property="nr">
+     <int>7</int>
+    </void>
+    <void property="price">
+     <double>4.0</double>
+    </void>
+    <void property="stock">
+     <int>4</int>
+    </void>
+    <void property="title">
+     <string>hallo</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Artikel">
+    <void property="nr">
+     <int>8</int>
+    </void>
+    <void property="price">
+     <double>45.0</double>
+    </void>
+    <void property="stock">
+     <int>200</int>
+    </void>
+    <void property="title">
+     <string>last of us</string>
+    </void>
+   </object>
+  </void>
  </object>
 </java>
