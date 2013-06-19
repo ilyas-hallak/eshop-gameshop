@@ -1,7 +1,9 @@
 package com.shop.gui.Kunde;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
+import java.awt.GridLayout;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,11 +13,15 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import com.shop.gui.PanelManager;
 import com.shop.gui.Mitarbeiter.ArtikelPanel;
+import com.shop.gui.Mitarbeiter.ArtikelTableModel;
 import com.shop.gui.Mitarbeiter.MitarbeiterMenu;
+import com.shop.logic.ServiceV;
 
 public class WarenkorbPanel extends JPanel {
 
@@ -23,9 +29,18 @@ public class WarenkorbPanel extends JPanel {
 
 	private PanelManager pManager;
 	
-	public WarenkorbPanel(PanelManager pm) {
+	public WarenkorbPanel(PanelManager pm, ServiceV shop) {
 		super();
+		
+  final JTable warentable = new JTable( new ArtikelTableModel(shop.getAllArtikelFromCart()) );
+		
+		warentable.setBackground(Color.WHITE);
+		warentable.setForeground(Color.GREEN);
+		
+		add( new JScrollPane(warentable) );
 		add(new JLabel("Warenkorb"));
+		
+	
 	//	setPreferredSize(new Dimension(30, 100));
 		
 		this.pManager = pm;

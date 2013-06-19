@@ -52,6 +52,7 @@ public class EShopClientGui extends JFrame {
 		setJMenuBar(bar);
 	}
 	
+	
 	class FileMenu extends JMenu implements ActionListener {
 		public FileMenu() {
 			super("File");
