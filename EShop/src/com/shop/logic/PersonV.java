@@ -1,7 +1,5 @@
 package com.shop.logic;
 
-import java.beans.XMLEncoder;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -63,6 +61,10 @@ public class PersonV implements Serializable {
 		} else {
 			throw new CustomerExistsExeption(k.geteMail());
 		}
+	}
+	
+	public void insertMitarbeiter(Mitarbeiter m) {
+		this.personStock.add(m);
 	}
 	
 	public void savePerson() {

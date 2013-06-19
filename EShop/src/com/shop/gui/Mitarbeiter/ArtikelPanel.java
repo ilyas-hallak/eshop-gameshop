@@ -1,20 +1,16 @@
 package com.shop.gui.Mitarbeiter;
 
 import java.awt.GridBagLayout;
-import java.util.Iterator;
-import java.util.List;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-
+import com.shop.gui.EShopClientGui;
 import com.shop.logic.ServiceV;
-import com.shop.valueobjects.Artikel;
 
 public class ArtikelPanel extends JPanel {
-	public ArtikelPanel(ServiceV shop) {
+	public ArtikelPanel(ServiceV shop, EShopClientGui frame) {
 		super(new GridBagLayout());
 		// add(new JLabel("Artikelliste"));
 		

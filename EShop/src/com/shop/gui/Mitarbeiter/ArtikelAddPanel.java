@@ -1,6 +1,7 @@
 package com.shop.gui.Mitarbeiter;
 
-import java.awt.*;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,13 +10,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-
 import com.shop.exceptions.ArtikelexistsException;
+import com.shop.gui.EShopClientGui;
 import com.shop.gui.PanelManager;
 import com.shop.logic.ServiceV;
 
 public class ArtikelAddPanel extends JPanel {
-	public ArtikelAddPanel(final ServiceV shop, final PanelManager pManager) {
+	public ArtikelAddPanel(final ServiceV shop, final PanelManager pManager, final EShopClientGui frame) {
 		super(new GridBagLayout());
 
 		GridBagConstraints cs = new GridBagConstraints();
@@ -67,7 +68,7 @@ public class ArtikelAddPanel extends JPanel {
         		try {
 					shop.insertArtikel(titleTextfield.getText(), Integer.parseInt(stockField.getText()), Integer.parseInt(priceField.getText()));
 					
-	        		pManager.changePanel(new MitarbeiterMenu(pManager, shop), new ArtikelPanel(shop), new ArtikelAddPanel(shop, pManager));
+	        		pManager.changePanel(new MitarbeiterMenu(pManager, shop, frame), new ArtikelPanel(shop, frame), new ArtikelAddPanel(shop, pManager, frame));
 					
 				} catch (NumberFormatException e1) {
 					// Bitte Nummer angeben

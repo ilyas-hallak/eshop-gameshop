@@ -1,5 +1,6 @@
 package com.shop.logic;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class EreignisV implements Serializable {
 	public EreignisV(String file) {
 		this.pm = new FilePersistenceManager(file);
 		this.actionList = new ArrayList<Ereignis>();
+		this.loadEreignisse();
 	}
 	
 	public void create(int count, Person p, Artikel a, String msg) {
@@ -36,6 +38,14 @@ public class EreignisV implements Serializable {
 		}
 	}
 	
+	public void loadEreignisse() {
+		try {
+			this.pm.openForReading();
+		} catch (FileNotFoundException e) {
+		}
+		this.actionList = (ArrayList<Ereignis>) this.pm.read();
+		this.pm.close();
+	}
 
 	public void create(Person p, Map<Artikel, Number> aMap, String msg) {
 		try {
@@ -52,6 +62,10 @@ public class EreignisV implements Serializable {
 		} finally {
 			pm.close();
 		}
+	}
+	
+	public ArrayList<Ereignis> getAllEreignisse() {
+		return this.actionList;
 	}
 	
 }

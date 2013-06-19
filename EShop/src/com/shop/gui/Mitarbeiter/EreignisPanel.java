@@ -7,14 +7,13 @@ import javax.swing.JTable;
 
 import com.shop.logic.ServiceV;
 
-public class MitarbeiterVPanel extends JPanel {
-	public MitarbeiterVPanel(final ServiceV shop) {
+public class EreignisPanel extends JPanel {
+	public EreignisPanel(final ServiceV shop) {
 		super();
-		
-		JTable table = new JTable( new MitarbeiterTableModel(shop.getAllMitarbeiter()) );
+	
+		JTable table = new JTable( new EreignisTableModel(shop.getAllEreignisse()));
 		add( new JScrollPane(table) );
 		
-		add(new JLabel("MitarbeirterV"));
-		
+		add(new JLabel("Ereignisse"));
 	}
 }

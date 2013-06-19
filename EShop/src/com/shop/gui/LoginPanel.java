@@ -1,6 +1,4 @@
 package com.shop.gui;
-import java.awt.BorderLayout;
-
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -8,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -15,9 +14,9 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 import com.shop.exceptions.PersonNotFoundException;
+import com.shop.gui.EShopClientGui.FileMenu;
 import com.shop.gui.Kunde.ArtikelPanelKunde;
 import com.shop.gui.Kunde.WarenkorbPanel;
-import com.shop.gui.Mitarbeiter.ArtikelPanel;
 import com.shop.gui.Mitarbeiter.MitarbeiterMenu;
 import com.shop.gui.Mitarbeiter.MitarbeiterPanel;
 import com.shop.logic.ServiceV;
@@ -38,11 +37,14 @@ public class LoginPanel extends JPanel {
 	private final ServiceV shop;
 	private PanelManager pManager;
 	
-	public LoginPanel(final ServiceV shop, PanelManager pm) {
+	public LoginPanel(final ServiceV shop, PanelManager pm, final EShopClientGui frame) {
 		super(new GridBagLayout());
 
 		this.shop = shop;
 		this.pManager = pm;
+		
+		// hide the menubar
+		frame.getJMenuBar().setVisible(false);
 		
 		GridBagConstraints cs = new GridBagConstraints();
         cs.fill = GridBagConstraints.HORIZONTAL;
@@ -73,7 +75,6 @@ public class LoginPanel extends JPanel {
         this.setBorder(new LineBorder(Color.GRAY));
         
         loginBtn = new JButton("Login");
-
         
         loginBtn.addActionListener(new ActionListener() {
         	@Override
@@ -83,14 +84,17 @@ public class LoginPanel extends JPanel {
 					Person loggedPerson = null;
 					try {
 						loggedPerson = shop.login(person);
-					} catch (PersonNotFoundException e1) {
 						
-					}
-					
-					if(loggedPerson instanceof Kunde) {
-						pManager.changePanel(new JPanel(), new ArtikelPanelKunde(shop, pManager), new WarenkorbPanel(pManager, shop));
-					} else {
-		        		pManager.changePanel(new MitarbeiterMenu(pManager, shop), new MitarbeiterPanel(), new JPanel());
+						shop.setPerson(loggedPerson);
+						
+						if(loggedPerson instanceof Kunde) {
+							pManager.changePanel(new JPanel(), new ArtikelPanelKunde(shop, pManager), new WarenkorbPanel(pManager, shop));
+						} else {
+			        		pManager.changePanel(new MitarbeiterMenu(pManager, shop, frame), new MitarbeiterPanel(frame), new JPanel());
+						}
+						
+					} catch (PersonNotFoundException e1) {
+						frame.setMessage("Logindaten falsch!");
 					}
 			}
         });

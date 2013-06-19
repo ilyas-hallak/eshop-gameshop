@@ -7,6 +7,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import com.shop.gui.EShopClientGui;
 import com.shop.gui.PanelManager;
 import com.shop.logic.ServiceV;
 
@@ -18,7 +19,7 @@ public class MitarbeiterMenu extends JPanel {
 	
 	private PanelManager pManager;
 	
-	public MitarbeiterMenu(PanelManager pm, final ServiceV shop) {
+	public MitarbeiterMenu(PanelManager pm, final ServiceV shop, final EShopClientGui frame) {
 		super();
 		
 		this.pManager = pm;
@@ -30,12 +31,25 @@ public class MitarbeiterMenu extends JPanel {
 		artikel.addActionListener(new ActionListener() {
         	@Override
 			public void actionPerformed(ActionEvent e) {
-        		pManager.changePanel(new MitarbeiterMenu(pManager, shop), new ArtikelPanel(shop), new ArtikelAddPanel(shop, pManager));
+        		pManager.changePanel(new MitarbeiterMenu(pManager, shop, frame), new ArtikelPanel(shop, frame), new ArtikelAddPanel(shop, pManager, frame));
         	}
 		});
 		
 		mitarbeiter = new JButton("Mitarbeiter");
+		mitarbeiter.addActionListener(new ActionListener() {
+        	@Override
+			public void actionPerformed(ActionEvent e) {
+        		pManager.changePanel(new MitarbeiterMenu(pManager, shop, frame), new MitarbeiterVPanel(shop), new MitarbeiterAddPanel(shop, pManager, frame));
+        	}
+		});
+		
 		ereignisse = new JButton("Ereignisse");
+		ereignisse.addActionListener(new ActionListener() {
+        	@Override
+			public void actionPerformed(ActionEvent e) {
+        		pManager.changePanel(new MitarbeiterMenu(pManager, shop, frame), new EreignisPanel(shop), new JPanel());
+        	}
+		});
 
 		boxPanel.add(artikel);
 		boxPanel.add(mitarbeiter);

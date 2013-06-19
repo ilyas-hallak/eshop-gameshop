@@ -7,7 +7,6 @@ import java.util.Vector;
 
 import javax.swing.table.DefaultTableModel;
 
-
 import com.shop.valueobjects.Artikel;
 
 public class ArtikelTableModel extends DefaultTableModel {

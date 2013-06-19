@@ -1,6 +1,7 @@
 package com.shop.logic;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -10,7 +11,9 @@ import com.shop.exceptions.BestandZuKleinException;
 import com.shop.exceptions.CustomerExistsExeption;
 import com.shop.exceptions.PersonNotFoundException;
 import com.shop.valueobjects.Artikel;
+import com.shop.valueobjects.Ereignis;
 import com.shop.valueobjects.Kunde;
+import com.shop.valueobjects.Mitarbeiter;
 import com.shop.valueobjects.Person;
 import com.shop.valueobjects.Rechnung;
 
@@ -109,4 +112,17 @@ public class ServiceV {
 		// TODO Auto-generated method stub
 		this.person = person;
 	}
+	
+	public ArrayList<Person> getAllMitarbeiter() {
+		return this.personV.getPersonStock();
+	}
+
+	public void insertMitarbeiter(String name, String mail, String password) {
+		this.personV.insertMitarbeiter(new Mitarbeiter(mail, name, password));
+	}
+	
+	public ArrayList<Ereignis> getAllEreignisse() {
+		return this.ereignisV.getAllEreignisse();
+	}
+	
 }

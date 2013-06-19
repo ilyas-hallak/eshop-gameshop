@@ -5,8 +5,6 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.shop.gui.Mitarbeiter.MitarbeiterMenu;
-
 public class PanelManager {
 	
 	private EShopClientGui client;
@@ -16,7 +14,7 @@ public class PanelManager {
 	}
 	
 
-	public void changePanel(JPanel west, JPanel center, JPanel east) {
+	public JLabel changePanel(JPanel west, JPanel center, JPanel east) {
 		this.client.getContentPane().removeAll();
 		
 		this.client.add(new LogoPanel(), BorderLayout.NORTH);
@@ -25,10 +23,12 @@ public class PanelManager {
 		this.client.add(center, BorderLayout.CENTER);
 		this.client.add(east, BorderLayout.EAST);
 		
-		this.client.add(new MessagePanel(), BorderLayout.SOUTH);
+		MessagePanel mp = new MessagePanel();
+		this.client.add(mp, BorderLayout.SOUTH);
 		
 		this.client.revalidate();  
-
+		
+		return mp.getMessageLabel();
 	}
 	
 }
