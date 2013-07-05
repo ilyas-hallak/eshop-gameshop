@@ -211,5 +211,12 @@ public class ServiceV implements ServiceVInterface {
 	public Person getPerson() {
 		return this.person;
 	}
+
+	@Override
+	public void updateArtikel(int nr, String title, int bestand, double price,
+			int menegeneinheit) throws ArtikelNotFoundException {
+		this.artikelV.updateArtikel(nr, title, bestand, price, menegeneinheit);
+		this.ereignisV.create(bestand, this.person, new Artikel(title, bestand, price), "Artikel aktualisiert");
+	}
 	
 }

@@ -24,6 +24,8 @@ public interface ServiceVInterface {
 	public abstract void insertArtikel(int nr, String title, int bestand,
 			double price, int mengeneinheit) throws ArtikelexistsException;
 
+	public abstract void updateArtikel(int nr, String title, int bestand, double price, int menegeneinheit) throws ArtikelNotFoundException;
+	
 	public abstract List<Artikel> getAllArtikel();
 
 	public abstract List<Artikel> sucheNachTitel(String titel);

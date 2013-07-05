@@ -15,7 +15,7 @@ import com.shop.valueobjects.Artikel;
 public class ArtikelV {
 
 	/**
-	 * Persistenz-Schnittstelle, die für die Details des Dateizugriffs
+	 * Persistenz-Schnittstelle, die f��r die Details des Dateizugriffs
 	 * verantwortlich ist
 	 */
 	private FilePersistenceManager pm;
@@ -50,16 +50,16 @@ public class ArtikelV {
 	 */
 	public Artikel insertArtikel(String title, int bestand, double price)
 			throws ArtikelexistsException {
-		// überprüfen ob der titel schon im Artikelbestand vorhanden ist
+		// ��berpr��fen ob der titel schon im Artikelbestand vorhanden ist
 		Iterator<Artikel> it = this.artikelStock.iterator();
 		while (it.hasNext()) {
 			Artikel article = (Artikel) it.next();
 			if (article.getTitle() == title) {
-				// wenn er bereits vorhanden ist die Exception schmeißen
+				// wenn er bereits vorhanden ist die Exception schmei��en
 				throw new ArtikelexistsException(title + " - in 'einfuegen()'");
 			}
 			// wenn er nicht vorhanden ist Artikel-Objekt erzeugen und
-			// hinzufügen
+			// hinzuf��gen
 			else {
 				Artikel a = new Artikel(this.artikelStock.size() + 1, title,
 						bestand, price);
@@ -143,7 +143,7 @@ public class ArtikelV {
 			Artikel _a = a.get(0);
 			_a.setStock(_a.getStock() - stock);
 		} else {
-			throw new ArtikelNotFoundException("Artikel mit der Nummer: " + nr + " nicht gefunden!");
+			throw new ArtikelNotFoundException(a.get(0));
 		}
 	}
 	
@@ -202,5 +202,27 @@ public class ArtikelV {
 		} finally {
 			pm.close();
 		}
+	}
+	
+	/**
+	 * update artikel by nr
+	 * @param nr
+	 * @param title
+	 * @param bestand
+	 * @param price
+	 * @param menegeneinheit
+	 * @throws ArtikelNotFoundException 
+	 */
+	public void updateArtikel(int nr, String title, int bestand, double price,
+			int menegeneinheit) throws ArtikelNotFoundException {
+		Artikel artikel = this.findArtikelByString(nr).get(0);
+		if(artikel == null) {
+			throw new ArtikelNotFoundException(artikel);
+		} else {
+			artikel.setPrice(price);
+			artikel.setStock(bestand);
+			artikel.setTitle(title);
+		}
+		
 	}
 }

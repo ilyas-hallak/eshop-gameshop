@@ -193,4 +193,10 @@ public class ServerInterfaceImpl implements ServerInterface {
 		// TODO get person from array
 		return this.shop.getPerson();
 	}
+
+	@Override
+	public void updateArtikel(int nr, String title, int bestand, double price,
+			int menegeneinheit) throws ArtikelNotFoundException {
+		this.shop.updateArtikel(nr, title, bestand, price, menegeneinheit);
+	}
 }

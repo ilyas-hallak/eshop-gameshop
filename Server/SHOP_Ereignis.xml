@@ -678,5 +678,174 @@
     </void>
    </object>
   </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel">
+      <void property="nr">
+       <int>12</int>
+      </void>
+      <void property="price">
+       <double>5.0</double>
+      </void>
+      <void property="stock">
+       <int>100</int>
+      </void>
+      <void property="title">
+       <string>stehan</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>100</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373036873382</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Neuer Artikel</string>
+    </void>
+    <void property="person">
+     <object class="com.shop.valueobjects.Kunde">
+      <void property="address">
+       <string>i</string>
+      </void>
+      <void property="eMail">
+       <string>i</string>
+      </void>
+      <void property="name">
+       <string>i</string>
+      </void>
+      <void property="password">
+       <string>i</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel">
+      <void property="nr">
+       <int>1</int>
+      </void>
+      <void property="price">
+       <double>5.0</double>
+      </void>
+      <void property="stock">
+       <int>100</int>
+      </void>
+      <void property="title">
+       <string>pulp fiction</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>100</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373060590445</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Artikel aktualisiert</string>
+    </void>
+    <void property="person">
+     <object class="com.shop.valueobjects.Mitarbeiter">
+      <void property="eMail">
+       <string>m1</string>
+      </void>
+      <void property="name">
+       <string>m1</string>
+      </void>
+      <void property="password">
+       <string>m1</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel">
+      <void property="nr">
+       <int>2</int>
+      </void>
+      <void property="price">
+       <double>5.0</double>
+      </void>
+      <void property="stock">
+       <int>200</int>
+      </void>
+      <void property="title">
+       <string>pulp fiction</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>200</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373060973061</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Artikel aktualisiert</string>
+    </void>
+    <void property="person">
+     <object class="com.shop.valueobjects.Mitarbeiter" id="Mitarbeiter0">
+      <void property="eMail">
+       <string>m3</string>
+      </void>
+      <void property="name">
+       <string>m3</string>
+      </void>
+      <void property="password">
+       <string>m3</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel">
+      <void property="nr">
+       <int>3</int>
+      </void>
+      <void property="price">
+       <double>5.0</double>
+      </void>
+      <void property="stock">
+       <int>300</int>
+      </void>
+      <void property="title">
+       <string>pulp fiction</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>300</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373060980325</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Artikel aktualisiert</string>
+    </void>
+    <void property="person">
+     <object idref="Mitarbeiter0"/>
+    </void>
+   </object>
+  </void>
  </object>
 </java>

@@ -170,7 +170,7 @@
      <double>5.0</double>
     </void>
     <void property="stock">
-     <int>96</int>
+     <int>100</int>
     </void>
     <void property="title">
      <string>pulp fiction</string>

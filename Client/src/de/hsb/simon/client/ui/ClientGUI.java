@@ -43,7 +43,7 @@ public class ClientGUI extends JFrame {
 		this.add(button, BorderLayout.SOUTH);
 		
 		net = new ClientInterfaceImpl(area);
-		
+
 		try {
 			net.connectToServer();
 		} catch (UnknownHostException | LookupFailedException | EstablishConnectionFailed e) {
