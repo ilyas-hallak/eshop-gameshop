@@ -2,4 +2,7 @@ eclipse.preferences.version=1
 encoding//src/com/shop/gui/Kunde/ArtikelPanelKunde.java=UTF-8
 encoding//src/com/shop/gui/Mitarbeiter/ArtikelAddPanel.java=UTF-8
 encoding//src/com/shop/gui/Mitarbeiter/ArtikelPanel.java=UTF-8
+encoding//src/com/shop/gui/Mitarbeiter/ArtikelTableModel.java=UTF-8
+encoding//src/com/shop/gui/RegisterPanel.java=UTF-8
 encoding//src/de/hsb/simon/client/net/ClientInterfaceImpl.java=UTF-8
+encoding/<project>=UTF-8

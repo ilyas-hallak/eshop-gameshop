@@ -1,6 +1,5 @@
 package com.shop.gui.Kunde;
 
-import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -16,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.JTableHeader;
 
 import com.shop.exceptions.BestandZuKleinException;
 import com.shop.gui.EShopClientGui;
@@ -26,20 +26,20 @@ import com.shop.valueobjects.Artikel;
 import de.hsb.simon.client.net.ServiceVInterfaceImpl;
 
 public class ArtikelPanelKunde extends JPanel {
-
+	
+	final JTable table;
+	
 	public ArtikelPanelKunde(final ServiceVInterfaceImpl shop, final PanelManager pManager, final EShopClientGui frame) {
 		super(new GridLayout());
-		final JTable table = new JTable( new ArtikelTableModel(shop.getAllArtikel()) );
+		ArtikelPanelKunde self = this;
+		final ArtikelTableModel model = new ArtikelTableModel(shop.getAllArtikel());
+		table = new JTable( model );
 		
 		// show menubar
 		frame.getJMenuBar().setVisible(true);
 		
 		// hide save item
 		frame.getJMenuBar().getMenu(0).getItem(0).setVisible(false);
-		
-		
-		table.setBackground(Color.BLACK);
-		table.setForeground(Color.RED);
 		
 		table.addMouseListener(new MouseListener() {
 
@@ -62,25 +62,21 @@ public class ArtikelPanelKunde extends JPanel {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
 			}
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
 			}
 			
 		});

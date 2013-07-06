@@ -35,6 +35,7 @@ public class LoginPanel extends JPanel {
 	
 	private final ServiceVInterfaceImpl shop;
 	private PanelManager pManager;
+	private JButton registerBtn;
 	
 	public LoginPanel(final ServiceVInterfaceImpl shop, PanelManager pm, final EShopClientGui frame) {
 		super(new GridBagLayout());
@@ -98,8 +99,21 @@ public class LoginPanel extends JPanel {
 			}
         });
         
-        this.add(loginBtn);
-      
-  
+        cs.gridx = 1;
+        cs.gridy = 2;
+        this.add(loginBtn, cs);
+        
+        registerBtn = new JButton("Registieren");
+        
+        registerBtn.addActionListener(new ActionListener() {
+        	@Override
+			public void actionPerformed(ActionEvent e) {
+        		pManager.changePanel(new JPanel(), new RegisterPanel(shop, pManager, frame), new JPanel());
+        	}
+        });
+        
+        cs.gridx = 1;
+        cs.gridy = 3;
+        this.add(registerBtn, cs);
 	}
 }

@@ -15,7 +15,7 @@ public class ArtikelTableModel extends DefaultTableModel {
 	
 	public ArtikelTableModel(List<Artikel> artikel) {
 		super();
-		
+
 		columnNames = new Vector<String>();
 		columnNames.add("Nummer");
 		columnNames.add("Titel");
@@ -34,7 +34,7 @@ public class ArtikelTableModel extends DefaultTableModel {
 		columnNames.add("Nummer");
 		columnNames.add("Titel");
 		columnNames.add("Preis");
-		columnNames.add("Stückzahl");
+		columnNames.add("St��ckzahl");
 		
 		data = new Vector<Vector<String>>();
 		
