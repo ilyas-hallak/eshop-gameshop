@@ -7,6 +7,21 @@ public class Kunde extends Person {
 	 */
 	private static final long serialVersionUID = 2345625329911573006L;
 	private String address;
+	private Warenkorb cart;
+	
+	/**
+	 * @return the cart
+	 */
+	public Warenkorb getCart() {
+		return cart;
+	}
+
+	/**
+	 * @param cart the cart to set
+	 */
+	public void setCart(Warenkorb cart) {
+		this.cart = cart;
+	}
 
 	/**
 	 * @return the address
@@ -35,6 +50,8 @@ public class Kunde extends Person {
 		this.name = name;
 		this.address = address;
 		this.password = pw;
+		
+		this.cart = new Warenkorb();
 	}
 
 
