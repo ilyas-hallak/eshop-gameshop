@@ -14,6 +14,10 @@ public class ArtikelTableModel extends DefaultTableModel {
 	private Vector<String> columnNames;
 	private Vector<Vector<String>> data;
 	
+	/**
+	* @description Konstruktor fuer die ArtikelTabelle in der Artikeluebersicht
+	* @param artikel - Variable fuer die Artikel aus dem shop
+	*/
 	public ArtikelTableModel(List<Artikel> artikel) {
 		super();
 
@@ -28,7 +32,10 @@ public class ArtikelTableModel extends DefaultTableModel {
 		updateDataVector(artikel);
 	}
 	
-	
+	/**
+	* Konstruktor fuer die Artikeltabelle aus dem Warenkorb
+	* @param warenkorb
+	*/
 	public ArtikelTableModel(Map<Artikel, Number> warenkorb) {
 		super();
 		
@@ -43,11 +50,9 @@ public class ArtikelTableModel extends DefaultTableModel {
 		updateDataMap(warenkorb);
 	}
 	
-	// Methode updateDataWarenkorb - Warenkorb durchgehen und Tabelle zufügen
-	
 	public void updateDataMap(Map<Artikel, Number> warenkorb) {
 		data.clear();
-		
+		// Warenkorb durchgehen und Tabelle zufügen
 		Iterator it = warenkorb.entrySet().iterator();
 		while (it.hasNext()) {
 			Map.Entry<Artikel, Number> pair = (Map.Entry<Artikel, Number>) it.next();

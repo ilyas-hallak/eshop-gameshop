@@ -23,6 +23,9 @@ import com.shop.valueobjects.Kunde;
 
 import de.hsb.simon.client.net.ServiceVInterfaceImpl;
 
+/**
+* @description Klasse für Warenkorb Bereich, erbt von JPanel
+*/
 public class WarenkorbPanel extends JPanel {
 
 	private JButton kaufen;
@@ -33,6 +36,11 @@ public class WarenkorbPanel extends JPanel {
 
 	private JButton deleteArtikelBtn;
 
+	/**
+	* @description Konstruktor des Warenkorb Panels
+	* @param pm - Variable fuer den PanelManager, zum autauschen der Panels
+	* @param shop - Variable fuer den Zugriff auf den Server ueber die ServiceV
+	*/
 	public WarenkorbPanel(PanelManager pm, final ServiceVInterfaceImpl shop, final EShopClientGui frame) {
 		super(new GridLayout(2, 1));
 		this.pManager = pm;
@@ -82,7 +90,10 @@ public class WarenkorbPanel extends JPanel {
                 String selectedNumber = (String) warentable.getValueAt(selectedRowIndex, 0);
                 
 				Artikel artikel = shop.findArtikelByString(selectedNumber).get(0);
-				shop.removeArtikelFromCart(artikel, (Kunde)frame.getPerson());
+				
+				Kunde k = shop.removeArtikelFromCart(artikel, (Kunde)frame.getPerson());
+				// get refreshed kunde data
+				frame.setPerson(k);
 				
 				pManager.changePanel(new JPanel(), new ArtikelPanelKunde(shop, pManager, frame), new WarenkorbPanel(pManager, shop, frame));
 

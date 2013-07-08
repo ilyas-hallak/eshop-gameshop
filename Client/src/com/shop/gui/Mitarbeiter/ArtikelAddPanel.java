@@ -20,12 +20,21 @@ import com.shop.valueobjects.Mitarbeiter;
 
 import de.hsb.simon.client.net.ServiceVInterfaceImpl;
 
+/**
+*  @description Klasse um Artikel hinzuzufuegen im Menue der Mitarbeiter 
+*/
 public class ArtikelAddPanel extends JPanel {
 	private JCheckBox check;
 	private JCheckBox checkBox;
 	private JLabel checkLabel;
 	private JTextField checkField;
 
+	/**
+	* @description Konstruktor ArtikelAddPanel
+	* @param shop - Variable fuer den Zugriff auf den Server ueber die ServiceV
+	* @param pManager - Variable fuer den PanelManager, zum autauschen der Panels
+	* @param frame - Variable zur Uebergabe der Benutzer Oberfleache (ClientGui)
+	*/
 	public ArtikelAddPanel(final ServiceVInterfaceImpl shop, final PanelManager pManager, final EShopClientGui frame) {
 		super(new GridBagLayout());
 
@@ -87,29 +96,6 @@ public class ArtikelAddPanel extends JPanel {
         cs.gridy = 4;
         this.add(saveBtn, cs);
         
-        saveBtn.addActionListener(new ActionListener() {
-        	@Override
-			public void actionPerformed(ActionEvent e) {
-        		
-        		try {
-        			// TODO massengut artikel mit einbauen!!!
-					shop.updateArtikel( Integer.parseInt(idField.getText()) , titleTextfield.getText() , Integer.parseInt(stockField.getText()), Double.parseDouble( priceField.getText()), 0, (Mitarbeiter)frame.getPerson());
-				} catch (NumberFormatException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (ArtikelNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-        		
-        		
-        		// refresh panel
-				JPanel panel = new ArtikelAddPanel(shop, pManager, frame);
-        		pManager.changePanel(new MitarbeiterMenu(pManager, shop, frame), new ArtikelPanel(shop, frame, panel), panel);
-        	}
-        });
-        
-        
         checkLabel = new JLabel("Massengutartikel");
         cs.gridx = 0;
         cs.gridy = 3;
@@ -150,22 +136,43 @@ public class ArtikelAddPanel extends JPanel {
         		try {
         			// massengut artikel
         			if(checkBox.isSelected()) {
-        				shop.insertArtikel(0, titleTextfield.getText(), Integer.parseInt(stockField.getText()), Integer.parseInt(priceField.getText()), Integer.parseInt(checkField.getText()), (Mitarbeiter)frame.getPerson());
+        				shop.insertArtikel(0, titleTextfield.getText(), Integer.parseInt(stockField.getText()), Double.parseDouble(priceField.getText()), Integer.parseInt(checkField.getText()), (Mitarbeiter)frame.getPerson());
         			} else {
         				// normaler artikel
-    					shop.insertArtikel(titleTextfield.getText(), Integer.parseInt(stockField.getText()), Integer.parseInt(priceField.getText()), (Mitarbeiter) frame.getPerson());
+    					shop.insertArtikel(titleTextfield.getText(), Integer.parseInt(stockField.getText()), Double.parseDouble(priceField.getText()), (Mitarbeiter) frame.getPerson());
         			}
 					JPanel panel = new ArtikelAddPanel(shop, pManager, frame);
-	        		pManager.changePanel(new MitarbeiterMenu(pManager, shop, frame), new ArtikelPanel(shop, frame, panel), panel);
+	        		pManager.changePanel(new MitarbeiterMenu(pManager, shop, frame), new ArtikelPanel(shop, frame, panel, pManager), panel);
 					
 				} catch (NumberFormatException e1) {
-					// Bitte Nummer angeben
+					frame.setMessage("Bitte eine korrekte Zahl angeben");
 				} catch (ArtikelexistsException e1) {
-					// artikel schon vorhanden!
+					frame.setMessage(e1.getMessage());
 				}
         	}
         });
 
-
+        saveBtn.addActionListener(new ActionListener() {
+        	@Override
+			public void actionPerformed(ActionEvent e) {
+        		
+        		try {
+        			int mengeneinheit = 0;
+        			if(checkBox.isSelected()) {
+        				mengeneinheit = Integer.parseInt( checkField.getText() );
+        			}	
+    				shop.updateArtikel( Integer.parseInt(idField.getText()) , titleTextfield.getText() , Integer.parseInt(stockField.getText()), Double.parseDouble( priceField.getText()), mengeneinheit, (Mitarbeiter)frame.getPerson());
+        			
+				} catch (NumberFormatException e1) {
+					frame.setMessage("Bitte richtige Zahlen angeben!");
+				} catch (ArtikelNotFoundException e1) {
+					frame.setMessage(e1.getMessage());
+				}
+        		
+        		// refresh panel
+				JPanel panel = new ArtikelAddPanel(shop, pManager, frame);
+        		pManager.changePanel(new MitarbeiterMenu(pManager, shop, frame), new ArtikelPanel(shop, frame, panel, pManager), panel);
+        	}
+        });
 	}
 }

@@ -23,11 +23,19 @@ import com.shop.valueobjects.Rechnung;
 
 import de.hsb.simon.client.net.ServiceVInterfaceImpl;
 
+/**
+* @description Klasse fuer die Rechnung nach Kauf des Warenkorbs
+*
+*/
 public class RechnungPanel extends JPanel {
 
 	private EShopClientGui frame;
 	private JButton backBtn;
-
+	
+	/**
+	* @description Konstruktor des Rechnungspanel
+	* @param shop - Variable fuer den Zugriff auf den Server ueber die ServiceV uebergeben
+	*/
 	public RechnungPanel(final ServiceVInterfaceImpl shop, final EShopClientGui frame, final PanelManager pm) {
 		super(new GridLayout(6, 1));
 		add(new JLabel("Rechnung"));

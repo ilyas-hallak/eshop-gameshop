@@ -44,7 +44,7 @@ public class MitarbeiterMenu extends JPanel {
         	@Override
 			public void actionPerformed(ActionEvent e) {
         		JPanel panel = new ArtikelAddPanel(shop, pManager, frame);
-        		pManager.changePanel(new MitarbeiterMenu(pManager, shop, frame), new ArtikelPanel(shop, frame, panel), panel);
+        		pManager.changePanel(new MitarbeiterMenu(pManager, shop, frame), new ArtikelPanel(shop, frame, panel, pManager), panel);
         	}
 		});
 		

@@ -8,6 +8,7 @@ import com.shop.exceptions.ArtikelNotFoundException;
 import com.shop.exceptions.ArtikelexistsException;
 import com.shop.exceptions.BestandZuKleinException;
 import com.shop.exceptions.CustomerExistsExeption;
+import com.shop.exceptions.MassenArtikelAnzahlException;
 import com.shop.exceptions.PersonNotFoundException;
 import com.shop.valueobjects.Artikel;
 import com.shop.valueobjects.Ereignis;
@@ -107,13 +108,13 @@ public class ServiceVInterfaceImpl implements ServiceVInterface {
 
 	@Override
 	public Kunde addArtikelToCart(Artikel a, int count, Kunde k)
-			throws BestandZuKleinException {
+			throws BestandZuKleinException, MassenArtikelAnzahlException {
 		return this.server.addArtikelToCart(a, count, k);
 	}
 
 	@Override
-	public void removeArtikelFromCart(Artikel a, Kunde k) {
-		this.server.removeArtikelFromCart(a, k);
+	public Kunde removeArtikelFromCart(Artikel a, Kunde k) {
+		return this.server.removeArtikelFromCart(a, k);
 	}
 
 

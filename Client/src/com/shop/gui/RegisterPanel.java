@@ -21,6 +21,10 @@ import com.shop.valueobjects.Kunde;
 
 import de.hsb.simon.client.net.ServiceVInterfaceImpl;
 
+/**
+* @description Klasse fuer das Registrier Panel, um sich als Kunde neu anzulegen
+* erbt von JPanel
+*/
 public class RegisterPanel extends JPanel {
 	
 	private final ServiceVInterfaceImpl shop;
@@ -36,6 +40,12 @@ public class RegisterPanel extends JPanel {
 	private JButton registerBtn;
 	private JButton abortBtn;
 	
+	/**
+	* Konstruktor
+	* @param shop - Variable fuer den Zugriff auf den Server ueber die ServiceV
+	* @param pm - Variable fuer den PanelManager, zum autauschen der Panels
+	* @param frame - Variable zur Uebergabe der Benutzer Oberfleache (ClientGui)
+	*/
 	public RegisterPanel(final ServiceVInterfaceImpl shop, PanelManager pm, final EShopClientGui frame) {
 		super(new GridBagLayout());
 		
@@ -47,11 +57,6 @@ public class RegisterPanel extends JPanel {
 		
 		GridBagConstraints cs = new GridBagConstraints();
         cs.fill = GridBagConstraints.HORIZONTAL;
-
-        
-        /*
-		this.address = address;
-         */
         
         // MAIL
         emailLabel = new JLabel("E-Mail: ");
@@ -108,6 +113,10 @@ public class RegisterPanel extends JPanel {
         
         registerBtn = new JButton("Registrieren");
         
+        /**
+        * @description Registrier Button per Klick die Eingaben einlesen und Kundenobjekt erzeugen, bei richtigem ausfuellen
+        * den gerade registrierten Kunden einloggen und Panels fuer KundenMenue austauschen
+        */
         registerBtn.addActionListener(new ActionListener() {
         	@Override
 			public void actionPerformed(ActionEvent e) {

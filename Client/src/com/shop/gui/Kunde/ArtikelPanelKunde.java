@@ -17,6 +17,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import com.shop.exceptions.BestandZuKleinException;
+import com.shop.exceptions.MassenArtikelAnzahlException;
 import com.shop.gui.EShopClientGui;
 import com.shop.gui.PanelManager;
 import com.shop.gui.Mitarbeiter.ArtikelTableModel;
@@ -25,10 +26,19 @@ import com.shop.valueobjects.Kunde;
 
 import de.hsb.simon.client.net.ServiceVInterfaceImpl;
 
+/**
+* @description Klasse fuer Artikellist im Kundenmenue, um Artikel dem Warenkorb hinzuzufuegen 
+*/
 public class ArtikelPanelKunde extends JPanel {
 	
 	final JTable table;
 	
+	/**
+	* @description Konstruktor ArtikelPanelKunde
+	* @param shop - Variable fuer den Zugriff auf den Server ueber die ServiceV
+	* @param pManager - Variable fuer den PanelManager, zum autauschen der Panels
+	* @param frame - Variable zur Uebergabe der Benutzer Oberfleache (ClientGui)
+	*/
 	public ArtikelPanelKunde(final ServiceVInterfaceImpl shop, final PanelManager pManager, final EShopClientGui frame) {
 		super(new GridLayout(2, 1));
 
@@ -83,8 +93,6 @@ public class ArtikelPanelKunde extends JPanel {
 			
 		});
 		
-		
-		
 		GridBagConstraints cs = new GridBagConstraints();
         cs.fill = GridBagConstraints.HORIZONTAL;
 		
@@ -111,14 +119,7 @@ public class ArtikelPanelKunde extends JPanel {
         cs.gridy = 1;
         boxPanel.add(hinzu, cs);
         
-//      
-//		
-//		boxPanel.add(hinzu);
-//		boxPanel.add(stockField);
-//		boxPanel.add(stockLabel, cs);
-//		
 		add(boxPanel);
-        
         
         hinzu.addActionListener(new ActionListener() {
         	@Override
@@ -129,7 +130,6 @@ public class ArtikelPanelKunde extends JPanel {
 	        		int selectedRowIndex = table.getSelectedRow();
 	                int selectedColumnIndex = table.getSelectedColumn();
 	                
-	           //     String selectedObject = (String) table.getModel().getValueAt(selectedRowIndex, selectedColumnIndex);
 	                String selectedNumber = (String) table.getValueAt(selectedRowIndex, 0);
 	                
 	                List<Artikel> aList = shop.findArtikelByString(selectedNumber);
@@ -152,11 +152,10 @@ public class ArtikelPanelKunde extends JPanel {
 					pManager.changePanel(new JPanel(), new ArtikelPanelKunde(shop, pManager, frame), new WarenkorbPanel(pManager, shop, frame));
 					
 				} catch (NumberFormatException e1) {
-					// Bitte Nummer angeben
 					frame.setMessage("Bitte bei Stückzahl eine Nummer angeben");
-		//		} catch (ArtikelexistsException e1) {
-					// artikel schon vorhanden!
 				} catch (BestandZuKleinException e1) {
+					frame.setMessage(e1.getMessage());
+				} catch (MassenArtikelAnzahlException e1) {
 					frame.setMessage(e1.getMessage());
 				}
         	}

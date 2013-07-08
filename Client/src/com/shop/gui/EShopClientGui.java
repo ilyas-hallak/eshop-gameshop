@@ -20,15 +20,24 @@ import de.hsb.simon.client.net.ServiceVInterfaceImpl;
 import de.root1.simon.exceptions.EstablishConnectionFailed;
 import de.root1.simon.exceptions.LookupFailedException;
 
+/**
+* @description Hauptklasse für die Benutzer Oberflaeche (Client)
+*/
 public class EShopClientGui extends JFrame {
 	
 	private ServiceVInterfaceImpl shop;
 	private PanelManager pManager;
 	private EShopClientGui self;
 	private JLabel msgLabel;
-	private Person person;
+	// person wird nach dem einloggen gespeichert
+	private Person person; 
 	private ClientInterfaceImpl net;
 	
+	/**
+	* @description Konstruktor der ClientGui
+	* mit dem Namen Gameshop und eigenem Panelmanager
+	* baut Verbindung zum Server auf und fügt das Client-Menue ein
+	*/
 	public EShopClientGui() {
 		super("Gameshop");
 		pManager = new PanelManager(this);
@@ -48,6 +57,9 @@ public class EShopClientGui extends JFrame {
 		this.init();
 	}
 	
+	/**
+	* @description Fenster für Kundenlogin Panel erzeugen
+	*/
 	private void init() {
 	    setSize(1024, 786);
 	    setLocationRelativeTo(null);
@@ -58,6 +70,9 @@ public class EShopClientGui extends JFrame {
 	    setVisible(true);
 	}
 
+	/**
+	* @description Menuebar für das Filemenue
+	*/
 	private void initMenu() {
 		JMenu fileMenu = new FileMenu();
 		
@@ -67,7 +82,9 @@ public class EShopClientGui extends JFrame {
 		setJMenuBar(bar);
 	}
 	
-	
+	/**
+	* @description Filemenue zum speichern, ausloggen und schließen des Programms mit Listener
+	*/
 	class FileMenu extends JMenu implements ActionListener {
 		public FileMenu() {
 			super("File");
@@ -87,7 +104,9 @@ public class EShopClientGui extends JFrame {
 			
 			this.setVisible(true);
 		}
-
+		/**
+		* @description Implementierung der Files was bei der jeweiligen Benutzung ausgeführt werden soll
+		*/
 		@Override
 		public void actionPerformed(ActionEvent ae) {
 			if (ae.getActionCommand().equals("Save")) {
@@ -103,15 +122,18 @@ public class EShopClientGui extends JFrame {
 		}
 	}
 	
-	
+	/**
+	* 
+	* @param msg - Nachricht der jeweiligen Exception
+	*/
 	public void setMessage(String msg) {
 		JOptionPane.showMessageDialog(this, msg);
-//		this.msgLabel.setText(msg);
 	}
 	
 	/**
-	 * @param args
-	 */
+	* @param args
+	* @description Hauptausfuehrung zum erzeugen einer Oberfleache für den Benutzer (Client)
+	*/
 	public static void main(String[] args) {
 		new EShopClientGui();
 	}
@@ -122,7 +144,6 @@ public class EShopClientGui extends JFrame {
 	public Person getPerson() {
 		return person;
 	}
-
 
 	/**
 	 * @param person the person to set

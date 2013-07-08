@@ -23,10 +23,9 @@ import com.shop.valueobjects.Person;
 import de.hsb.simon.client.net.ServiceVInterfaceImpl;
 
 /**
- * 
- * @author Ilyas
- *
- */
+* @description Klasse für die Definierung des Login-Panels erbt von JPanel
+*
+*/
 public class LoginPanel extends JPanel {
 
 	private static final long serialVersionUID = 2306226515609595372L;
@@ -42,6 +41,12 @@ public class LoginPanel extends JPanel {
 	private PanelManager pManager;
 	private JButton registerBtn;
 	
+	/**
+	* @description Konstruktor der LoginPanel-Klasse
+	* @param shop - Variable fuer den Zugriff auf den Server ueber die ServiceV
+	* @param pm - Variable fuer den PanelManager, zum autauschen der Panels
+	* @param frame - Variable zur Uebergabe der Benutzer Oberfleache (ClientGui)
+	*/
 	public LoginPanel(final ServiceVInterfaceImpl shop, PanelManager pm, final EShopClientGui frame) {
 		super(new GridBagLayout());
 
@@ -82,8 +87,14 @@ public class LoginPanel extends JPanel {
         this.setBorder(new LineBorder(Color.GRAY));
         
         loginBtn = new JButton("Login");
+
         
         loginBtn.addActionListener(new ActionListener() {
+        	/**
+        	* @description erzeugen eines Person-Objekts beim betaetigen des Login Buttons
+        	* und versuchen diese Person auf dem Server einzuloggen (ggf. Exception bei falschen Daten)
+        	* ueberprüfen ob Kunde oder Mitarbeiter und jweiliges Menue ausgeben mit Hilfe des Panel-Managers
+        	*/
         	@Override
 			public void actionPerformed(ActionEvent e) {
 				Person person = new Person(usernameField.getText().trim(), passwortField.getText().trim());
@@ -114,6 +125,9 @@ public class LoginPanel extends JPanel {
         registerBtn = new JButton("Registieren");
         
         registerBtn.addActionListener(new ActionListener() {
+        	/**
+        	* @description Registrier Button - wechselt per Klick Panels zum Registerpanel
+        	*/
         	@Override
 			public void actionPerformed(ActionEvent e) {
         		pManager.changePanel(new JPanel(), new RegisterPanel(shop, pManager, frame), new JPanel());
