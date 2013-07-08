@@ -13,6 +13,9 @@ import de.root1.simon.annotation.SimonRemote;
 import de.root1.simon.exceptions.EstablishConnectionFailed;
 import de.root1.simon.exceptions.LookupFailedException;
 
+/**
+ * @description Verwaltet die Verbindung zum Server  
+ */
 @SimonRemote(value={ClientInterface.class})
 public class ClientInterfaceImpl implements  ClientInterface {
 
@@ -57,20 +60,22 @@ public class ClientInterfaceImpl implements  ClientInterface {
 		shop = new ServiceVInterfaceImpl(this.getServer());
 	}
 	
-	public void sendMessage() {
-		session.sendMessage("hallo");
-	}
-
 	@Override
 	public void receiveMessage(String message) {
-		area.append(message + "\n");
+		System.out.println(message);
 	}
 	
+	/**
+	 * Verbindung zum Server loesen
+	 */
 	public void logout() {
 		this.lookup.release(server);
 		this.safeLogout = true;
 	}
 	
+	/**
+	 * @return Server Verbindungsobjekt
+	 */
 	public ServiceVInterfaceImpl getShop() {
 		return this.shop;
 	}

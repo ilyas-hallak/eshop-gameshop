@@ -29,7 +29,7 @@ public class ServerGUI extends JFrame {
 	private JButton stop;		// Button zum Stoppen des Servers
 
 	/**
-	 * Konstruktor
+	 * @description Konstruktor
 	 */
 	public ServerGUI() {
 		super("Simon Server");
@@ -63,7 +63,7 @@ public class ServerGUI extends JFrame {
 		start = new JButton("Start");
 		stop = new JButton("Stop");
 		
-		// Einf�gen (von oben links nach unten rechts)
+		// Einfuegen (von oben links nach unten rechts)
 		this.add(status);
 		this.add(start);
 		this.add(stop);
@@ -95,7 +95,15 @@ public class ServerGUI extends JFrame {
 			}
 		});
 	}
-
+	
+	/**
+	 * 
+	 * @param args
+	 * @throws ClassNotFoundException
+	 * @throws InstantiationException
+	 * @throws IllegalAccessException
+	 * @throws UnsupportedLookAndFeelException
+	 */
 	public static void main(String[] args) throws ClassNotFoundException,
 			InstantiationException, IllegalAccessException,
 			UnsupportedLookAndFeelException {

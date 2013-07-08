@@ -21,24 +21,25 @@ import com.shop.valueobjects.Rechnung;
 import de.hsb.simon.commons.ServiceVInterface;
 
 /**
- * Klasse zur Verwaltung eines (sehr einfachen) Shop.
- * Bietet Methoden zum Zur��ckgeben/Suche/Einf��gen/Speichern von Artikeln
- * @author hallakoglu
- * @version 0
+ * @description Klasse zur Verwaltung eines (sehr einfachen) Shop.
+ * Bietet Methoden zum Zurueckgeben/Suche/Einfuegen/Speichern von Artikeln
  */
 public class ServiceV implements ServiceVInterface {
 	
 	private String file = "";
 	private ArtikelV artikelV;
 	private PersonV personV;
-	private WarenkorbV cart;
 	private EreignisV ereignisV;
 	
+	/**
+	 * @description Initialisiert alle unteren Klassen Manager Klassen
+	 * @param file präfix für XML Dateien
+	 * @throws IOException
+	 */
 	public ServiceV(String file) throws IOException {
 		this.file = file;
 		this.artikelV = new ArtikelV(file + "_Artikel.xml");
 		this.personV = new PersonV(file + "_Person.xml");
-		this.cart = new WarenkorbV(); 
 		this.ereignisV = new EreignisV(file + "_Ereignis.xml");
 	}
 	
@@ -51,7 +52,6 @@ public class ServiceV implements ServiceVInterface {
 		this.ereignisV.create(bestand, m, a, "Neuer Artikel");
 	}
 	
-	// Artikel mit festgelegter Stückzahl
 	/* (non-Javadoc)
 	 * @see com.shop.logic.ServiceVInterface#insertArtikel(int, java.lang.String, int, double, int)
 	 */
@@ -69,14 +69,6 @@ public class ServiceV implements ServiceVInterface {
 		return artikelV.getAllArtikel(); //shop.getAllArtikel();
 	}
 	
-	/* (non-Javadoc)
-	 * @see com.shop.logic.ServiceVInterface#sucheNachTitel(java.lang.String)
-	 */
-	@Override
-	public List<Artikel> sucheNachTitel(String titel) {
-		// einfach delegieren an meineBuecher
-		return null;//meineBuecher.sucheBuecher(titel); 
-	}
 
 	/* (non-Javadoc)
 	 * @see com.shop.logic.ServiceVInterface#savedata()

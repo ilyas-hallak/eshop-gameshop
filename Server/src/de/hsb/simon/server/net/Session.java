@@ -6,7 +6,7 @@ import de.root1.simon.annotation.SimonRemote;
 
 /**
  * @description Klasse fuer die Sitzung mit dem Cient 
- * @description verweist auf das SessionInterface
+ * verweist auf das SessionInterface
  */
 @SimonRemote(value={SessionInterface.class})
 public class Session implements SessionInterface {
@@ -24,7 +24,10 @@ public class Session implements SessionInterface {
 		this.client = client;
 		this.server = server;
 	}
-
+	
+	/**
+	 * @description Bei Verbindungsverlust wird die Session gelöscht
+	 */
 	@Override
 	public void unreferenced() {
 		server.removeSession(this);
@@ -35,10 +38,4 @@ public class Session implements SessionInterface {
 		return this.client;
 	}
 
-	@Override
-	public void sendMessage(String message) {
-		server.broadcastMessage(message);
-	}
-	
-	
 }

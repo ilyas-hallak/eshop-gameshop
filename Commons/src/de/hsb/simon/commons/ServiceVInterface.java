@@ -19,7 +19,8 @@ import com.shop.valueobjects.Rechnung;
 
 /**
  * @description ServiceVInterface - Interface auf dem alle Methodenaufrufe hinterlegt sind
- * @description welche auf Server-Seite in der logic implementiert sind
+ * welche auf Server-Seite in der logic implementiert sind
+ * und auf client-seite auf die serververbindung verweist
  *
  */
 public interface ServiceVInterface {
@@ -27,15 +28,12 @@ public interface ServiceVInterface {
 	public abstract void insertArtikel(String title, int bestand, double price, Mitarbeiter m)
 			throws ArtikelexistsException;
 
-	// Artikel mit festgelegter Stueckzahl
 	public abstract void insertArtikel(int nr, String title, int bestand,
 			double price, int mengeneinheit, Mitarbeiter m) throws ArtikelexistsException;
 	
 	public abstract void updateArtikel(int nr, String title, int bestand, double price, int menegeneinheit, Mitarbeiter m) throws ArtikelNotFoundException;
 	
 	public abstract List<Artikel> getAllArtikel();
-
-	public abstract List<Artikel> sucheNachTitel(String titel);
 
 	public abstract void savedata();
 

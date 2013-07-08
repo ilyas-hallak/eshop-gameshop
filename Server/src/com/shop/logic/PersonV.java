@@ -12,23 +12,26 @@ import com.shop.valueobjects.Kunde;
 import com.shop.valueobjects.Mitarbeiter;
 import com.shop.valueobjects.Person;
 
+/**
+ * @description Manager Klasse für Personen (Kunden, Mitarbeiter) 
+ */
 public class PersonV implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 6716462328018957529L;
 
 	private ArrayList<Person> personStock;
 	private FilePersistenceManager pm;
 	private String file;
 	
-	// empty constructor for Serializable
-	public PersonV() {
-		
-	}
+	/**
+	 * empty constructor for Serializable
+	 */
+	public PersonV() {}
 	
-	
+	/**
+	 * @description Erstellt den Persistenz Manager
+	 * @param file - XML Datei Name
+	 */
 	public PersonV(String file) {
 		this.personStock = new ArrayList<Person>();
 		pm = new FilePersistenceManager(file);
@@ -38,9 +41,9 @@ public class PersonV implements Serializable {
 	}
 	
 	/**
-	 * 
-	 * @param p
-	 * @return 
+	 * @description Allgemeine Login Methode für Personen
+	 * @param p - Person Objekt
+	 * @return Person Objekt (kann Kunde oder Mitarbeiter sein)
 	 * @throws PersonNotFoundException
 	 */
 	public Person login(Person p) throws PersonNotFoundException {		
@@ -55,8 +58,8 @@ public class PersonV implements Serializable {
 	}
 
 	/**
-	 * 
-	 * @param k
+	 * @description Eintragen eines Kunden
+	 * @param k - Kunden Objekt
 	 * @throws CustomerExistsExeption
 	 */
 	public void insertCustomer(Kunde k) throws CustomerExistsExeption {
@@ -68,11 +71,18 @@ public class PersonV implements Serializable {
 		}
 	}
 	
+	/**
+	 * @description Eintragen eines Mitarbeiter
+	 * @param m - Mitarbeiter Objekt
+	 */
 	public void insertMitarbeiter(Mitarbeiter m) {
 		m.setNr( this.personStock.size() + 1 );
 		this.personStock.add(m);
 	}
 	
+	/**
+	 * @description Personen in XML speichern 
+	 */
 	public void savePerson() {
 		try {
 			pm.openForWriting();
@@ -87,6 +97,10 @@ public class PersonV implements Serializable {
 		}
 	}
 
+	/**
+	 * @description Laden der Personen aus der XML Datei
+	 * @param file XML Dateiname
+	 */
 	public void loadPersonen(String file) {
 		try {
 			pm.openForReading();
@@ -95,8 +109,6 @@ public class PersonV implements Serializable {
 				this.personStock = ps;
 			}
 		} catch (Exception e) {
-			// TODO fix error messages
-			// System.out.println(e.getMessage());
 			// e.printStackTrace();
 		} finally {
 			pm.close();

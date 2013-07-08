@@ -13,10 +13,13 @@ import com.shop.persistence.FilePersistenceManager;
 import com.shop.valueobjects.Artikel;
 import com.shop.valueobjects.MassenArtikel;
 
+/**
+ * @description manager class for articles 
+ */
 public class ArtikelV {
 
 	/**
-	 * Persistenz-Schnittstelle, die f��r die Details des Dateizugriffs
+	 * Persistenz-Schnittstelle, die fuer die Details des Dateizugriffs
 	 * verantwortlich ist
 	 */
 	private FilePersistenceManager pm;
@@ -65,8 +68,7 @@ public class ArtikelV {
 				// create article nr: get last id from stock and increment
 				int nr = this.artikelStock.get(artikelStock.size() - 1).getNr() + 1;
 				
-				Artikel a = new Artikel(nr, title,
-						bestand, price);
+				Artikel a = new Artikel(nr, title, bestand, price);
 				this.artikelStock.add(a);
 				return a;
 			}
@@ -74,6 +76,15 @@ public class ArtikelV {
 		return null;
 	}
 	
+	/**
+	 * @description Erzeugt ein Massengut Artikel
+	 * @param title - Bezeichnung des Artikels
+	 * @param bestand - Bestandhöhe
+	 * @param price - Preis
+	 * @param mengeneinheit Einheit des Massengut Artikel
+	 * @return - Gibt den angelegten Artikel zurück
+	 * @throws ArtikelexistsException
+	 */
 	public Artikel insertArtikel(String title, int bestand, double price,
 			int mengeneinheit) throws ArtikelexistsException {
 		Iterator<Artikel> it = this.artikelStock.iterator();
@@ -96,7 +107,7 @@ public class ArtikelV {
 	}
 
 	/**
-	 * 
+	 * @description get all article in stock
 	 * @return return all article in a list
 	 */
 	public List<Artikel> getAllArtikel() {
@@ -104,8 +115,8 @@ public class ArtikelV {
 	}
 
 	/**
-	 * @param s
-	 *            search string can be a title or a number
+	 * @description find articles by string
+	 * @param s -  search string can be a title or a number
 	 * @return list with matched articles
 	 */
 	public List<Artikel> findArtikelByString(String s) {
@@ -113,6 +124,7 @@ public class ArtikelV {
 		Iterator<Artikel> i = artikelStock.iterator();
 		while (i.hasNext()) {
 			Artikel a = i.next();
+			// parse the nr from string
 			int nr;
 			try {
 				nr = Integer.parseInt(s);
@@ -127,37 +139,34 @@ public class ArtikelV {
 	}
 
 	/**
-	 * find a article by int
-	 * 
-	 * @param s
-	 * @return
+	 * find a article by integer number
+	 * @param s - artivle number
+	 * @return founded articles as a list
 	 */
 	public List<Artikel> findArtikelByString(int s) {
 		return this.findArtikelByString(new Integer(s).toString());
 	}
 
 	/**
-	 * 
-	 * @param nr
-	 *            article number
-	 * @param stock
-	 *            article stock count
+	 * @description raise the stock from a article
+	 * @param nr article number
+	 * @param stock  - article stock count to set
 	 * @return
 	 */
 	public boolean raiseStock(int nr, int stock) {
 		List<Artikel> a = this.findArtikelByString(nr);
 		if (a != null) {
+			// get first founded article
 			Artikel _a = a.get(0);
 			_a.setStock(stock + _a.getStock());
 			return true;
 		} else {
 			return false;
-			// throw new ArtikelNotFoundException();
 		}
 	}
 
 	/**
-	 * 
+	 * @description reduce the stock from an article
 	 * @param nr
 	 * @param stock
 	 * @throws ArtikelNotFoundException
@@ -165,6 +174,7 @@ public class ArtikelV {
 	public void reduceStock(int nr, int stock) throws ArtikelNotFoundException {
 		List<Artikel> a = this.findArtikelByString(nr);
 		if (a != null) {
+			// get the first article object
 			Artikel _a = a.get(0);
 			_a.setStock(_a.getStock() - stock);
 		} else {
@@ -173,7 +183,7 @@ public class ArtikelV {
 	}
 	
 	/**
-	 * 
+	 * @description  reduce the stock from articles in a hashmap
 	 * @param aMap
 	 * @throws ArtikelNotFoundException 
 	 */
@@ -195,7 +205,7 @@ public class ArtikelV {
 	}
 
 	/**
-	 * save all articles in a xml file with the file manager
+	 * @description save all articles in a xml file with the file manager
 	 */
 	public void saveArtikel() {
 		try {
@@ -210,7 +220,7 @@ public class ArtikelV {
 	}
 
 	/**
-	 * reads all articles from an xml file with the file manager
+	 * @description  reads all articles from an xml file with the file manager
 	 * 
 	 * @param file
 	 */
@@ -228,13 +238,13 @@ public class ArtikelV {
 	}
 	
 	/**
-	 * update artikel by nr
+	 * @description update artikel
 	 * @param nr
 	 * @param title
 	 * @param bestand
 	 * @param price
 	 * @param menegeneinheit
-	 * @return 
+	 * @return the updated artikel
 	 * @throws ArtikelNotFoundException 
 	 */
 	public Artikel updateArtikel(int nr, String title, int bestand, double price, int mengeneinheit) throws ArtikelNotFoundException {

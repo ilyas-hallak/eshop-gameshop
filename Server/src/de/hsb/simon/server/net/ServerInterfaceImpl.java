@@ -104,11 +104,6 @@ public class ServerInterfaceImpl implements ServerInterface {
 	}
 
 	@Override
-	public List<Artikel> sucheNachTitel(String titel) {
-		return this.shop.sucheNachTitel(titel);
-	}
-
-	@Override
 	public void savedata() {
 		this.shop.savedata();
 	}

@@ -43,11 +43,6 @@ public class ServiceVInterfaceImpl implements ServiceVInterface {
 	}
 
 	@Override
-	public List<Artikel> sucheNachTitel(String titel) {
-		return this.server.sucheNachTitel(titel);
-	}
-
-	@Override
 	public void savedata() {
 		this.server.savedata();
 	}
