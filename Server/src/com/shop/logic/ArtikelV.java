@@ -234,9 +234,10 @@ public class ArtikelV {
 	 * @param bestand
 	 * @param price
 	 * @param menegeneinheit
+	 * @return 
 	 * @throws ArtikelNotFoundException 
 	 */
-	public void updateArtikel(int nr, String title, int bestand, double price, int mengeneinheit) throws ArtikelNotFoundException {
+	public Artikel updateArtikel(int nr, String title, int bestand, double price, int mengeneinheit) throws ArtikelNotFoundException {
 		if(mengeneinheit != 0) {
 			MassenArtikel mA = (MassenArtikel) this.findArtikelByString(nr).get(0);
 			if(mA == null) {
@@ -247,6 +248,7 @@ public class ArtikelV {
 				mA.setTitle(title);
 				mA.setAnzahl(mengeneinheit);
 			}
+			return mA;
 		} else {
 			Artikel artikel = this.findArtikelByString(nr).get(0);
 			if(artikel == null) {
@@ -256,9 +258,8 @@ public class ArtikelV {
 				artikel.setStock(bestand);
 				artikel.setTitle(title);
 			}
+			return artikel;
 		}
-		
-		
 	}
-
+	
 }
