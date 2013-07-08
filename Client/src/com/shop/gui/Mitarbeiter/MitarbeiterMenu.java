@@ -12,6 +12,10 @@ import com.shop.gui.PanelManager;
 
 import de.hsb.simon.client.net.ServiceVInterfaceImpl;
 
+/**
+ * Mitarbeiter Menue mit Buttons um Artikel, Mitarbeiter oder Ereignisse Verwalten zu koennen
+ *
+ */
 public class MitarbeiterMenu extends JPanel {
 	
 	private JButton artikel;
@@ -20,6 +24,12 @@ public class MitarbeiterMenu extends JPanel {
 	
 	private PanelManager pManager;
 	
+	/**
+	 * Konstruktor MitarbeiterMenu
+	 * @param pm - Variabel um Panels auszutauschen zum aktualisieren
+	 * @param shop - zum Zugriff auf die ServiceV auf dem Server
+	 * @param frame - Benutzeroberflache uebergeben
+	 */
 	public MitarbeiterMenu(PanelManager pm, final ServiceVInterfaceImpl shop, final EShopClientGui frame) {
 		super();
 		
@@ -28,6 +38,7 @@ public class MitarbeiterMenu extends JPanel {
 		JPanel boxPanel = new JPanel();
 		boxPanel.setLayout(new BoxLayout(boxPanel, BoxLayout.Y_AXIS));
 		
+		/// BUTTON ARTIKEL
 		artikel = new JButton("Artikel");
 		artikel.addActionListener(new ActionListener() {
         	@Override
@@ -37,6 +48,7 @@ public class MitarbeiterMenu extends JPanel {
         	}
 		});
 		
+		//BUTTON MITARBEITER
 		mitarbeiter = new JButton("Mitarbeiter");
 		mitarbeiter.addActionListener(new ActionListener() {
         	@Override
@@ -45,6 +57,7 @@ public class MitarbeiterMenu extends JPanel {
         	}
 		});
 		
+		//BUTTON EREIGNISSE
 		ereignisse = new JButton("Ereignisse");
 		ereignisse.addActionListener(new ActionListener() {
         	@Override
@@ -53,10 +66,12 @@ public class MitarbeiterMenu extends JPanel {
         	}
 		});
 
+		//Buttons dem Boxpanel hinzufuegen
 		boxPanel.add(artikel);
 		boxPanel.add(mitarbeiter);
 		boxPanel.add(ereignisse);
 		
+		// Das Panel hinzufuegen
 		add(boxPanel);
 	}
 }

@@ -18,15 +18,28 @@ import com.shop.gui.EShopClientGui;
 
 import de.hsb.simon.client.net.ServiceVInterfaceImpl;
 
+/**
+ * Klasse fuer das ArtikelPanel mit der Artikelliste 
+ *
+ */
 public class ArtikelPanel extends JPanel {
+	/**
+	 * Konstruktor fuer die ArikelPanel Klasse
+	 * @param shop - Variable fuer den Zugriff auf den Server ueber die ServiceV
+	 * @param frame - Variable zur Uebergabe der Benutzer Oberfleache (ClientGui)
+	 * @param artikelInsertPanel - Artikeleinfuegen Panel mit uebergeben um schon vorhandene Artikel Informationen direkt in dessen Felder einzuschreiben
+	 * wenn ein Artikel in der Artikelliste markiert wird
+	 */
 	public ArtikelPanel(ServiceVInterfaceImpl shop, EShopClientGui frame, JPanel artikelInsertPanel) {
 		super(new GridBagLayout());
 		// add(new JLabel("Artikelliste"));
 		
+		// neue Tabelle mit allen angelegten Artikeln aus dem shop erzeugen
 		JTable table = new JTable( new ArtikelTableModel(shop.getAllArtikel()) );
 
 		table.setAutoCreateRowSorter(true);
 		
+		// mackierten Artikel aus der Artikelliste an das ArtikelInsertPanel uebergeben
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.getSelectionModel().addListSelectionListener(new MySelectionListener(table, artikelInsertPanel));
 		
@@ -34,6 +47,7 @@ public class ArtikelPanel extends JPanel {
 	}
 }
 
+// mackierten Artikel aus der Artikeltabelle auslesen 
 class MySelectionListener implements ListSelectionListener {
 
 	JTable table;
@@ -105,6 +119,12 @@ class MySelectionListener implements ListSelectionListener {
        
         
     }
+
+	/**
+	  * Konstruktor des MySelectionListener
+	  * @param table - Artikeltabelle um auslesen zu koennen
+	  * @param artikelInsertPanel - Panel um Artikel in shop einzufuegen um die eingelesenen Daten an dieses zu ubergeben
+	  */
 	public MySelectionListener(JTable table, JPanel artikelInsertPanel) {
 		this.table = table;
 		this.panel = artikelInsertPanel;

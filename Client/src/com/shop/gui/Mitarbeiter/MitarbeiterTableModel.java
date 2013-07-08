@@ -8,6 +8,10 @@ import javax.swing.table.DefaultTableModel;
 import com.shop.valueobjects.Mitarbeiter;
 import com.shop.valueobjects.Person;
 
+/**
+ * Klasse fuer den Inhalt der Mitarbeiter Tabelle
+ *
+ */
 public class MitarbeiterTableModel extends DefaultTableModel {
 	
 	private Vector<String> columnNames;
@@ -16,6 +20,7 @@ public class MitarbeiterTableModel extends DefaultTableModel {
 	public MitarbeiterTableModel(ArrayList<Person> arrayList) {
 		super();
 		
+		//Bezeichnungen in der Mitarbeiter Tabelle
 		columnNames = new Vector<String>();
 		columnNames.add("Nummer");
 		columnNames.add("Name");
@@ -26,6 +31,7 @@ public class MitarbeiterTableModel extends DefaultTableModel {
 		updateDataVector(arrayList);
 	}
 	
+	// Daten der Mitarbeiter auslesen und in Tabelle einschreiben
 	public void updateDataVector(ArrayList<Person> mitarbeiter) {
 		data.clear();
 		
@@ -41,6 +47,7 @@ public class MitarbeiterTableModel extends DefaultTableModel {
 			}
 		}
 		
+		//einschreiben der Daten und Beschriftungen in Tabelle
 		setDataVector(data, columnNames);
 	}
 }

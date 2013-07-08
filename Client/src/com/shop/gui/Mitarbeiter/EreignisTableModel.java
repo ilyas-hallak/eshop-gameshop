@@ -9,15 +9,24 @@ import javax.swing.table.DefaultTableModel;
 
 import com.shop.valueobjects.Ereignis;
 
+/**
+ * Klasse fuer die Ereignis Tabelle
+ *
+ */
 public class EreignisTableModel extends DefaultTableModel {
 
 
 	private Vector<String> columnNames;
 	private Vector<Vector<String>> data;
 	
+	/**
+	 * Konstruktor der KLasse EreignisTableModel
+	 * @param ereignisse - Uebergabe der Variable um die erstellten Ereignisse nutzen zu koennen und der Tabelle hinzuzufuegen
+	 */
 	public EreignisTableModel(ArrayList<Ereignis> ereignisse) {
 		super();
 		
+		// Beschriftung der Tabellenfelder
 		columnNames = new Vector<String>();
 		columnNames.add("Nachricht");
 		columnNames.add("Artikel");
@@ -26,13 +35,19 @@ public class EreignisTableModel extends DefaultTableModel {
 		columnNames.add("Datum");
 		columnNames.add("Person");
 
+		// Ereignisse der Tabelle updaten
 		data = new Vector<Vector<String>>();
 		updateDataVector(ereignisse);
 	}
 	
+	/**
+	 * updateDataVector - Methode um Ereignisse auszulesen und hinzuzufuegen
+	 * @param ereignisse
+	 */
 	public void updateDataVector(ArrayList<Ereignis> ereignisse) {
 		data.clear();
 		
+		// auslesen der Ereignisse und hinzufuegen der Parameter (Art des Ereignisses, Titel des Artikels, Person, Anzahl, Datum)
 		for (Ereignis e: ereignisse) {
 			Vector<String> mVector = new Vector<String>();
 				mVector.add(e.getMessage());
@@ -43,6 +58,7 @@ public class EreignisTableModel extends DefaultTableModel {
 				mVector.add(" - ");
 			}
 			
+			// Person zu einem Ereignis zufuegen, wenn vorhanden
 			if(e.getPerson() != null) {
 				mVector.add(e.getPerson().geteMail());
 			} else {
@@ -62,10 +78,11 @@ public class EreignisTableModel extends DefaultTableModel {
 				mVector.add(" - ");
 			}
 
-
+			// Daten (Parameter) dem Vector zufuegen
 			data.add(mVector);
 		}
 		
+		// Daten und Bezeichnungen der Tabelle hinzufuegen
 		setDataVector(data, columnNames);
 	}
 }
