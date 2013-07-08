@@ -57,12 +57,15 @@ public class ArtikelV {
 			Artikel article = (Artikel) it.next();
 			if (article.getTitle() == title) {
 				// wenn er bereits vorhanden ist die Exception schmeissen
-				throw new ArtikelexistsException(title + " - in 'einfuegen()'");
+				throw new ArtikelexistsException(article);
 			}
 			// wenn er nicht vorhanden ist Artikel-Objekt erzeugen und
-			// hinzuf��gen
+			// hinzufügen
 			else {
-				Artikel a = new Artikel(this.artikelStock.size() + 1, title,
+				// create article nr: get last id from stock and increment
+				int nr = this.artikelStock.get(artikelStock.size() - 1).getNr() + 1;
+				
+				Artikel a = new Artikel(nr, title,
 						bestand, price);
 				this.artikelStock.add(a);
 				return a;
@@ -78,7 +81,7 @@ public class ArtikelV {
 			Artikel article = (Artikel) it.next();
 			if (article.getTitle() == title) {
 				// wenn er bereits vorhanden ist die Exception schmeissen
-				throw new ArtikelexistsException(title + " schon vorhanden");
+				throw new ArtikelexistsException(article);
 			}
 			// wenn er nicht vorhanden ist Artikel-Objekt erzeugen und
 			// hinzufügen
@@ -201,8 +204,6 @@ public class ArtikelV {
 				pm.save(this.artikelStock);
 			}
 		} catch (IOException e) {
-			// e.printStackTrace();
-			System.out.println("hallo");
 		} finally {
 			pm.close();
 		}
@@ -235,16 +236,28 @@ public class ArtikelV {
 	 * @param menegeneinheit
 	 * @throws ArtikelNotFoundException 
 	 */
-	public void updateArtikel(int nr, String title, int bestand, double price,
-			int menegeneinheit) throws ArtikelNotFoundException {
-		Artikel artikel = this.findArtikelByString(nr).get(0);
-		if(artikel == null) {
-			throw new ArtikelNotFoundException(artikel);
+	public void updateArtikel(int nr, String title, int bestand, double price, int mengeneinheit) throws ArtikelNotFoundException {
+		if(mengeneinheit != 0) {
+			MassenArtikel mA = (MassenArtikel) this.findArtikelByString(nr).get(0);
+			if(mA == null) {
+				throw new ArtikelNotFoundException(mA);
+			} else {
+				mA.setPrice(price);
+				mA.setStock(bestand);
+				mA.setTitle(title);
+				mA.setAnzahl(mengeneinheit);
+			}
 		} else {
-			artikel.setPrice(price);
-			artikel.setStock(bestand);
-			artikel.setTitle(title);
+			Artikel artikel = this.findArtikelByString(nr).get(0);
+			if(artikel == null) {
+				throw new ArtikelNotFoundException(artikel);
+			} else {
+				artikel.setPrice(price);
+				artikel.setStock(bestand);
+				artikel.setTitle(title);
+			}
 		}
+		
 		
 	}
 

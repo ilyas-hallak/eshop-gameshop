@@ -9,6 +9,7 @@ import com.shop.exceptions.ArtikelNotFoundException;
 import com.shop.exceptions.ArtikelexistsException;
 import com.shop.exceptions.BestandZuKleinException;
 import com.shop.exceptions.CustomerExistsExeption;
+import com.shop.exceptions.MassenArtikelAnzahlException;
 import com.shop.exceptions.PersonNotFoundException;
 import com.shop.valueobjects.Artikel;
 import com.shop.valueobjects.Ereignis;
@@ -132,7 +133,7 @@ public class ServiceV implements ServiceVInterface {
 	 * @see com.shop.logic.ServiceVInterface#addArtikel(com.shop.valueobjects.Artikel, int)
 	 */
 	@Override
-	public Kunde addArtikelToCart(Artikel a, int count, Kunde k) throws BestandZuKleinException {
+	public Kunde addArtikelToCart(Artikel a, int count, Kunde k) throws BestandZuKleinException, MassenArtikelAnzahlException {
 		//this.cart.addArtikel(a, count);
 		Artikel tmpArtikel = this.artikelV.findArtikelByString(a.getNr()).get(0);
 		if(tmpArtikel.getStock() < count) {
@@ -146,8 +147,9 @@ public class ServiceV implements ServiceVInterface {
 	 * @see com.shop.logic.ServiceVInterface#removeArtikelFromCart(com.shop.valueobjects.Artikel)
 	 */
 	@Override
-	public void removeArtikelFromCart(Artikel a, Kunde k) {
+	public Kunde removeArtikelFromCart(Artikel a, Kunde k) {
 		k.getCart().removeArtikel(a);
+		return k;
 	}
 
 	/* (non-Javadoc)

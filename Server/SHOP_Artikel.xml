@@ -4,192 +4,56 @@
   <void method="add">
    <object class="com.shop.valueobjects.Artikel">
     <void property="nr">
-     <int>4</int>
+     <int>2</int>
     </void>
     <void property="price">
-     <double>4.0</double>
+     <double>10.0</double>
     </void>
     <void property="stock">
-     <int>-1</int>
+     <int>50</int>
     </void>
     <void property="title">
-     <string>4</string>
+     <string>Darksiders 1</string>
     </void>
    </object>
   </void>
   <void method="add">
    <object class="com.shop.valueobjects.Artikel">
     <void property="nr">
-     <int>5</int>
+     <int>3</int>
     </void>
     <void property="price">
-     <double>2.0</double>
+     <double>25.0</double>
     </void>
     <void property="stock">
-     <int>195</int>
+     <int>20</int>
     </void>
     <void property="title">
-     <string>test</string>
+     <string>Darksiders 2</string>
     </void>
    </object>
   </void>
   <void method="add">
-   <object class="com.shop.valueobjects.Artikel">
-    <void property="nr">
-     <int>5</int>
-    </void>
-    <void property="price">
-     <double>49.0</double>
-    </void>
-    <void property="stock">
-     <int>10</int>
-    </void>
-    <void property="title">
-     <string>bioshock </string>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="com.shop.valueobjects.Artikel">
-    <void property="nr">
-     <int>6</int>
-    </void>
-    <void property="price">
-     <double>5.0</double>
-    </void>
-    <void property="stock">
-     <int>5</int>
-    </void>
-    <void property="title">
-     <string>test</string>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="com.shop.valueobjects.Artikel">
-    <void property="nr">
-     <int>5</int>
-    </void>
-    <void property="price">
-     <double>5.0</double>
-    </void>
-    <void property="stock">
-     <int>5</int>
-    </void>
-    <void property="title">
-     <string>test</string>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="com.shop.valueobjects.Artikel">
-    <void property="nr">
-     <int>5</int>
-    </void>
-    <void property="price">
-     <double>5.0</double>
-    </void>
-    <void property="stock">
-     <int>5</int>
-    </void>
-    <void property="title">
-     <string>test</string>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="com.shop.valueobjects.Artikel">
-    <void property="nr">
-     <int>7</int>
-    </void>
-    <void property="price">
-     <double>4.0</double>
-    </void>
-    <void property="stock">
-     <int>4</int>
-    </void>
-    <void property="title">
-     <string>hallo</string>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="com.shop.valueobjects.Artikel">
-    <void property="nr">
-     <int>8</int>
-    </void>
-    <void property="price">
-     <double>45.0</double>
-    </void>
-    <void property="stock">
-     <int>94</int>
-    </void>
-    <void property="title">
-     <string>last of us</string>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="com.shop.valueobjects.Artikel">
-    <void property="nr">
-     <int>9</int>
-    </void>
-    <void property="price">
-     <double>5.0</double>
-    </void>
-    <void property="stock">
-     <int>5</int>
-    </void>
-    <void property="title">
-     <string>inception</string>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="com.shop.valueobjects.Artikel">
-    <void property="nr">
-     <int>10</int>
-    </void>
-    <void property="price">
-     <double>3.0</double>
-    </void>
-    <void property="stock">
-     <int>84</int>
-    </void>
-    <void property="title">
-     <string>banane</string>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="com.shop.valueobjects.Artikel">
-    <void property="nr">
-     <int>11</int>
-    </void>
-    <void property="price">
-     <double>5.0</double>
-    </void>
-    <void property="stock">
-     <int>92</int>
-    </void>
-    <void property="title">
-     <string>pulp fiction</string>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="com.shop.valueobjects.Artikel">
-    <void property="nr">
-     <int>12</int>
-    </void>
-    <void property="price">
-     <double>5.0</double>
-    </void>
-    <void property="stock">
-     <int>12</int>
-    </void>
-    <void property="title">
-     <string>massengut 1</string>
+   <object class="com.shop.valueobjects.MassenArtikel" id="MassenArtikel0">
+    <void class="com.shop.valueobjects.MassenArtikel" method="getField">
+     <string>anzahl</string>
+     <void method="set">
+      <object idref="MassenArtikel0">
+       <void property="nr">
+        <int>4</int>
+       </void>
+       <void property="price">
+        <double>12.0</double>
+       </void>
+       <void property="stock">
+        <int>200</int>
+       </void>
+       <void property="title">
+        <string>Poster</string>
+       </void>
+      </object>
+      <int>3</int>
+     </void>
     </void>
    </object>
   </void>

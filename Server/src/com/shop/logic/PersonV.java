@@ -51,7 +51,7 @@ public class PersonV implements Serializable {
 				return person;
 			}
 		}
-		throw new PersonNotFoundException(p.geteMail());
+		throw new PersonNotFoundException(p);
 	}
 
 	/**
@@ -64,7 +64,7 @@ public class PersonV implements Serializable {
 			this.personStock.add(k);
 			this.savePerson();
 		} else {
-			throw new CustomerExistsExeption(k.geteMail());
+			throw new CustomerExistsExeption(k);
 		}
 	}
 	
