@@ -3,8 +3,13 @@ package com.shop.valueobjects;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 
+ * @description Klasse Ereignis - enthaelt die Werte eines Ereignisses mit getter und setter
+ */
 public class Ereignis implements Serializable {
 	
+	//ATTRIBUTE der Klasse
 	private static final long serialVersionUID = -3761434968520023786L;
 	private Date date;
 	private int count;
@@ -12,8 +17,16 @@ public class Ereignis implements Serializable {
 	private Artikel article;
 	private String message;
 	
+	// leerer Konstruktor fuer die Persistenz
 	public Ereignis() {}
 	
+	/**
+	 * @description Konstruktor zum erzeugen eines Ereignisses
+	 * @param count - anzahl des artikels
+	 * @param p - Die Person die eingeloggt ist und das Ereignis erzeugt
+	 * @param a - der betroffende Artikel
+	 * @param message - Beschriftung welche Art von Ereignis passiert ist
+	 */
 	public Ereignis(int count, Person p, Artikel a, String message) {
 		this.date = new Date();
 		this.count = count;
@@ -23,7 +36,7 @@ public class Ereignis implements Serializable {
 	}
 
 	/**
-	 * @return the date
+	 * @return the date 
 	 */
 	public Date getDate() {
 		return date;

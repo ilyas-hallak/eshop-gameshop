@@ -2,13 +2,14 @@ package com.shop.valueobjects;
 
 import java.io.Serializable;
 
+/**
+ *@description Klasse Artikel - enthaelt die Werte eines Artikels um diese oder Massengutartikel zu erzeugen mit getter und setter.
+ */
 public class Artikel implements Serializable {
 
 	public static int maxNumber = 0;
 	
-	/**
-	 * 
-	 */
+	// Attribute fuer die Klasse
 	private static final long serialVersionUID = -3756287705724091604L;
 	private String title;
 	private double price;
@@ -32,6 +33,7 @@ public class Artikel implements Serializable {
 	public Artikel() {
 	}
 	
+	// KONSTRUKTOR ARTIKEL
 	public Artikel(int nr, String title,int stock, double price2) {
 		this.nr = nr;
 		if (nr > maxNumber)
@@ -41,6 +43,7 @@ public class Artikel implements Serializable {
 		this.price = price2;
 	}
 
+	// KONSTRUKTOR MASSENGUTS
 	public Artikel(String title, int stock, double price) {
 		this(++maxNumber, title, stock, price);
 	}

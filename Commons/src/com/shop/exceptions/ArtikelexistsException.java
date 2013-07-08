@@ -9,7 +9,7 @@ import com.shop.valueobjects.Artikel;
 public class ArtikelexistsException extends Exception {
 
 /**
- * @description Konstruktor der Klasse
+ * @description Konstruktor der Klasse ArtikelexistsException
  * @param a - Variable des Artikels bei dem ein Fehler aufgetreten ist um diesen in der Fehlermeldung zu verwenden
  */
 	public ArtikelexistsException(Artikel a) {

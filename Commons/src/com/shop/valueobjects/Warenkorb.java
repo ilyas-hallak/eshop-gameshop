@@ -8,16 +8,16 @@ import java.util.Map;
 
 import com.shop.exceptions.MassenArtikelAnzahlException;
 
+/**
+ * @description Klasse Warenkorb - enthaelt die Werte des Warenkorbs mit getter und setter
+ */
 public class Warenkorb implements Serializable {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -9198575105132720166L;
-	/**
-	 * Warenkorb 1:n Artikel => Artikel Liste im Warenkorb
-	 * Artikel 1:1 Anzahl => Hashtable <Artikel, Anzahl>
-	 */
+
+
+	// Number = Anzahl der Artikel im Warenkorb
 	private Map<Artikel, Number> warenkorb = new HashMap<Artikel, Number>();
 	
 	/**
@@ -35,8 +35,8 @@ public class Warenkorb implements Serializable {
 	}
 
 	/**
-	 * Adds an article to the cart, if the article exists, 
-	 * the count will be increment
+	 * @description Adds an article to the cart, if the article exists, 
+	 * @description the count will be increment
 	 * @param a Article Object
 	 * @param count of Articles
 	 * @throws MassenArtikelAnzahlException 
@@ -62,7 +62,7 @@ public class Warenkorb implements Serializable {
 	}
 	
 	/**
-	 * removes an article from cart if these exists
+	 * @description removes an article from cart if these exists
 	 * @param a article object
 	 */
 	public void removeArtikel(Artikel a) {
@@ -76,7 +76,7 @@ public class Warenkorb implements Serializable {
 	}
 	
 	/**
-	 * get all article as map
+	 * @description get all article as map
 	 * @return
 	 */
 	public Map<Artikel, Number> getAllArtikel() {
@@ -86,7 +86,7 @@ public class Warenkorb implements Serializable {
 	/**
 	 * creates an 'rechnungs' object
 	 * @param k Kunde
-	 * @return Rechung object
+	 * @return r Rechung object
 	 */
 	public Rechnung buy(Kunde k) {
 		Rechnung r = new Rechnung();
@@ -95,7 +95,7 @@ public class Warenkorb implements Serializable {
 		r.setKunde(k);
 		return r;
 	}
-	
+	// Warenkorb leeren
 	public void complete() {
 		this.warenkorb.clear();
 	}

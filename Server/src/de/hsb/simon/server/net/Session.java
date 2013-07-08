@@ -6,7 +6,7 @@ import de.root1.simon.annotation.SimonRemote;
 
 /**
  * @description Klasse fuer die Sitzung mit dem Cient 
- * verweist auf das SessionInterface
+ * @description verweist auf das SessionInterface
  */
 @SimonRemote(value={SessionInterface.class})
 public class Session implements SessionInterface {
@@ -36,6 +36,12 @@ public class Session implements SessionInterface {
 	@Override
 	public ClientInterface getClient() {
 		return this.client;
+	}
+
+	@Override
+	public void sendMessage(String msg) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

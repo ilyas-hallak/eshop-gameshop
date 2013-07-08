@@ -2,12 +2,13 @@ package com.shop.valueobjects;
 
 import java.io.Serializable;
 
+/**
+ * @description Klasse Person - enthaelt die Werte einer Person allgemein (Oberklasse), mit getter und setter
+ */
 public class Person implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 936335457255744308L;
+	// ATTRIBUTE der Klasse
+	private static final long serialVersionUID = 936335457255744308L; // SerialNummer generiert
 	protected int nr;
 	protected String name;
 	protected String password;
@@ -18,6 +19,11 @@ public class Person implements Serializable {
 		
 	}
 	
+	/**
+	 * @description Konstruktor fuer Person
+	 * @param eMail
+	 * @param password
+	 */
 	public Person(String eMail, String password) {
 		this.eMail = eMail;
 		this.password = password;
