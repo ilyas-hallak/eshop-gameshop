@@ -9,7 +9,7 @@ import javax.swing.JPanel;
  * Klasse fuer den Nachrichten-Bereich
  * hier werden die jeweiligen Nachrichten der Exceptions ausgegeben
  * erbt von JPanel
- * @param msg - Variabel für die Exception Nachricht
+ * @param msg - Variabel fuer die Exception Nachricht
  *
  */
 public class MessagePanel extends JPanel {

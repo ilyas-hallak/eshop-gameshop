@@ -11,7 +11,7 @@ public class EreignisPanel extends JPanel {
 	
 	/**
 	 * Konstruktor fuer das Ereignis Panel
-	 * @param shop - Variable um über die ServiceV auf den shop auf dem Server zugreifen zu koennen
+	 * @param shop - Variable um ueber die ServiceV auf den shop auf dem Server zugreifen zu koennen
 	 */
 	public EreignisPanel(final ServiceVInterfaceImpl shop) {
 		super();

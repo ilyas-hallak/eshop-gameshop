@@ -51,7 +51,7 @@ public class ServerInterfaceImpl implements ServerInterface {
 	
 	public void stopServer() {
 		if(registry != null) {
-			// bindung von der registry lösen
+			// bindung von der registry loesen
 			registry.unbind("server");
 			
 			// registry stoppen
@@ -66,7 +66,7 @@ public class ServerInterfaceImpl implements ServerInterface {
 		
 		// authentifizieren
 		// ...
-		// session für diesen client erstellen
+		// session fuer diesen client erstellen
 		Session session = new Session(client, this);
 		
 		// session eintragen
@@ -75,7 +75,7 @@ public class ServerInterfaceImpl implements ServerInterface {
 		this.broadcastMessage("Benutzer: " + session.getClient().toString() + " hat sich angemeldet");
 
 		
-		// session zurückerstellen
+		// session zurueckerstellen
 		
 		return session;
 	}

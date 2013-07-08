@@ -13,7 +13,7 @@ import com.shop.valueobjects.Ereignis;
 import com.shop.valueobjects.Person;
 
 /**
- * @description Manager Klasse für Eriegnisse 
+ * @description Manager Klasse fuer Eriegnisse 
  */
 public class EreignisV implements Serializable {
 
@@ -22,7 +22,7 @@ public class EreignisV implements Serializable {
 	private ArrayList<Ereignis> actionList;
 	
 	/**
-	 * Initialisiert den Manager und lädt alle Ereignisse
+	 * Initialisiert den Manager und laedt alle Ereignisse
 	 * @param file - Dateiname der XML Datei
 	 */
 	public EreignisV(String file) {
@@ -53,7 +53,7 @@ public class EreignisV implements Serializable {
 	}
 	
 	/**
-	 * Lädt alle Ereignisse aus der XML
+	 * Laedt alle Ereignisse aus der XML
 	 */
 	public void loadEreignisse() {
 		try {

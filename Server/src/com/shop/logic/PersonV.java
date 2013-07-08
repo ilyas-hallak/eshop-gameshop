@@ -13,7 +13,7 @@ import com.shop.valueobjects.Mitarbeiter;
 import com.shop.valueobjects.Person;
 
 /**
- * @description Manager Klasse für Personen (Kunden, Mitarbeiter) 
+ * @description Manager Klasse fuer Personen (Kunden, Mitarbeiter) 
  */
 public class PersonV implements Serializable {
 	
@@ -41,7 +41,7 @@ public class PersonV implements Serializable {
 	}
 	
 	/**
-	 * @description Allgemeine Login Methode für Personen
+	 * @description Allgemeine Login Methode fuer Personen
 	 * @param p - Person Objekt
 	 * @return Person Objekt (kann Kunde oder Mitarbeiter sein)
 	 * @throws PersonNotFoundException

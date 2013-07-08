@@ -23,7 +23,7 @@ import com.shop.valueobjects.Person;
 import de.hsb.simon.client.net.ServiceVInterfaceImpl;
 
 /**
-* @description Klasse für die Definierung des Login-Panels erbt von JPanel
+* @description Klasse fuer die Definierung des Login-Panels erbt von JPanel
 *
 */
 public class LoginPanel extends JPanel {
@@ -93,7 +93,7 @@ public class LoginPanel extends JPanel {
         	/**
         	* @description erzeugen eines Person-Objekts beim betaetigen des Login Buttons
         	* und versuchen diese Person auf dem Server einzuloggen (ggf. Exception bei falschen Daten)
-        	* ueberprüfen ob Kunde oder Mitarbeiter und jweiliges Menue ausgeben mit Hilfe des Panel-Managers
+        	* ueberpruefen ob Kunde oder Mitarbeiter und jweiliges Menue ausgeben mit Hilfe des Panel-Managers
         	*/
         	@Override
 			public void actionPerformed(ActionEvent e) {

@@ -42,7 +42,7 @@ public class FilePersistenceManager {
 	}
 	
 	/**
-	 * @description Öffnet die XML zum lesen
+	 * @description Oeffnet die XML zum lesen
 	 * @throws FileNotFoundException
 	 */
 	public void openForReading() throws FileNotFoundException {

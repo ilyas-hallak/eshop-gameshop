@@ -69,7 +69,7 @@ public class RechnungPanel extends JPanel {
 		Kunde k = (Kunde)frame.getPerson();
 		k.getCart().complete();
 		
-		// zurück button
+		// zurueck button
 		this.backBtn = new JButton("Zurueck");
 		backBtn.addActionListener(new ActionListener() {
         	@Override

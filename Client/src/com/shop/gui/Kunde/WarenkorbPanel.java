@@ -24,7 +24,7 @@ import com.shop.valueobjects.Kunde;
 import de.hsb.simon.client.net.ServiceVInterfaceImpl;
 
 /**
-* @description Klasse für Warenkorb Bereich, erbt von JPanel
+* @description Klasse fuer Warenkorb Bereich, erbt von JPanel
 */
 public class WarenkorbPanel extends JPanel {
 

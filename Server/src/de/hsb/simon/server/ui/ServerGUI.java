@@ -43,7 +43,7 @@ public class ServerGUI extends JFrame {
 		// Initialisiere GUI
 		this.initComponents();
 
-		// Füge Listener hinzu
+		// Fuege Listener hinzu
 		this.initListeners();
 
 		// Setze Frame sichtbar
@@ -70,7 +70,7 @@ public class ServerGUI extends JFrame {
 	}
 
 	/**
-	 * Initialisiert die Listener für einige Komponenten
+	 * Initialisiert die Listener fuer einige Komponenten
 	 */
 	private void initListeners() {
 		// Listener zum Starten des Servers

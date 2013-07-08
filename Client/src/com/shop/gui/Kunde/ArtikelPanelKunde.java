@@ -144,7 +144,7 @@ public class ArtikelPanelKunde extends JPanel {
 						 count = Integer.parseInt(stockField.getText().trim());
 					}
 
-					// warenkorb hinzufügen
+					// warenkorb hinzufuegen
 					// kunden objekt mit neuen daten refreshen
 					Kunde k = shop.addArtikelToCart(artikel, count, (Kunde)frame.getPerson());
 					frame.setPerson(k);

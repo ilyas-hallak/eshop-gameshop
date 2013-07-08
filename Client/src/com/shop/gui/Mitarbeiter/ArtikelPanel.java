@@ -114,7 +114,7 @@ class MySelectionListener implements ListSelectionListener {
             }
             if(components[i].getClass().getName().toString().equals("javax.swing.JLabel")) {
             	JLabel label = (JLabel) components[i];
-	        	// falls kein massengut artikel ausgewählt wurder, soll das label ausgeblendet werden
+	        	// falls kein massengut artikel ausgewaehlt wurder, soll das label ausgeblendet werden
 	            if(table.getValueAt(row, 4) == "-" && label.getText() == "Massengutartikel") {
 	            	label.setVisible(false);
 	            } else {
@@ -140,7 +140,7 @@ class MySelectionListener implements ListSelectionListener {
                         	check.setVisible(false);
                         }
                     }
-                	// textfeld füllen, ansonsten leer lassen und ausblenden
+                	// textfeld fuellen, ansonsten leer lassen und ausblenden
                 	if(innerComps[j].getClass().getName().toString().equals("javax.swing.JTextField")) {
                 		 JTextField innerField = (JTextField) innerComps[j];
                 		 if(table.getValueAt(row, 4) != "-") {

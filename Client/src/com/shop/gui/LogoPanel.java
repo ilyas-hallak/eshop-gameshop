@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 /**
- * Klasse fuer den Logo-Kopf, bleibt immer an gleicher Stelle mit gleicher Größe 
+ * Klasse fuer den Logo-Kopf, bleibt immer an gleicher Stelle mit gleicher Groesse 
  *
  */
 public class LogoPanel extends JPanel {

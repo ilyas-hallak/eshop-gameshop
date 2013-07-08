@@ -40,7 +40,7 @@ public class ArtikelHistoryPanel extends JPanel {
 		
 		ArrayList<Ereignis> ereignisse = shop.getAllEreignisse();
 		
-        // aktuelles datum minus die ausgewählten tage
+        // aktuelles datum minus die ausgewaehlten tage
 		Date now = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(now);
@@ -93,7 +93,7 @@ public class ArtikelHistoryPanel extends JPanel {
 		cs.gridx = 0;
         cs.gridy = 0;
 		
-		// Fügt dem Dataset die Serie zu!
+		// Fuegt dem Dataset die Serie zu!
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		dataset.addSeries(series);
 		// Generiert den Graphen

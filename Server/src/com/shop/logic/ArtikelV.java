@@ -54,7 +54,7 @@ public class ArtikelV {
 	 */
 	public Artikel insertArtikel(String title, int bestand, double price)
 			throws ArtikelexistsException {
-		// überprüfen ob der titel schon im Artikelbestand vorhanden ist
+		// ueberpruefen ob der titel schon im Artikelbestand vorhanden ist
 		Iterator<Artikel> it = this.artikelStock.iterator();
 		while (it.hasNext()) {
 			Artikel article = (Artikel) it.next();
@@ -63,7 +63,7 @@ public class ArtikelV {
 				throw new ArtikelexistsException(article);
 			}
 			// wenn er nicht vorhanden ist Artikel-Objekt erzeugen und
-			// hinzufügen
+			// hinzufuegen
 			else {
 				// create article nr: get last id from stock and increment
 				int nr = this.artikelStock.get(artikelStock.size() - 1).getNr() + 1;
@@ -79,10 +79,10 @@ public class ArtikelV {
 	/**
 	 * @description Erzeugt ein Massengut Artikel
 	 * @param title - Bezeichnung des Artikels
-	 * @param bestand - Bestandhöhe
+	 * @param bestand - Bestandhoehe
 	 * @param price - Preis
 	 * @param mengeneinheit Einheit des Massengut Artikel
-	 * @return - Gibt den angelegten Artikel zurück
+	 * @return - Gibt den angelegten Artikel zurueck
 	 * @throws ArtikelexistsException
 	 */
 	public Artikel insertArtikel(String title, int bestand, double price,
@@ -95,7 +95,7 @@ public class ArtikelV {
 				throw new ArtikelexistsException(article);
 			}
 			// wenn er nicht vorhanden ist Artikel-Objekt erzeugen und
-			// hinzufügen
+			// hinzufuegen
 			else {
 				Artikel a = new MassenArtikel(this.artikelStock.size() + 1, title,
 						bestand, price, mengeneinheit);

@@ -52,7 +52,7 @@ public class ArtikelTableModel extends DefaultTableModel {
 	
 	public void updateDataMap(Map<Artikel, Number> warenkorb) {
 		data.clear();
-		// Warenkorb durchgehen und Tabelle zufügen
+		// Warenkorb durchgehen und Tabelle zufuegen
 		Iterator it = warenkorb.entrySet().iterator();
 		while (it.hasNext()) {
 			Map.Entry<Artikel, Number> pair = (Map.Entry<Artikel, Number>) it.next();

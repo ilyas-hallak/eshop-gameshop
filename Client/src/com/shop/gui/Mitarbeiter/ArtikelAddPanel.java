@@ -89,7 +89,7 @@ public class ArtikelAddPanel extends JPanel {
         cs.gridy = 2;
         this.add(stockField, cs);
         
-        // dem panel einen speichern button hinzufügen
+        // dem panel einen speichern button hinzufuegen
         JButton saveBtn = new JButton("Speichern");
         saveBtn.setVisible(false);
 		cs.gridx = 0;

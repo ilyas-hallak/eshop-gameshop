@@ -26,7 +26,7 @@ public class Session implements SessionInterface {
 	}
 	
 	/**
-	 * @description Bei Verbindungsverlust wird die Session gelöscht
+	 * @description Bei Verbindungsverlust wird die Session geloescht
 	 */
 	@Override
 	public void unreferenced() {

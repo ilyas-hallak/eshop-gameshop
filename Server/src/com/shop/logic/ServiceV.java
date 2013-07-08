@@ -33,7 +33,7 @@ public class ServiceV implements ServiceVInterface {
 	
 	/**
 	 * @description Initialisiert alle unteren Klassen Manager Klassen
-	 * @param file präfix für XML Dateien
+	 * @param file praefix fuer XML Dateien
 	 * @throws IOException
 	 */
 	public ServiceV(String file) throws IOException {
@@ -101,7 +101,7 @@ public class ServiceV implements ServiceVInterface {
 	@Override
 	public boolean raiseStock(int nr, int stock, Mitarbeiter m) {
 		Artikel a = this.artikelV.findArtikelByString(nr).get(0);
-		this.ereignisV.create(stock, m, a, "Bestand erhöht");
+		this.ereignisV.create(stock, m, a, "Bestand erhoeht");
 		return artikelV.raiseStock(nr, stock);
 	}
 	

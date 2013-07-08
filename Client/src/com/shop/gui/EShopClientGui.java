@@ -21,7 +21,7 @@ import de.root1.simon.exceptions.EstablishConnectionFailed;
 import de.root1.simon.exceptions.LookupFailedException;
 
 /**
-* @description Hauptklasse für die Benutzer Oberflaeche (Client)
+* @description Hauptklasse fuer die Benutzer Oberflaeche (Client)
 */
 public class EShopClientGui extends JFrame {
 	
@@ -36,7 +36,7 @@ public class EShopClientGui extends JFrame {
 	/**
 	* @description Konstruktor der ClientGui
 	* mit dem Namen Gameshop und eigenem Panelmanager
-	* baut Verbindung zum Server auf und fügt das Client-Menue ein
+	* baut Verbindung zum Server auf und fuegt das Client-Menue ein
 	*/
 	public EShopClientGui() {
 		super("Gameshop");
@@ -58,7 +58,7 @@ public class EShopClientGui extends JFrame {
 	}
 	
 	/**
-	* @description Fenster für Kundenlogin Panel erzeugen
+	* @description Fenster fuer Kundenlogin Panel erzeugen
 	*/
 	private void init() {
 	    setSize(1024, 786);
@@ -71,7 +71,7 @@ public class EShopClientGui extends JFrame {
 	}
 
 	/**
-	* @description Menuebar für das Filemenue
+	* @description Menuebar fuer das Filemenue
 	*/
 	private void initMenu() {
 		JMenu fileMenu = new FileMenu();
@@ -105,7 +105,7 @@ public class EShopClientGui extends JFrame {
 			this.setVisible(true);
 		}
 		/**
-		* @description Implementierung der Files was bei der jeweiligen Benutzung ausgeführt werden soll
+		* @description Implementierung der Files was bei der jeweiligen Benutzung ausgefuehrt werden soll
 		*/
 		@Override
 		public void actionPerformed(ActionEvent ae) {
@@ -132,7 +132,7 @@ public class EShopClientGui extends JFrame {
 	
 	/**
 	* @param args
-	* @description Hauptausfuehrung zum erzeugen einer Oberfleache für den Benutzer (Client)
+	* @description Hauptausfuehrung zum erzeugen einer Oberfleache fuer den Benutzer (Client)
 	*/
 	public static void main(String[] args) {
 		new EShopClientGui();
