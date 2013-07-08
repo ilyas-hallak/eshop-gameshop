@@ -26,7 +26,7 @@
      <double>2.0</double>
     </void>
     <void property="stock">
-     <int>197</int>
+     <int>195</int>
     </void>
     <void property="title">
      <string>test</string>
@@ -122,7 +122,7 @@
      <double>45.0</double>
     </void>
     <void property="stock">
-     <int>96</int>
+     <int>94</int>
     </void>
     <void property="title">
      <string>last of us</string>
@@ -138,7 +138,7 @@
      <double>5.0</double>
     </void>
     <void property="stock">
-     <int>7</int>
+     <int>5</int>
     </void>
     <void property="title">
      <string>inception</string>
@@ -154,7 +154,7 @@
      <double>3.0</double>
     </void>
     <void property="stock">
-     <int>90</int>
+     <int>84</int>
     </void>
     <void property="title">
      <string>banane</string>
@@ -170,10 +170,26 @@
      <double>5.0</double>
     </void>
     <void property="stock">
-     <int>100</int>
+     <int>92</int>
     </void>
     <void property="title">
      <string>pulp fiction</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Artikel">
+    <void property="nr">
+     <int>12</int>
+    </void>
+    <void property="price">
+     <double>5.0</double>
+    </void>
+    <void property="stock">
+     <int>12</int>
+    </void>
+    <void property="title">
+     <string>massengut 1</string>
     </void>
    </object>
   </void>

@@ -32,7 +32,6 @@ public class ServiceV implements ServiceVInterface {
 	private PersonV personV;
 	private WarenkorbV cart;
 	private EreignisV ereignisV;
-	private Person person;
 	
 	public ServiceV(String file) throws IOException {
 		this.file = file;
@@ -46,18 +45,19 @@ public class ServiceV implements ServiceVInterface {
 	 * @see com.shop.logic.ServiceVInterface#insertArtikel(java.lang.String, int, double)
 	 */
 	@Override
-	public void insertArtikel(String title, int bestand, double price) throws ArtikelexistsException {
-		
+	public void insertArtikel(String title, int bestand, double price, Mitarbeiter m) throws ArtikelexistsException {
 		Artikel a = this.artikelV.insertArtikel(title, bestand, price);
-		this.ereignisV.create(bestand, this.person, a, "Neuer Artikel");
+		this.ereignisV.create(bestand, m, a, "Neuer Artikel");
 	}
 	
-	// Artikel mit festgelegter St��ckzahl
+	// Artikel mit festgelegter Stückzahl
 	/* (non-Javadoc)
 	 * @see com.shop.logic.ServiceVInterface#insertArtikel(int, java.lang.String, int, double, int)
 	 */
 	@Override
-	public void insertArtikel(int nr, String title, int bestand, double price, int mengeneinheit) throws ArtikelexistsException {
+	public void insertArtikel(int nr, String title, int bestand, double price, int mengeneinheit, Mitarbeiter m) throws ArtikelexistsException {
+		Artikel a = this.artikelV.insertArtikel(title, bestand, price, mengeneinheit);
+		this.ereignisV.create(bestand, m, a, "Neuer Massenartikel Artikel");
 	}
 	
 	/* (non-Javadoc)
@@ -106,9 +106,9 @@ public class ServiceV implements ServiceVInterface {
 	 * @see com.shop.logic.ServiceVInterface#raiseStock(int, int)
 	 */
 	@Override
-	public boolean raiseStock(int nr, int stock) {
+	public boolean raiseStock(int nr, int stock, Mitarbeiter m) {
 		Artikel a = this.artikelV.findArtikelByString(nr).get(0);
-		this.ereignisV.create(stock, this.person, a, "Bestand erh��ht");
+		this.ereignisV.create(stock, m, a, "Bestand erhöht");
 		return artikelV.raiseStock(nr, stock);
 	}
 	
@@ -132,24 +132,30 @@ public class ServiceV implements ServiceVInterface {
 	 * @see com.shop.logic.ServiceVInterface#addArtikel(com.shop.valueobjects.Artikel, int)
 	 */
 	@Override
-	public void addArtikel(Artikel a, int count) throws BestandZuKleinException {
-		this.cart.addArtikel(a, count);
+	public Kunde addArtikelToCart(Artikel a, int count, Kunde k) throws BestandZuKleinException {
+		//this.cart.addArtikel(a, count);
+		Artikel tmpArtikel = this.artikelV.findArtikelByString(a.getNr()).get(0);
+		if(tmpArtikel.getStock() < count) {
+			throw new BestandZuKleinException(tmpArtikel);
+		}
+		k.getCart().addArtikel(a, count);
+		return k;
 	}
 	
 	/* (non-Javadoc)
 	 * @see com.shop.logic.ServiceVInterface#removeArtikelFromCart(com.shop.valueobjects.Artikel)
 	 */
 	@Override
-	public void removeArtikelFromCart(Artikel a) {
-		this.cart.removeArtikel(a);
+	public void removeArtikelFromCart(Artikel a, Kunde k) {
+		k.getCart().removeArtikel(a);
 	}
 
 	/* (non-Javadoc)
 	 * @see com.shop.logic.ServiceVInterface#getAllArtikelFromCart()
 	 */
 	@Override
-	public Map<Artikel, Number> getAllArtikelFromCart() {
-		return this.cart.getAllArtikel();
+	public Map<Artikel, Number> getAllArtikelFromCart(Kunde k) {
+		return k.getCart().getAllArtikel();
 	}
 	
 	/* (non-Javadoc)
@@ -157,27 +163,24 @@ public class ServiceV implements ServiceVInterface {
 	 */
 	@Override
 	public Rechnung buy(Kunde k) {
-		return this.cart.buy(k);
+		try {
+			this.artikelV.reduceStock(k.getCart().getAllArtikel());
+		} catch (ArtikelNotFoundException e) {
+		}
+		this.ereignisV.create(k, k.getCart().getAllArtikel(), "Artikel wurde gekauft");
+
+		return k.getCart().buy(k);
 	}
 	
 	/* (non-Javadoc)
 	 * @see com.shop.logic.ServiceVInterface#complete()
 	 */
 	@Override
-	public void complete() throws ArtikelNotFoundException {
-		this.artikelV.reduceStock(this.cart.getAllArtikel());
-		this.ereignisV.create(person, this.cart.getAllArtikel(), "Bestand reduziert");
-		this.cart.complete();
+	public void complete(Kunde k) throws ArtikelNotFoundException {
+		this.artikelV.reduceStock(k.getCart().getAllArtikel());
+		this.ereignisV.create(k, k.getCart().getAllArtikel(), "Bestand reduziert");
+		k.getCart().complete();
 		this.savedata();
-	}
-
-	/* (non-Javadoc)
-	 * @see com.shop.logic.ServiceVInterface#setPerson(com.shop.valueobjects.Person)
-	 */
-	@Override
-	public void setPerson(Person person) {
-		// TODO Auto-generated method stub
-		this.person = person;
 	}
 	
 	/* (non-Javadoc)
@@ -203,20 +206,12 @@ public class ServiceV implements ServiceVInterface {
 	public ArrayList<Ereignis> getAllEreignisse() {
 		return this.ereignisV.getAllEreignisse();
 	}
-	
-	/* (non-Javadoc)
-	 * @see com.shop.logic.ServiceVInterface#getPerson()
-	 */
-	@Override
-	public Person getPerson() {
-		return this.person;
-	}
 
 	@Override
 	public void updateArtikel(int nr, String title, int bestand, double price,
-			int menegeneinheit) throws ArtikelNotFoundException {
+			int menegeneinheit, Mitarbeiter m) throws ArtikelNotFoundException {
 		this.artikelV.updateArtikel(nr, title, bestand, price, menegeneinheit);
-		this.ereignisV.create(bestand, this.person, new Artikel(title, bestand, price), "Artikel aktualisiert");
+		this.ereignisV.create(bestand, m, new Artikel(title, bestand, price), "Artikel aktualisiert");
 	}
 	
 }

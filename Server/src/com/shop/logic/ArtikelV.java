@@ -11,6 +11,7 @@ import com.shop.exceptions.ArtikelNotFoundException;
 import com.shop.exceptions.ArtikelexistsException;
 import com.shop.persistence.FilePersistenceManager;
 import com.shop.valueobjects.Artikel;
+import com.shop.valueobjects.MassenArtikel;
 
 public class ArtikelV {
 
@@ -50,12 +51,12 @@ public class ArtikelV {
 	 */
 	public Artikel insertArtikel(String title, int bestand, double price)
 			throws ArtikelexistsException {
-		// ��berpr��fen ob der titel schon im Artikelbestand vorhanden ist
+		// überprüfen ob der titel schon im Artikelbestand vorhanden ist
 		Iterator<Artikel> it = this.artikelStock.iterator();
 		while (it.hasNext()) {
 			Artikel article = (Artikel) it.next();
 			if (article.getTitle() == title) {
-				// wenn er bereits vorhanden ist die Exception schmei��en
+				// wenn er bereits vorhanden ist die Exception schmeissen
 				throw new ArtikelexistsException(title + " - in 'einfuegen()'");
 			}
 			// wenn er nicht vorhanden ist Artikel-Objekt erzeugen und
@@ -63,6 +64,27 @@ public class ArtikelV {
 			else {
 				Artikel a = new Artikel(this.artikelStock.size() + 1, title,
 						bestand, price);
+				this.artikelStock.add(a);
+				return a;
+			}
+		}
+		return null;
+	}
+	
+	public Artikel insertArtikel(String title, int bestand, double price,
+			int mengeneinheit) throws ArtikelexistsException {
+		Iterator<Artikel> it = this.artikelStock.iterator();
+		while (it.hasNext()) {
+			Artikel article = (Artikel) it.next();
+			if (article.getTitle() == title) {
+				// wenn er bereits vorhanden ist die Exception schmeissen
+				throw new ArtikelexistsException(title + " schon vorhanden");
+			}
+			// wenn er nicht vorhanden ist Artikel-Objekt erzeugen und
+			// hinzufügen
+			else {
+				Artikel a = new MassenArtikel(this.artikelStock.size() + 1, title,
+						bestand, price, mengeneinheit);
 				this.artikelStock.add(a);
 				return a;
 			}
@@ -225,4 +247,5 @@ public class ArtikelV {
 		}
 		
 	}
+
 }

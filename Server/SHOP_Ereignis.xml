@@ -847,5 +847,994 @@
     </void>
    </object>
   </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel">
+      <void property="nr">
+       <int>5</int>
+      </void>
+      <void property="price">
+       <double>2.0</double>
+      </void>
+      <void property="stock">
+       <int>197</int>
+      </void>
+      <void property="title">
+       <string>test</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>1</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373116866267</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Bestand reduziert</string>
+    </void>
+    <void property="person">
+     <object class="com.shop.valueobjects.Kunde">
+      <void property="address">
+       <string>i</string>
+      </void>
+      <void property="eMail">
+       <string>i</string>
+      </void>
+      <void property="name">
+       <string>i</string>
+      </void>
+      <void property="password">
+       <string>i</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel">
+      <void property="nr">
+       <int>8</int>
+      </void>
+      <void property="price">
+       <double>45.0</double>
+      </void>
+      <void property="stock">
+       <int>96</int>
+      </void>
+      <void property="title">
+       <string>last of us</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>1</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373116917112</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Bestand reduziert</string>
+    </void>
+    <void property="person">
+     <object class="com.shop.valueobjects.Kunde" id="Kunde4">
+      <void property="address">
+       <string>i</string>
+      </void>
+      <void property="eMail">
+       <string>i</string>
+      </void>
+      <void property="name">
+       <string>i</string>
+      </void>
+      <void property="password">
+       <string>i</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel">
+      <void property="nr">
+       <int>9</int>
+      </void>
+      <void property="price">
+       <double>5.0</double>
+      </void>
+      <void property="stock">
+       <int>7</int>
+      </void>
+      <void property="title">
+       <string>inception</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>1</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373116917112</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Bestand reduziert</string>
+    </void>
+    <void property="person">
+     <object idref="Kunde4"/>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel">
+      <void property="nr">
+       <int>5</int>
+      </void>
+      <void property="price">
+       <double>2.0</double>
+      </void>
+      <void property="stock">
+       <int>196</int>
+      </void>
+      <void property="title">
+       <string>test</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>1</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373116951868</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Bestand reduziert</string>
+    </void>
+    <void property="person">
+     <object class="com.shop.valueobjects.Kunde">
+      <void property="address">
+       <string>i</string>
+      </void>
+      <void property="eMail">
+       <string>i</string>
+      </void>
+      <void property="name">
+       <string>i</string>
+      </void>
+      <void property="password">
+       <string>i</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel">
+      <void property="nr">
+       <int>9</int>
+      </void>
+      <void property="price">
+       <double>5.0</double>
+      </void>
+      <void property="stock">
+       <int>6</int>
+      </void>
+      <void property="title">
+       <string>inception</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>1</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373116975791</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Bestand reduziert</string>
+    </void>
+    <void property="person">
+     <object class="com.shop.valueobjects.Kunde">
+      <void property="address">
+       <string>i</string>
+      </void>
+      <void property="eMail">
+       <string>i</string>
+      </void>
+      <void property="name">
+       <string>i</string>
+      </void>
+      <void property="password">
+       <string>i</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel">
+      <void property="nr">
+       <int>8</int>
+      </void>
+      <void property="price">
+       <double>45.0</double>
+      </void>
+      <void property="stock">
+       <int>95</int>
+      </void>
+      <void property="title">
+       <string>last of us</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>1</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373116993710</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Bestand reduziert</string>
+    </void>
+    <void property="person">
+     <object class="com.shop.valueobjects.Kunde">
+      <void property="address">
+       <string>i</string>
+      </void>
+      <void property="eMail">
+       <string>i</string>
+      </void>
+      <void property="name">
+       <string>i</string>
+      </void>
+      <void property="password">
+       <string>i</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel">
+      <void property="nr">
+       <int>11</int>
+      </void>
+      <void property="price">
+       <double>5.0</double>
+      </void>
+      <void property="stock">
+       <int>100</int>
+      </void>
+      <void property="title">
+       <string>pulp fiction</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>7</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373117166665</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Bestand reduziert</string>
+    </void>
+    <void property="person">
+     <object class="com.shop.valueobjects.Kunde" id="Kunde5">
+      <void property="address">
+       <string>i</string>
+      </void>
+      <void property="eMail">
+       <string>i</string>
+      </void>
+      <void property="name">
+       <string>i</string>
+      </void>
+      <void property="password">
+       <string>i</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel">
+      <void property="nr">
+       <int>10</int>
+      </void>
+      <void property="price">
+       <double>3.0</double>
+      </void>
+      <void property="stock">
+       <int>90</int>
+      </void>
+      <void property="title">
+       <string>banane</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>3</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373117166665</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Bestand reduziert</string>
+    </void>
+    <void property="person">
+     <object idref="Kunde5"/>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel">
+      <void property="nr">
+       <int>11</int>
+      </void>
+      <void property="price">
+       <double>5.0</double>
+      </void>
+      <void property="stock">
+       <int>100</int>
+      </void>
+      <void property="title">
+       <string>pulp fiction</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>1</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373117166665</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Bestand reduziert</string>
+    </void>
+    <void property="person">
+     <object idref="Kunde5"/>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel">
+      <void property="nr">
+       <int>10</int>
+      </void>
+      <void property="price">
+       <double>3.0</double>
+      </void>
+      <void property="stock">
+       <int>90</int>
+      </void>
+      <void property="title">
+       <string>banane</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>3</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373117166665</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Bestand reduziert</string>
+    </void>
+    <void property="person">
+     <object idref="Kunde5"/>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel">
+      <void property="nr">
+       <int>12</int>
+      </void>
+      <void property="price">
+       <double>5.0</double>
+      </void>
+      <void property="stock">
+       <int>12</int>
+      </void>
+      <void property="title">
+       <string>massengut 1</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>12</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373123033851</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Neuer Artikel</string>
+    </void>
+    <void property="person">
+     <object class="com.shop.valueobjects.Mitarbeiter">
+      <void property="eMail">
+       <string>m1</string>
+      </void>
+      <void property="name">
+       <string>m1</string>
+      </void>
+      <void property="password">
+       <string>m1</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel">
+      <void property="nr">
+       <int>13</int>
+      </void>
+      <void property="price">
+       <double>3.0</double>
+      </void>
+      <void property="stock">
+       <int>12</int>
+      </void>
+      <void property="title">
+       <string>massengut 2</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>12</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373123145444</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Neuer Artikel</string>
+    </void>
+    <void property="person">
+     <object class="com.shop.valueobjects.Mitarbeiter">
+      <void property="eMail">
+       <string>m1</string>
+      </void>
+      <void property="name">
+       <string>m1</string>
+      </void>
+      <void property="password">
+       <string>m1</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel">
+      <void property="nr">
+       <int>14</int>
+      </void>
+      <void property="price">
+       <double>3.0</double>
+      </void>
+      <void property="stock">
+       <int>12</int>
+      </void>
+      <void property="title">
+       <string>fsadfdsa</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>12</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373123257353</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Neuer Artikel</string>
+    </void>
+    <void property="person">
+     <object class="com.shop.valueobjects.Mitarbeiter">
+      <void property="eMail">
+       <string>m1</string>
+      </void>
+      <void property="name">
+       <string>m1</string>
+      </void>
+      <void property="password">
+       <string>m1</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="count">
+     <int>12</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373123381352</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Neuer Massenartikel Artikel</string>
+    </void>
+    <void property="person">
+     <object class="com.shop.valueobjects.Mitarbeiter">
+      <void property="eMail">
+       <string>m1</string>
+      </void>
+      <void property="name">
+       <string>m1</string>
+      </void>
+      <void property="password">
+       <string>m1</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel">
+      <void property="nr">
+       <int>13</int>
+      </void>
+      <void property="price">
+       <double>1.0</double>
+      </void>
+      <void property="stock">
+       <int>5</int>
+      </void>
+      <void property="title">
+       <string>mehrbenutzer test 1</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>5</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373206697092</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Neuer Artikel</string>
+    </void>
+    <void property="person">
+     <object class="com.shop.valueobjects.Mitarbeiter">
+      <void property="eMail">
+       <string>m1</string>
+      </void>
+      <void property="name">
+       <string>m1</string>
+      </void>
+      <void property="password">
+       <string>m1</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel">
+      <void property="nr">
+       <int>14</int>
+      </void>
+      <void property="price">
+       <double>1.0</double>
+      </void>
+      <void property="stock">
+       <int>1</int>
+      </void>
+      <void property="title">
+       <string>mehrbenutzer 2</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>1</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373206708270</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Neuer Artikel</string>
+    </void>
+    <void property="person">
+     <object class="com.shop.valueobjects.Mitarbeiter">
+      <void property="eMail">
+       <string>m4</string>
+      </void>
+      <void property="name">
+       <string>m4</string>
+      </void>
+      <void property="password">
+       <string>m4</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel" id="Artikel1">
+      <void property="nr">
+       <int>11</int>
+      </void>
+      <void property="price">
+       <double>5.0</double>
+      </void>
+      <void property="stock">
+       <int>92</int>
+      </void>
+      <void property="title">
+       <string>pulp fiction</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>1</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373221795508</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Artikel wurde gekauft</string>
+    </void>
+    <void property="person">
+     <object class="com.shop.valueobjects.Kunde">
+      <void property="address">
+       <string></string>
+      </void>
+      <void property="cart">
+       <object class="com.shop.valueobjects.Warenkorb">
+        <void property="warenkorb">
+         <void method="put">
+          <object idref="Artikel1"/>
+          <int>1</int>
+         </void>
+        </void>
+       </object>
+      </void>
+      <void property="eMail">
+       <string>ilyas</string>
+      </void>
+      <void property="name">
+       <string>ilyas</string>
+      </void>
+      <void property="password">
+       <string>ilyas</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel" id="Artikel2">
+      <void property="nr">
+       <int>11</int>
+      </void>
+      <void property="price">
+       <double>5.0</double>
+      </void>
+      <void property="stock">
+       <int>91</int>
+      </void>
+      <void property="title">
+       <string>pulp fiction</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>1</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373221802110</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Artikel wurde gekauft</string>
+    </void>
+    <void property="person">
+     <object class="com.shop.valueobjects.Kunde">
+      <void property="address">
+       <string></string>
+      </void>
+      <void property="cart">
+       <object class="com.shop.valueobjects.Warenkorb">
+        <void property="warenkorb">
+         <void method="put">
+          <object idref="Artikel2"/>
+          <int>1</int>
+         </void>
+        </void>
+       </object>
+      </void>
+      <void property="eMail">
+       <string>ilyas</string>
+      </void>
+      <void property="name">
+       <string>ilyas</string>
+      </void>
+      <void property="password">
+       <string>ilyas</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel" id="Artikel3">
+      <void property="nr">
+       <int>11</int>
+      </void>
+      <void property="price">
+       <double>5.0</double>
+      </void>
+      <void property="stock">
+       <int>90</int>
+      </void>
+      <void property="title">
+       <string>pulp fiction</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>30</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373221808172</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Artikel wurde gekauft</string>
+    </void>
+    <void property="person">
+     <object class="com.shop.valueobjects.Kunde">
+      <void property="address">
+       <string></string>
+      </void>
+      <void property="cart">
+       <object class="com.shop.valueobjects.Warenkorb">
+        <void property="warenkorb">
+         <void method="put">
+          <object idref="Artikel3"/>
+          <int>30</int>
+         </void>
+        </void>
+       </object>
+      </void>
+      <void property="eMail">
+       <string>ilyas</string>
+      </void>
+      <void property="name">
+       <string>ilyas</string>
+      </void>
+      <void property="password">
+       <string>ilyas</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel" id="Artikel4">
+      <void property="nr">
+       <int>9</int>
+      </void>
+      <void property="price">
+       <double>5.0</double>
+      </void>
+      <void property="stock">
+       <int>5</int>
+      </void>
+      <void property="title">
+       <string>inception</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>6</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373221986138</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Artikel wurde gekauft</string>
+    </void>
+    <void property="person">
+     <object class="com.shop.valueobjects.Kunde">
+      <void property="address">
+       <string></string>
+      </void>
+      <void property="cart">
+       <object class="com.shop.valueobjects.Warenkorb">
+        <void property="warenkorb">
+         <void method="put">
+          <object idref="Artikel4"/>
+          <int>6</int>
+         </void>
+        </void>
+       </object>
+      </void>
+      <void property="eMail">
+       <string>ilyas</string>
+      </void>
+      <void property="name">
+       <string>ilyas</string>
+      </void>
+      <void property="password">
+       <string>ilyas</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object class="com.shop.valueobjects.Artikel" id="Artikel5">
+      <void property="nr">
+       <int>9</int>
+      </void>
+      <void property="price">
+       <double>5.0</double>
+      </void>
+      <void property="stock">
+       <int>5</int>
+      </void>
+      <void property="title">
+       <string>inception</string>
+      </void>
+     </object>
+    </void>
+    <void property="count">
+     <int>5</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373222431574</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Artikel wurde gekauft</string>
+    </void>
+    <void property="person">
+     <object class="com.shop.valueobjects.Kunde" id="Kunde6">
+      <void property="address">
+       <string></string>
+      </void>
+      <void property="cart">
+       <object class="com.shop.valueobjects.Warenkorb">
+        <void property="warenkorb">
+         <void method="put">
+          <object idref="Artikel5"/>
+          <int>5</int>
+         </void>
+         <void method="put">
+          <object class="com.shop.valueobjects.Artikel" id="Artikel6">
+           <void property="nr">
+            <int>9</int>
+           </void>
+           <void property="price">
+            <double>5.0</double>
+           </void>
+           <void property="stock">
+            <int>5</int>
+           </void>
+           <void property="title">
+            <string>inception</string>
+           </void>
+          </object>
+          <int>5</int>
+         </void>
+        </void>
+       </object>
+      </void>
+      <void property="eMail">
+       <string>ilyas</string>
+      </void>
+      <void property="name">
+       <string>ilyas</string>
+      </void>
+      <void property="password">
+       <string>ilyas</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Ereignis">
+    <void property="article">
+     <object idref="Artikel6"/>
+    </void>
+    <void property="count">
+     <int>5</int>
+    </void>
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1373222431574</long>
+     </object>
+    </void>
+    <void property="message">
+     <string>Artikel wurde gekauft</string>
+    </void>
+    <void property="person">
+     <object idref="Kunde6"/>
+    </void>
+   </object>
+  </void>
  </object>
 </java>

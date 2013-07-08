@@ -74,14 +74,283 @@
     <void property="address">
      <string></string>
     </void>
+    <void property="cart">
+     <object class="com.shop.valueobjects.Warenkorb"/>
+    </void>
     <void property="eMail">
      <string>ilyas</string>
     </void>
     <void property="name">
-     <string>bismarck</string>
+     <string>ilyas</string>
     </void>
     <void property="password">
      <string>ilyas</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Kunde">
+    <void property="address">
+     <string></string>
+    </void>
+    <void property="cart">
+     <object class="com.shop.valueobjects.Warenkorb"/>
+    </void>
+    <void property="eMail">
+     <string>ilyas</string>
+    </void>
+    <void property="name">
+     <string>ilyas</string>
+    </void>
+    <void property="password">
+     <string>ilyas</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Kunde">
+    <void property="address">
+     <string></string>
+    </void>
+    <void property="cart">
+     <object class="com.shop.valueobjects.Warenkorb"/>
+    </void>
+    <void property="eMail">
+     <string>ilyas</string>
+    </void>
+    <void property="name">
+     <string>ilyas</string>
+    </void>
+    <void property="password">
+     <string>ilyas</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Kunde">
+    <void property="address">
+     <string></string>
+    </void>
+    <void property="cart">
+     <object class="com.shop.valueobjects.Warenkorb"/>
+    </void>
+    <void property="eMail">
+     <string>ilyas</string>
+    </void>
+    <void property="name">
+     <string>ilyas</string>
+    </void>
+    <void property="password">
+     <string>ilyas</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Kunde">
+    <void property="address">
+     <string></string>
+    </void>
+    <void property="cart">
+     <object class="com.shop.valueobjects.Warenkorb"/>
+    </void>
+    <void property="eMail">
+     <string>ilyas</string>
+    </void>
+    <void property="name">
+     <string>ilyas</string>
+    </void>
+    <void property="password">
+     <string>ilyas</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Kunde">
+    <void property="address">
+     <string></string>
+    </void>
+    <void property="cart">
+     <object class="com.shop.valueobjects.Warenkorb"/>
+    </void>
+    <void property="eMail">
+     <string>ilyas</string>
+    </void>
+    <void property="name">
+     <string>ilyas</string>
+    </void>
+    <void property="password">
+     <string>ilyas</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Kunde">
+    <void property="address">
+     <string></string>
+    </void>
+    <void property="cart">
+     <object class="com.shop.valueobjects.Warenkorb"/>
+    </void>
+    <void property="eMail">
+     <string>ilyas</string>
+    </void>
+    <void property="name">
+     <string>ilyas</string>
+    </void>
+    <void property="password">
+     <string>ilyas</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Kunde">
+    <void property="address">
+     <string></string>
+    </void>
+    <void property="cart">
+     <object class="com.shop.valueobjects.Warenkorb"/>
+    </void>
+    <void property="eMail">
+     <string>ilyas</string>
+    </void>
+    <void property="name">
+     <string>ilyas</string>
+    </void>
+    <void property="password">
+     <string>ilyas</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Kunde">
+    <void property="address">
+     <string></string>
+    </void>
+    <void property="cart">
+     <object class="com.shop.valueobjects.Warenkorb"/>
+    </void>
+    <void property="eMail">
+     <string>ilyas</string>
+    </void>
+    <void property="name">
+     <string>ilyas</string>
+    </void>
+    <void property="password">
+     <string>ilyas</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Kunde">
+    <void property="address">
+     <string></string>
+    </void>
+    <void property="cart">
+     <object class="com.shop.valueobjects.Warenkorb"/>
+    </void>
+    <void property="eMail">
+     <string>ilyas</string>
+    </void>
+    <void property="name">
+     <string>ilyas</string>
+    </void>
+    <void property="password">
+     <string>ilyas</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Kunde">
+    <void property="address">
+     <string></string>
+    </void>
+    <void property="cart">
+     <object class="com.shop.valueobjects.Warenkorb"/>
+    </void>
+    <void property="eMail">
+     <string>ilyas</string>
+    </void>
+    <void property="name">
+     <string>ilyas</string>
+    </void>
+    <void property="password">
+     <string>ilyas</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Kunde">
+    <void property="address">
+     <string></string>
+    </void>
+    <void property="cart">
+     <object class="com.shop.valueobjects.Warenkorb"/>
+    </void>
+    <void property="eMail">
+     <string>ilyas</string>
+    </void>
+    <void property="name">
+     <string>ilyas</string>
+    </void>
+    <void property="password">
+     <string>ilyas</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Kunde">
+    <void property="address">
+     <string></string>
+    </void>
+    <void property="cart">
+     <object class="com.shop.valueobjects.Warenkorb"/>
+    </void>
+    <void property="eMail">
+     <string>ilyas</string>
+    </void>
+    <void property="name">
+     <string>ilyas</string>
+    </void>
+    <void property="password">
+     <string>ilyas</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Kunde">
+    <void property="address">
+     <string></string>
+    </void>
+    <void property="cart">
+     <object class="com.shop.valueobjects.Warenkorb"/>
+    </void>
+    <void property="eMail">
+     <string>ilyas</string>
+    </void>
+    <void property="name">
+     <string>ilyas</string>
+    </void>
+    <void property="password">
+     <string>ilyas</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="com.shop.valueobjects.Kunde">
+    <void property="address">
+     <string></string>
+    </void>
+    <void property="cart">
+     <object class="com.shop.valueobjects.Warenkorb"/>
+    </void>
+    <void property="eMail">
+     <string>u</string>
+    </void>
+    <void property="name">
+     <string>u</string>
+    </void>
+    <void property="password">
+     <string>u</string>
     </void>
    </object>
   </void>

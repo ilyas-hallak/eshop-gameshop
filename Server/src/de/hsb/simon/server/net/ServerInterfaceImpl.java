@@ -15,6 +15,7 @@ import com.shop.logic.ServiceV;
 import com.shop.valueobjects.Artikel;
 import com.shop.valueobjects.Ereignis;
 import com.shop.valueobjects.Kunde;
+import com.shop.valueobjects.Mitarbeiter;
 import com.shop.valueobjects.Person;
 import com.shop.valueobjects.Rechnung;
 
@@ -91,15 +92,9 @@ public class ServerInterfaceImpl implements ServerInterface {
 	}
 
 	@Override
-	public void insertArtikel(String title, int bestand, double price)
+	public void insertArtikel(String title, int bestand, double price, Mitarbeiter m)
 			throws ArtikelexistsException {
-		this.shop.insertArtikel(title, bestand, price);
-	}
-
-	@Override
-	public void insertArtikel(int nr, String title, int bestand, double price,
-			int mengeneinheit) throws ArtikelexistsException {
-		this.shop.insertArtikel(title, bestand, price);
+		this.shop.insertArtikel(title, bestand, price, m);
 	}
 
 	@Override
@@ -128,11 +123,6 @@ public class ServerInterfaceImpl implements ServerInterface {
 	}
 
 	@Override
-	public boolean raiseStock(int nr, int stock) {
-		return this.shop.raiseStock(nr, stock);
-	}
-
-	@Override
 	public void insertCustomer(Kunde k) throws CustomerExistsExeption {
 		this.shop.insertCustomer(k);
 	}
@@ -143,18 +133,8 @@ public class ServerInterfaceImpl implements ServerInterface {
 	}
 
 	@Override
-	public void addArtikel(Artikel a, int count) throws BestandZuKleinException {
-		this.shop.addArtikel(a, count);
-	}
-
-	@Override
-	public void removeArtikelFromCart(Artikel a) {
-		this.shop.removeArtikelFromCart(a);
-	}
-
-	@Override
-	public Map<Artikel, Number> getAllArtikelFromCart() {
-		return this.shop.getAllArtikelFromCart();
+	public Map<Artikel, Number> getAllArtikelFromCart(Kunde k) {
+		return this.shop.getAllArtikelFromCart(k);
 	}
 
 	@Override
@@ -163,14 +143,8 @@ public class ServerInterfaceImpl implements ServerInterface {
 	}
 
 	@Override
-	public void complete() throws ArtikelNotFoundException {
-		this.shop.complete();
-	}
-
-	@Override
-	public void setPerson(Person person) {
-		// TODO person array
-		this.shop.setPerson(person);
+	public void complete(Kunde k) throws ArtikelNotFoundException {
+		this.shop.complete(k);
 	}
 
 	@Override
@@ -189,14 +163,30 @@ public class ServerInterfaceImpl implements ServerInterface {
 	}
 
 	@Override
-	public Person getPerson() {
-		// TODO get person from array
-		return this.shop.getPerson();
+	public void insertArtikel(int nr, String title, int bestand, double price,
+			int mengeneinheit, Mitarbeiter m) throws ArtikelexistsException {
+		this.shop.insertArtikel(nr, title, bestand, price, mengeneinheit, m);
 	}
 
 	@Override
 	public void updateArtikel(int nr, String title, int bestand, double price,
-			int menegeneinheit) throws ArtikelNotFoundException {
-		this.shop.updateArtikel(nr, title, bestand, price, menegeneinheit);
+			int menegeneinheit, Mitarbeiter m) throws ArtikelNotFoundException {
+		this.shop.updateArtikel(nr, title, bestand, price, menegeneinheit, m);
+	}
+
+	@Override
+	public boolean raiseStock(int nr, int stock, Mitarbeiter m) {
+		return this.shop.raiseStock(nr, stock, m);
+	}
+
+	@Override
+	public Kunde addArtikelToCart(Artikel a, int count, Kunde k)
+			throws BestandZuKleinException {
+		return this.shop.addArtikelToCart(a, count, k);
+	}
+
+	@Override
+	public void removeArtikelFromCart(Artikel a, Kunde k) {
+		this.shop.removeArtikelFromCart(a, k);
 	}
 }

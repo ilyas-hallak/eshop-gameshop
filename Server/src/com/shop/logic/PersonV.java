@@ -54,6 +54,11 @@ public class PersonV implements Serializable {
 		throw new PersonNotFoundException(p.geteMail());
 	}
 
+	/**
+	 * 
+	 * @param k
+	 * @throws CustomerExistsExeption
+	 */
 	public void insertCustomer(Kunde k) throws CustomerExistsExeption {
 		if(!this.personStock.contains(k)) {
 			this.personStock.add(k);
@@ -64,6 +69,7 @@ public class PersonV implements Serializable {
 	}
 	
 	public void insertMitarbeiter(Mitarbeiter m) {
+		m.setNr( this.personStock.size() + 1 );
 		this.personStock.add(m);
 	}
 	
