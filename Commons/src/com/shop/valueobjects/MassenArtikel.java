@@ -22,5 +22,5 @@ public class MassenArtikel extends Artikel {
 		super(nr, title, stock, price);
 		this.anzahl = anzahl; 
 	}
-
+	public MassenArtikel() {}
 }

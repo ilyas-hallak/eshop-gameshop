@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import com.shop.exceptions.MassenArtikelAnzahlException;
+
 public class Warenkorb implements Serializable {
 
 	/**
@@ -37,9 +39,19 @@ public class Warenkorb implements Serializable {
 	 * the count will be increment
 	 * @param a Article Object
 	 * @param count of Articles
+	 * @throws MassenArtikelAnzahlException 
 	 */
-	public void addArtikel(Artikel a, int count) {
+	public void addArtikel(Artikel a, int count) throws MassenArtikelAnzahlException {
+		if(a instanceof MassenArtikel) {
+			MassenArtikel mA = (MassenArtikel) a;
+			System.out.println((count  % mA.getAnzahl())+"");
+			if((count  % mA.getAnzahl()) > 0) {
+				throw new MassenArtikelAnzahlException(mA);
+			}
+		}
+				
 		this.warenkorb.put(a, count);
+		 
 //		if(this.warenkorb.containsKey(a)) {
 //			this.warenkorb.put(a, count);
 //		} else {
@@ -57,8 +69,8 @@ public class Warenkorb implements Serializable {
 		Iterator iterator = this.warenkorb.entrySet().iterator();
 		while (iterator.hasNext()) {
 			Map.Entry<Artikel, Number> pair = (Map.Entry<Artikel, Number>) iterator.next();
-			if(pair.getKey().getTitle() == a.getTitle() && pair.getKey().getNr() == a.getNr()) {
-				this.warenkorb.remove(pair.getKey());
+			if(pair.getKey().getNr() == a.getNr()) {
+				iterator.remove();
 			}
 		}
 	}

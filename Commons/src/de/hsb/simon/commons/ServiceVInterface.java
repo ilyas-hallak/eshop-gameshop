@@ -8,6 +8,7 @@ import com.shop.exceptions.ArtikelNotFoundException;
 import com.shop.exceptions.ArtikelexistsException;
 import com.shop.exceptions.BestandZuKleinException;
 import com.shop.exceptions.CustomerExistsExeption;
+import com.shop.exceptions.MassenArtikelAnzahlException;
 import com.shop.exceptions.PersonNotFoundException;
 import com.shop.valueobjects.Artikel;
 import com.shop.valueobjects.Ereignis;
@@ -44,9 +45,9 @@ public interface ServiceVInterface {
 	public abstract Person login(Person p) throws PersonNotFoundException;
 
 	public abstract Kunde addArtikelToCart(Artikel a, int count, Kunde k)
-			throws BestandZuKleinException;
+			throws BestandZuKleinException, MassenArtikelAnzahlException ;
 
-	public abstract void removeArtikelFromCart(Artikel a, Kunde k);
+	public abstract Kunde removeArtikelFromCart(Artikel a, Kunde k);
 
 	public abstract Map<Artikel, Number> getAllArtikelFromCart(Kunde k);
 
