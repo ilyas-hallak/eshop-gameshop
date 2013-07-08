@@ -43,7 +43,7 @@ public class ArtikelTableModel extends DefaultTableModel {
 		columnNames.add("Nummer");
 		columnNames.add("Titel");
 		columnNames.add("Preis");
-		columnNames.add("Stückzahl");
+		columnNames.add("Stueckzahl");
 		
 		data = new Vector<Vector<String>>();
 		

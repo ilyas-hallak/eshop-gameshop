@@ -83,7 +83,7 @@ public class EShopClientGui extends JFrame {
 	}
 	
 	/**
-	* @description Filemenue zum speichern, ausloggen und schließen des Programms mit Listener
+	* @description Filemenue zum speichern, ausloggen und schliessen des Programms mit Listener
 	*/
 	class FileMenu extends JMenu implements ActionListener {
 		public FileMenu() {

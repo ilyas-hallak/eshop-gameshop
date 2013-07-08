@@ -66,7 +66,7 @@ public class ArtikelPanel extends JPanel {
 		this.historyBtn.addActionListener(new ActionListener() {
         	@Override
 			public void actionPerformed(ActionEvent e) {
-        		String days = JOptionPane.showInputDialog("für wie viele Tage soll die Historie angezeigt werden?");
+        		String days = JOptionPane.showInputDialog("fuer wie viele Tage soll die Historie angezeigt werden?");
         		int row = table.getSelectedRow();
         		String nr = table.getValueAt(row, 0).toString();
         		Artikel a = shop.findArtikelByString(nr).get(0);

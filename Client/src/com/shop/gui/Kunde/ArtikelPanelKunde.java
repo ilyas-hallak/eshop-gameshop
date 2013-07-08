@@ -104,7 +104,7 @@ public class ArtikelPanelKunde extends JPanel {
 		JPanel boxPanel = new JPanel( new FlowLayout() );
 
 		 /// Artikel zum Warenkorb
-        JLabel stockLabel = new JLabel("Stückzahl: ");
+        JLabel stockLabel = new JLabel("Stueckzahl: ");
         cs.gridx = 0;
         cs.gridy = 1;
         boxPanel.add(stockLabel);
@@ -152,7 +152,7 @@ public class ArtikelPanelKunde extends JPanel {
 					pManager.changePanel(new JPanel(), new ArtikelPanelKunde(shop, pManager, frame), new WarenkorbPanel(pManager, shop, frame));
 					
 				} catch (NumberFormatException e1) {
-					frame.setMessage("Bitte bei Stückzahl eine Nummer angeben");
+					frame.setMessage("Bitte bei Stueckzahl eine Nummer angeben");
 				} catch (BestandZuKleinException e1) {
 					frame.setMessage(e1.getMessage());
 				} catch (MassenArtikelAnzahlException e1) {
