@@ -37,7 +37,7 @@ public class ClientInterfaceImpl implements  ClientInterface {
 	}
 	
 	/**
-	 * 
+	 * Methode connectToServer - stellt verbindung mit dem Server her ueber IP und Port
 	 * @throws UnknownHostException
 	 * @throws LookupFailedException
 	 * @throws EstablishConnectionFailed
@@ -51,7 +51,7 @@ public class ClientInterfaceImpl implements  ClientInterface {
 
 		System.out.println("Hallo " + server);
 		
-		// client au dem Server anmelden und session empfangen
+		// client auf dem Server anmelden und session empfangen
 		session = server.login(this);
 		
 		shop = new ServiceVInterfaceImpl(this.getServer());

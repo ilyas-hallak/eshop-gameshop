@@ -17,6 +17,11 @@ import de.hsb.simon.client.net.ClientInterfaceImpl;
 import de.root1.simon.exceptions.EstablishConnectionFailed;
 import de.root1.simon.exceptions.LookupFailedException;
 
+/**
+ * Klasse ClientGUI - erstellt einen neuen Kunden und dessen Arbeitsumgebung(Layout)
+ * @author Helen
+ *
+ */
 public class ClientGUI extends JFrame {
 	
 	private static final long serialVersionUID = 8996112056079575641L;
@@ -26,6 +31,7 @@ public class ClientGUI extends JFrame {
 	
 	private ClientInterfaceImpl net;
 	
+	//Konstruktor
 	public ClientGUI() {
 		super("Simon Client");
 		
@@ -42,14 +48,17 @@ public class ClientGUI extends JFrame {
 		this.add(new JScrollPane(area), BorderLayout.CENTER);
 		this.add(button, BorderLayout.SOUTH);
 		
+		// Erstellen eines neuen ClientInterfaceImpl Objekts
 		net = new ClientInterfaceImpl(area);
 
+		// Verbinden mit dem Server des eben erstellten Clients
 		try {
 			net.connectToServer();
 		} catch (UnknownHostException | LookupFailedException | EstablishConnectionFailed e) {
 			JOptionPane.showMessageDialog(this, e.getMessage());
 		}
 		
+		//nach verbinden die Message des Client weiter leiten
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
@@ -57,6 +66,7 @@ public class ClientGUI extends JFrame {
 			}
 		});
 		
+		//beim schließen des Fensters wird der Client vom Server getrennt und die Sitzung geschlossen
 		this.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -70,6 +80,14 @@ public class ClientGUI extends JFrame {
 		this.setVisible(true);
 	}
 
+	/**
+	 * Hauptmethode -MAIN- zur Ausfuehrung des Programms auf Client-Seite
+	 * @param args
+	 * @throws ClassNotFoundException
+	 * @throws InstantiationException
+	 * @throws IllegalAccessException
+	 * @throws UnsupportedLookAndFeelException
+	 */
 	public static void main(String[] args) throws ClassNotFoundException,
 			InstantiationException, IllegalAccessException,
 			UnsupportedLookAndFeelException {

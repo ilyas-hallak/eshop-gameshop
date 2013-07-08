@@ -17,12 +17,17 @@ import com.shop.valueobjects.Mitarbeiter;
 import com.shop.valueobjects.Person;
 import com.shop.valueobjects.Rechnung;
 
+/**
+ * @description ServiceVInterface - Interface auf dem alle Methodenaufrufe hinterlegt sind
+ * @description welche auf Server-Seite in der logic implementiert sind
+ *
+ */
 public interface ServiceVInterface {
 
 	public abstract void insertArtikel(String title, int bestand, double price, Mitarbeiter m)
 			throws ArtikelexistsException;
 
-	// Artikel mit festgelegter St??ckzahl
+	// Artikel mit festgelegter Stueckzahl
 	public abstract void insertArtikel(int nr, String title, int bestand,
 			double price, int mengeneinheit, Mitarbeiter m) throws ArtikelexistsException;
 	

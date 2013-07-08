@@ -20,10 +20,18 @@ import com.shop.valueobjects.Rechnung;
 import de.hsb.simon.commons.ServerInterface;
 import de.hsb.simon.commons.ServiceVInterface;
 
+/**
+ * @description Klasse mit Methodenaufrufe um Daten vom Server auszulesen oder neu einzuspielen
+ * @description verweist auf das ServiceVInterface
+ */
 public class ServiceVInterfaceImpl implements ServiceVInterface {
 
 	private ServerInterface server;
 	
+	/**
+	 * @description Konstruktor der Klasse ServiceVInterfaceImpl
+	 * @param server - Variable fuer die Verbindung mit dem ServerInterface, um die Daten von dort abzurufen
+	 */
 	public ServiceVInterfaceImpl(ServerInterface server) {
 		this.server = server;
 	}
@@ -31,13 +39,11 @@ public class ServiceVInterfaceImpl implements ServiceVInterface {
 
 	@Override
 	public List<Artikel> getAllArtikel() {
-		// TODO Auto-generated method stub
 		return this.server.getAllArtikel();
 	}
 
 	@Override
 	public List<Artikel> sucheNachTitel(String titel) {
-		// TODO Auto-generated method stub
 		return this.server.sucheNachTitel(titel);
 	}
 
