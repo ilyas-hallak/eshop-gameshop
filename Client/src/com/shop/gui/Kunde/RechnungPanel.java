@@ -1,16 +1,21 @@
 package com.shop.gui.Kunde;
 
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.Map;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import com.shop.exceptions.ArtikelNotFoundException;
+import com.shop.gui.EShopClientGui;
+import com.shop.gui.PanelManager;
 import com.shop.gui.Mitarbeiter.ArtikelTableModel;
 import com.shop.valueobjects.Artikel;
 import com.shop.valueobjects.Kunde;
@@ -20,12 +25,16 @@ import de.hsb.simon.client.net.ServiceVInterfaceImpl;
 
 public class RechnungPanel extends JPanel {
 
-	public RechnungPanel(ServiceVInterfaceImpl shop) {
-		super();
+	private EShopClientGui frame;
+	private JButton backBtn;
+
+	public RechnungPanel(final ServiceVInterfaceImpl shop, final EShopClientGui frame, final PanelManager pm) {
+		super(new GridLayout(6, 1));
 		add(new JLabel("Rechnung"));
 		
+		this.frame = frame;
 		
-		Rechnung r = shop.buy((Kunde)shop.getPerson());
+		Rechnung r = shop.buy((Kunde)frame.getPerson());
 		
 		DateFormat df2 = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 		String formattedDate = df2.format(r.getDate().getTime());
@@ -49,14 +58,18 @@ public class RechnungPanel extends JPanel {
 		
 		add(new JLabel("Summe: " + sum));
 		
-		try {
-			shop.complete();
-			
-		} catch (ArtikelNotFoundException e) {
-			// frame.setMessage("");
-			
-			// showMessageDialog(e.getMessage());
-		}
+		Kunde k = (Kunde)frame.getPerson();
+		k.getCart().complete();
+		
+		// zurück button
+		this.backBtn = new JButton("Zurueck");
+		backBtn.addActionListener(new ActionListener() {
+        	@Override
+			public void actionPerformed(ActionEvent e) {
+				pm.changePanel(new JPanel(), new ArtikelPanelKunde(shop, pm, frame), new WarenkorbPanel(pm, shop, frame));
+        	}
+		});
+		add(this.backBtn);
 	}
 
 

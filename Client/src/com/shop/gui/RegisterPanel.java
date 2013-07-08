@@ -111,8 +111,8 @@ public class RegisterPanel extends JPanel {
         registerBtn.addActionListener(new ActionListener() {
         	@Override
 			public void actionPerformed(ActionEvent e) {
-        		if(nameField.getText().length() == 0 || emailField.getText().length() == 0 || passwortField.getText().length() == 0 || adressField.getText().length() == 0) {
-        			frame.setMessage("Bitte fülle alle Felder aus!");
+        		if(nameField.getText().length() == 0 || emailField.getText().length() == 0 || passwortField.getText().length() == 0 /*|| adressField.getText().length() == 0*/) {
+        			frame.setMessage("Bitte fuelle alle Felder aus!");
         			return;
         		}
         			
@@ -123,8 +123,9 @@ public class RegisterPanel extends JPanel {
 
 					Kunde loggedKunde = (Kunde)shop.login(k);
 					
+					frame.setPerson(loggedKunde);
 					frame.setMessage("Hallo " + k.getName() + "!");
-					pManager.changePanel(new JPanel(), new ArtikelPanelKunde(shop, pManager, frame), new WarenkorbPanel(pManager, shop));
+					pManager.changePanel(new JPanel(), new ArtikelPanelKunde(shop, pManager, frame), new WarenkorbPanel(pManager, shop, frame));
 
 				} catch (CustomerExistsExeption e1) {
 					frame.setMessage(e1.getMessage());

@@ -2,7 +2,6 @@ package com.shop.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.net.UnknownHostException;
 
 import javax.swing.JFrame;
@@ -14,9 +13,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import com.shop.valueobjects.Person;
+
 import de.hsb.simon.client.net.ClientInterfaceImpl;
 import de.hsb.simon.client.net.ServiceVInterfaceImpl;
-import de.hsb.simon.commons.ServiceVInterface;
 import de.root1.simon.exceptions.EstablishConnectionFailed;
 import de.root1.simon.exceptions.LookupFailedException;
 
@@ -26,7 +26,7 @@ public class EShopClientGui extends JFrame {
 	private PanelManager pManager;
 	private EShopClientGui self;
 	private JLabel msgLabel;
-	
+	private Person person;
 	private ClientInterfaceImpl net;
 	
 	public EShopClientGui() {
@@ -47,7 +47,6 @@ public class EShopClientGui extends JFrame {
 		this.initMenu();
 		this.init();
 	}
-	
 	
 	private void init() {
 	    setSize(1024, 786);
@@ -98,6 +97,7 @@ public class EShopClientGui extends JFrame {
 			} else {
 				setVisible(false);
 				dispose();
+				shop.savedata();
 				System.exit(0);				
 			}
 		}
@@ -105,7 +105,8 @@ public class EShopClientGui extends JFrame {
 	
 	
 	public void setMessage(String msg) {
-		this.msgLabel.setText(msg);
+		JOptionPane.showMessageDialog(this, msg);
+//		this.msgLabel.setText(msg);
 	}
 	
 	/**
@@ -113,6 +114,21 @@ public class EShopClientGui extends JFrame {
 	 */
 	public static void main(String[] args) {
 		new EShopClientGui();
+	}
+	
+	/**
+	 * @return the person
+	 */
+	public Person getPerson() {
+		return person;
+	}
+
+
+	/**
+	 * @param person the person to set
+	 */
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 
 }

@@ -8,6 +8,7 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 import com.shop.valueobjects.Artikel;
+import com.shop.valueobjects.MassenArtikel;
 
 public class ArtikelTableModel extends DefaultTableModel {
 	private Vector<String> columnNames;
@@ -21,7 +22,8 @@ public class ArtikelTableModel extends DefaultTableModel {
 		columnNames.add("Titel");
 		columnNames.add("Preis");
 		columnNames.add("Lagerbestand");
-		
+		columnNames.add("Massengut");
+
 		data = new Vector<Vector<String>>();
 		updateDataVector(artikel);
 	}
@@ -34,7 +36,7 @@ public class ArtikelTableModel extends DefaultTableModel {
 		columnNames.add("Nummer");
 		columnNames.add("Titel");
 		columnNames.add("Preis");
-		columnNames.add("St��ckzahl");
+		columnNames.add("Stückzahl");
 		
 		data = new Vector<Vector<String>>();
 		
@@ -73,6 +75,12 @@ public class ArtikelTableModel extends DefaultTableModel {
 			buchVector.add(a.getTitle());
 			buchVector.add(a.getPrice()+"");
 			buchVector.add(a.getStock()+"");
+			
+			if(a instanceof MassenArtikel) {
+				buchVector.add(((MassenArtikel) a).getAnzahl()+"");
+			} else {
+				buchVector.add("-");
+			}
 			
 			data.add(buchVector);
 		}

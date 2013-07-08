@@ -12,6 +12,7 @@ import com.shop.exceptions.PersonNotFoundException;
 import com.shop.valueobjects.Artikel;
 import com.shop.valueobjects.Ereignis;
 import com.shop.valueobjects.Kunde;
+import com.shop.valueobjects.Mitarbeiter;
 import com.shop.valueobjects.Person;
 import com.shop.valueobjects.Rechnung;
 
@@ -26,17 +27,6 @@ public class ServiceVInterfaceImpl implements ServiceVInterface {
 		this.server = server;
 	}
 
-	@Override
-	public void insertArtikel(String title, int bestand, double price)
-			throws ArtikelexistsException {
-		this.server.insertArtikel(title, bestand, price);
-	}
-
-	@Override
-	public void insertArtikel(int nr, String title, int bestand, double price,
-			int mengeneinheit) throws ArtikelexistsException {
-		this.server.insertArtikel(title, bestand, price);
-	}
 
 	@Override
 	public List<Artikel> getAllArtikel() {
@@ -65,10 +55,6 @@ public class ServiceVInterfaceImpl implements ServiceVInterface {
 		return this.server.findArtikelByString(s);
 	}
 
-	@Override
-	public boolean raiseStock(int nr, int stock) {
-		return this.server.raiseStock(nr, stock);
-	}
 
 	@Override
 	public void insertCustomer(Kunde k) throws CustomerExistsExeption {
@@ -80,36 +66,12 @@ public class ServiceVInterfaceImpl implements ServiceVInterface {
 		return this.server.login(p);
 	}
 
-	@Override
-	public void addArtikel(Artikel a, int count) throws BestandZuKleinException {
-		this.server.addArtikel(a, count);
-	}
-
-	@Override
-	public void removeArtikelFromCart(Artikel a) {
-		this.server.removeArtikelFromCart(a);
-	}
-
-	@Override
-	public Map<Artikel, Number> getAllArtikelFromCart() {
-		return this.server.getAllArtikelFromCart();
-	}
 
 	@Override
 	public Rechnung buy(Kunde k) {
 		return this.server.buy(k);
 	}
 
-	@Override
-	public void complete() throws ArtikelNotFoundException {
-		this.server.complete();
-	}
-
-	@Override
-	public void setPerson(Person person) {
-		// TODO create person array
-		this.server.setPerson(person);
-	}
 
 	@Override
 	public ArrayList<Person> getAllMitarbeiter() {
@@ -127,15 +89,50 @@ public class ServiceVInterfaceImpl implements ServiceVInterface {
 	}
 
 	@Override
-	public Person getPerson() {
-		// TODO return from person array
-		return this.server.getPerson();
+	public void insertArtikel(int nr, String title, int bestand, double price,
+			int mengeneinheit, Mitarbeiter m) throws ArtikelexistsException {
+		this.server.insertArtikel(nr, title, bestand, price, mengeneinheit, m);
 	}
 
 	@Override
 	public void updateArtikel(int nr, String title, int bestand, double price,
-			int menegeneinheit) throws ArtikelNotFoundException {
-		this.server.updateArtikel(nr, title, bestand, price, menegeneinheit);
+			int menegeneinheit, Mitarbeiter m) throws ArtikelNotFoundException {
+		this.server.updateArtikel(nr, title, bestand, price, menegeneinheit, m);
+	}
+
+	@Override
+	public boolean raiseStock(int nr, int stock, Mitarbeiter m) {
+		return this.server.raiseStock(nr, stock, m);
+	}
+
+	@Override
+	public Kunde addArtikelToCart(Artikel a, int count, Kunde k)
+			throws BestandZuKleinException {
+		return this.server.addArtikelToCart(a, count, k);
+	}
+
+	@Override
+	public void removeArtikelFromCart(Artikel a, Kunde k) {
+		this.server.removeArtikelFromCart(a, k);
+	}
+
+
+	@Override
+	public void insertArtikel(String title, int bestand, double price,
+			Mitarbeiter m) throws ArtikelexistsException {
+		this.server.insertArtikel(title, bestand, price, m);
+	}
+
+
+	@Override
+	public Map<Artikel, Number> getAllArtikelFromCart(Kunde k) {
+		return this.server.getAllArtikelFromCart(k);
+	}
+
+
+	@Override
+	public void complete(Kunde k) throws ArtikelNotFoundException {
+		this.server.complete(k);
 	}
 
 }

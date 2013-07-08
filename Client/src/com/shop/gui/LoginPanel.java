@@ -22,6 +22,11 @@ import com.shop.valueobjects.Person;
 
 import de.hsb.simon.client.net.ServiceVInterfaceImpl;
 
+/**
+ * 
+ * @author Ilyas
+ *
+ */
 public class LoginPanel extends JPanel {
 
 	private static final long serialVersionUID = 2306226515609595372L;
@@ -48,13 +53,15 @@ public class LoginPanel extends JPanel {
 		
 		GridBagConstraints cs = new GridBagConstraints();
         cs.fill = GridBagConstraints.HORIZONTAL;
-
+        
+        // BENUTZERNAME LABEL 
         usernameLabel = new JLabel("Benutzername: ");
         cs.gridx = 0;
         cs.gridy = 0;
         cs.gridwidth = 1;
         this.add(usernameLabel, cs);
-
+        
+        // BENUTZERNAME FELD
         usernameField = new JTextField(20);
         cs.gridx = 1;
         cs.gridy = 0;
@@ -85,10 +92,11 @@ public class LoginPanel extends JPanel {
 					try {
 						loggedPerson = shop.login(person);
 						
-						shop.setPerson(loggedPerson);
+						frame.setPerson(loggedPerson);
 						
 						if(loggedPerson instanceof Kunde) {
-							pManager.changePanel(new JPanel(), new ArtikelPanelKunde(shop, pManager, frame), new WarenkorbPanel(pManager, shop));
+							
+							pManager.changePanel(new JPanel(), new ArtikelPanelKunde(shop, pManager, frame), new WarenkorbPanel(pManager, shop, frame));
 						} else {
 			        		pManager.changePanel(new MitarbeiterMenu(pManager, shop, frame), new MitarbeiterPanel(frame), new JPanel());
 						}

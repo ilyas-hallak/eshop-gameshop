@@ -36,8 +36,14 @@ public class ClientInterfaceImpl implements  ClientInterface {
 		}
 	}
 	
+	/**
+	 * 
+	 * @throws UnknownHostException
+	 * @throws LookupFailedException
+	 * @throws EstablishConnectionFailed
+	 */
 	public void connectToServer() throws UnknownHostException, LookupFailedException, EstablishConnectionFailed {
-		// init lookup für server
+		// init lookup fuer server
 		lookup = Simon.createNameLookup("127.0.0.1", 4753);
 	
 		// server-object aufsuchen

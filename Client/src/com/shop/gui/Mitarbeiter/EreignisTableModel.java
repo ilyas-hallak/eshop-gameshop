@@ -26,7 +26,6 @@ public class EreignisTableModel extends DefaultTableModel {
 		columnNames.add("Datum");
 		columnNames.add("Person");
 
-
 		data = new Vector<Vector<String>>();
 		updateDataVector(ereignisse);
 	}
@@ -36,8 +35,13 @@ public class EreignisTableModel extends DefaultTableModel {
 		
 		for (Ereignis e: ereignisse) {
 			Vector<String> mVector = new Vector<String>();
-			mVector.add(e.getMessage());
-			mVector.add(e.getArticle().getTitle());
+				mVector.add(e.getMessage());
+				
+			if(e.getArticle() != null) {
+				mVector.add(e.getArticle().getTitle());
+			} else {
+				mVector.add(" - ");
+			}
 			
 			if(e.getPerson() != null) {
 				mVector.add(e.getPerson().geteMail());

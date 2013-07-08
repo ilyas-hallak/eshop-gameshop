@@ -1,12 +1,13 @@
 package com.shop.gui.Mitarbeiter;
 
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -15,11 +16,16 @@ import com.shop.exceptions.ArtikelNotFoundException;
 import com.shop.exceptions.ArtikelexistsException;
 import com.shop.gui.EShopClientGui;
 import com.shop.gui.PanelManager;
-import com.shop.valueobjects.Artikel;
+import com.shop.valueobjects.Mitarbeiter;
 
 import de.hsb.simon.client.net.ServiceVInterfaceImpl;
 
 public class ArtikelAddPanel extends JPanel {
+	private JCheckBox check;
+	private JCheckBox checkBox;
+	private JLabel checkLabel;
+	private JTextField checkField;
+
 	public ArtikelAddPanel(final ServiceVInterfaceImpl shop, final PanelManager pManager, final EShopClientGui frame) {
 		super(new GridBagLayout());
 
@@ -78,7 +84,7 @@ public class ArtikelAddPanel extends JPanel {
         JButton saveBtn = new JButton("Speichern");
         saveBtn.setVisible(false);
 		cs.gridx = 0;
-        cs.gridy = 3;
+        cs.gridy = 4;
         this.add(saveBtn, cs);
         
         saveBtn.addActionListener(new ActionListener() {
@@ -86,7 +92,8 @@ public class ArtikelAddPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
         		
         		try {
-					shop.updateArtikel( Integer.parseInt(idField.getText()) , titleTextfield.getText() , Integer.parseInt(stockField.getText()), Double.parseDouble( priceField.getText() ), 0);
+        			// TODO massengut artikel mit einbauen!!!
+					shop.updateArtikel( Integer.parseInt(idField.getText()) , titleTextfield.getText() , Integer.parseInt(stockField.getText()), Double.parseDouble( priceField.getText()), 0, (Mitarbeiter)frame.getPerson());
 				} catch (NumberFormatException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -102,17 +109,52 @@ public class ArtikelAddPanel extends JPanel {
         	}
         });
         
-        JButton anlegen = new JButton("Artikel anlegen");
+        
+        checkLabel = new JLabel("Massengutartikel");
+        cs.gridx = 0;
+        cs.gridy = 3;
+        this.add(checkLabel, cs);
+        
+        JPanel panel = new JPanel(new FlowLayout());
+        
+        checkBox = new JCheckBox();
+        panel.add(checkBox, cs);
+        
+        
+        checkField = new JTextField(5);
+        checkField.setVisible(true);
+        panel.add(checkField, cs);
+        
+        checkBox.setSelected(true);
+        checkBox.addActionListener(new ActionListener() {
+        	@Override
+			public void actionPerformed(ActionEvent e) {
+        		checkField.setVisible( checkBox.isSelected() );
+        	}
+        });
+        
         cs.gridx = 1;
         cs.gridy = 3;
+        add(panel, cs);
+        
+        JButton anlegen = new JButton("Artikel anlegen");
+        cs.gridx = 1;
+        cs.gridy = 4;
         this.add(anlegen, cs);
+        
         
         anlegen.addActionListener(new ActionListener() {
         	@Override
 			public void actionPerformed(ActionEvent e) {
         		
         		try {
-					shop.insertArtikel(titleTextfield.getText(), Integer.parseInt(stockField.getText()), Integer.parseInt(priceField.getText()));
+        			// massengut artikel
+        			if(checkBox.isSelected()) {
+        				shop.insertArtikel(0, titleTextfield.getText(), Integer.parseInt(stockField.getText()), Integer.parseInt(priceField.getText()), Integer.parseInt(checkField.getText()), (Mitarbeiter)frame.getPerson());
+        			} else {
+        				// normaler artikel
+    					shop.insertArtikel(titleTextfield.getText(), Integer.parseInt(stockField.getText()), Integer.parseInt(priceField.getText()), (Mitarbeiter) frame.getPerson());
+        			}
 					JPanel panel = new ArtikelAddPanel(shop, pManager, frame);
 	        		pManager.changePanel(new MitarbeiterMenu(pManager, shop, frame), new ArtikelPanel(shop, frame, panel), panel);
 					
@@ -123,5 +165,7 @@ public class ArtikelAddPanel extends JPanel {
 				}
         	}
         });
+
+
 	}
 }
